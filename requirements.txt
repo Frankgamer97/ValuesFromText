@@ -3,3 +3,4 @@ rdflib
 SPARQLWrapper
 sklearn
 gdown
+pandas

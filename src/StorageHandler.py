@@ -1,6 +1,6 @@
 import os
 import pickle
-# import pandas as pd
+import pandas as pd
 
 class StorageHandler():
 
@@ -58,3 +58,7 @@ class StorageHandler():
     @staticmethod
     def save_data_csv(csv_table, col=None,name="csv_name"):
         StorageHandler.__save_csv(csv_table, col,name, StorageHandler.get_data_raw_dir())
+
+    @staticmethod
+    def load_csv_to_dataframe(file_path: str, sep ="\t"):
+        return pd.read_csv(file_path, sep = sep)

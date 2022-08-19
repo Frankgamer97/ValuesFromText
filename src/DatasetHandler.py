@@ -1,4 +1,6 @@
 from StorageHandler import StorageHandler
+
+import pandas as pd
 import gdown
 import zipfile
 import os
@@ -25,3 +27,35 @@ class DatasetHandler:
 
             with zipfile.ZipFile(save_zip_path, 'r') as zipObj:
                 zipObj.extractall(StorageHandler.get_data_raw_dir())
+
+    @staticmethod
+    def preprocessing():
+        df = StorageHandler.load_csv_to_dataframe(DatasetHandler.__get_dataset_csv_path())
+
+        columns = ['rot-moral-foundations',
+            'rot-char-targeting',
+            'rot-judgment',
+            'action',
+            # 'action-char-involved',
+            'situation',
+            'n-characters', 
+            'characters'
+        ]
+
+        columns_to_drop = list( set(df.columns) - set(columns) )
+        
+
+        df.drop(columns=columns_to_drop, inplace = True)
+        
+        pd.set_option("display.max_columns", None)
+        print()
+        print(df.head())
+        print()
+        print(len(df))
+        print()
+        print(df.columns)
+        print()
+
+        df['rot-judgment'] = df['rot-judgment'].str.lower()
+        df_bad = df[df['rot-judgment'] == "it's bad"]
+        print("it's bad: "+ str(len(df_bad)))
