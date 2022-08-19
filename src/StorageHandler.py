@@ -1,8 +1,6 @@
-# from dataframe_image import export as image_export
-
 import os
 import pickle
-import pandas as pd
+# import pandas as pd
 
 class StorageHandler():
 
@@ -26,14 +24,6 @@ class StorageHandler():
         file = os.path.join(folder, file_name)
         obj.to_csv(file+".csv", columns=columns )
 
-    # @staticmethod
-    # def __save_image(image_df: pd.DataFrame ,name: str, folder:str):
-    #     image_export(image_df,folder+"/"+name)
-
-    # @staticmethod
-    # def __load_image(name: str, folder:str):
-    #     return open(folder+"/"+name,'rb')
-
     @staticmethod
     def __cd_parent(file):
         return os.path.dirname(file)
@@ -43,13 +33,28 @@ class StorageHandler():
         return StorageHandler.__cd_parent(os.path.realpath(__file__))
 
     @staticmethod
-    def __get_tmp_dir():
+    def get_tmp_dir():
         return os.path.join(StorageHandler.__get_project_directory(), "tmp")
 
     @staticmethod
-    def __get_data_raw_dir():
+    def get_data_raw_dir():
         return os.path.join(StorageHandler.__get_project_directory(), "data", "raw")
 
     @staticmethod
+    def get_data_preprocessed():
+        return os.path.join(StorageHandler.__get_project_directory(), "data", "preprocessed")
+
+    @staticmethod
+    def create_directories():
+        if not os.path.exists(StorageHandler.get_tmp_dir()):
+            os.mkdir(StorageHandler.get_tmp_dir())
+
+        if not os.path.exists(StorageHandler.get_data_raw_dir()):
+            os.makedirs(StorageHandler.get_data_raw_dir())
+
+        if not os.path.exists(StorageHandler.get_data_preprocessed()):
+            os.makedirs(StorageHandler.get_data_preprocessed())
+
+    @staticmethod
     def save_data_csv(csv_table, col=None,name="csv_name"):
-        StorageHandler.__save_csv(csv_table, col,name, StorageHandler.__get_data_raw_dir())
+        StorageHandler.__save_csv(csv_table, col,name, StorageHandler.get_data_raw_dir())
