@@ -4,3 +4,4 @@ SPARQLWrapper
 sklearn
 gdown
 pandas
+nltk

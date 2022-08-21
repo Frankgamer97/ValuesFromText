@@ -20,9 +20,9 @@ class StorageHandler():
             pickle.dump(obj, f)
 
     @staticmethod
-    def __save_csv(obj, columns,file_name: str, folder: str):
+    def __save_csv(obj, columns,file_name: str, folder: str, index = False):
         file = os.path.join(folder, file_name)
-        obj.to_csv(file+".csv", columns=columns )
+        obj.to_csv(file+".csv", columns=columns, index = index )
 
     @staticmethod
     def __cd_parent(file):
@@ -56,8 +56,8 @@ class StorageHandler():
             os.makedirs(StorageHandler.get_data_preprocessed())
 
     @staticmethod
-    def save_data_csv(csv_table, col=None,name="csv_name"):
-        StorageHandler.__save_csv(csv_table, col,name, StorageHandler.get_data_raw_dir())
+    def save_data_csv(csv_table, col=None,name="csv_name", index = False):
+        StorageHandler.__save_csv(csv_table, col,name, StorageHandler.get_data_preprocessed(), index = index)
 
     @staticmethod
     def load_csv_to_dataframe(file_path: str, sep ="\t"):
