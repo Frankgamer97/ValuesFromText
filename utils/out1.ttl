@@ -1,0 +1,51 @@
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#have_1>
+        a       <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Have> ;
+        <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#theme>
+                <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#stop_1> ;
+        <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Agent>
+                <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#person_1> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#stop_1>
+        a       <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Stop> ;
+        <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Agent>
+                <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#person_1> ;
+        <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Theme>
+                <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#killer_1> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Have>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <https://w3id.org/framester/data/framestercore/Ingestion> , <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event> ;
+        <http://www.w3.org/2002/07/owl#equivalentClass>
+                <http://www.ontologydesignpatterns.org/ont/vn/data/Have_39040100> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Awful>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality> , <https://w3id.org/framester/data/framestercore/StimulusFocus> , <https://w3id.org/framester/data/framestercore/Expertise> , <https://w3id.org/framester/data/framestercore/Desirability> ;
+        <http://www.w3.org/2002/07/owl#equivalentClass>
+                <http://www.w3.org/2006/03/wn/wn30/instances/synset-atrocious-adjectivesatellite-2> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Killer>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <https://w3id.org/framester/data/framestercore/Killing> , <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person> , <http://www.w3.org/2006/03/wn/wn30/instances/supersense-noun_person> ;
+        <http://www.w3.org/2002/07/owl#equivalentClass>
+                <http://www.w3.org/2006/03/wn/wn30/instances/synset-killer-noun-1> , <http://dbpedia.org/resource/Killer_(Adamski_song)> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#AwfulKiller>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Killer> ;
+        <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality>
+                <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Awful> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Stop>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <https://w3id.org/framester/data/framestercore/ActivityStop> , <https://w3id.org/framester/data/framestercore/Halt> , <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event> , <https://w3id.org/framester/data/framestercore/ProcessStop> ;
+        <http://www.w3.org/2002/07/owl#equivalentClass>
+                <http://www.w3.org/2006/03/wn/wn30/instances/synset-discontinue-verb-1> , <http://www.ontologydesignpatterns.org/ont/vn/data/Stop_55040100> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#person_1>
+        a       <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Person> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#killer_1>
+        a       <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#AwfulKiller> ;
+        <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#hasDeterminer>
+                <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#that> .

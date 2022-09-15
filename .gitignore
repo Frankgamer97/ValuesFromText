@@ -109,6 +109,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+utils/jupyter
+./utils/jupyter
+.jupyter
 
 # Spyder project settings
 .spyderproject

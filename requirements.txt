@@ -5,3 +5,6 @@ sklearn
 gdown
 pandas
 nltk
+pydotplus
+graphviz
+ipython
