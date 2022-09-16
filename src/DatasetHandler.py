@@ -461,12 +461,12 @@ class DatasetHandler:
             try:
                 text_dict, turtle_extend = DatasetHandler.find_trigs(text)
 
-                print()
-                print("\tSUB:")
-                print("\t",text_dict["sub"])
-                print()
-                print("\tOBJ:")
-                print("\t",text_dict["obj"])
+                # print()
+                # print("\tSUB:")
+                # print("\t",text_dict["sub"])
+                # print()
+                # print("\tOBJ:")
+                # print("\t",text_dict["obj"])
 
                 if not (text_dict["sub"] or text_dict["obj"]):
                     void_ValueNet_response.append(text)
