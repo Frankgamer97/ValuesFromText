@@ -1,2 +1,3 @@
 sent,label,pred,trig
 Someone has to stop that awful killer.,,harm,"https://w3id.org/framester/data/framestercore/Killing, https://w3id.org/framester/wn/wn30/instances/synset-killer-noun-1"
+Someone has to stop that awful killer.,,harm,"https://w3id.org/framester/wn/wn30/instances/synset-killer-noun-1, https://w3id.org/framester/data/framestercore/Killing"
