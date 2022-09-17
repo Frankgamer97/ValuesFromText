@@ -6,6 +6,7 @@ import os
 import pickle
 import pandas as pd
 import requests
+import rdflib
 
 class StorageHandler():
 
@@ -143,10 +144,15 @@ class StorageHandler():
 
             StorageHandler.save_rdf(out_name, response.text, extended=False)
 
-            print(f"\tDownloaded")
+            try:
+                rdflib.Graph().parse(file_path,format='ttl')
+                print("\tDownloaded")
+            except:
+                print("\t[WARNING] Damaged")
+            
             sleep(15)
         else:
-            print(f"\tAlready exists")
+            print("\tAlready exists")
 
     @staticmethod
     def get_text_hash(text):
