@@ -80,32 +80,12 @@ class DatasetHandler:
         else:
             return ''
 
-
-    @staticmethod
-    def __old_lemmatize(tokens):
-
-        # 
-        # download('averaged_perceptron_tagger')
-        
-        lemmatizer = WordNetLemmatizer()
-        pos_tag_dict = dict(pos_tag (tokens)) 
-        token_lemmatized = []
-
-        for x in tokens:
-            pos = DatasetHandler.__get_wordnet_pos(pos_tag_dict[x])
-            if pos == '':
-                token_lemmatized.append(x)
-            else:
-                token_lemmatized.append(lemmatizer.lemmatize(x, pos = pos))
-
-        return token_lemmatized
-
     @staticmethod
     def __lemmatize(tokens):
-
         # 
         # download('averaged_perceptron_tagger')
         
+
         lemmatizer = WordNetLemmatizer()
         pos_tag_dict = dict(pos_tag (tokens)) 
         token_lemmatized = []
@@ -116,6 +96,7 @@ class DatasetHandler:
 
         for i in range(len(tokens)):
             x = tokens[i]
+
             pos = DatasetHandler.__get_wordnet_pos(pos_tag_dict[x])
 
             if not first_subject and pos_tag_dict[x] == 'PRP':
@@ -140,7 +121,7 @@ class DatasetHandler:
 
         token_lemmatized = ['I'] + token_lemmatized if add_subject else token_lemmatized
         token_lemmatized = token_lemmatized + ['.'] if token_lemmatized[-1] != '.' else token_lemmatized
-
+        token_lemmatized[0] = token_lemmatized[0].title()
 
         text = " ".join(token_lemmatized)
         text = text.replace(" ,",",")
@@ -204,6 +185,7 @@ class DatasetHandler:
         .stack() \
         .reset_index(level=1, drop=True).rename('rot-moral-foundations')) \
         .reset_index(drop=True) 
+
         #-----------------------
         # Filter rows with only bad moral judgment (associated with the correct diade)
 
@@ -220,6 +202,8 @@ class DatasetHandler:
 
         #Select the correct haidt value associated with "bad" 
         df_bad["haidt-value"] = df_bad["rot-moral-foundations"].apply(lambda x: x.split("-")[1])
+        # df_bad['rot-moral-foundations'] = df_bad['rot-moral-foundations'].apply(lambda x: x.split("|"))
+        # df_bad['haidt-value'] = df_bad['rot-moral-foundations'].apply(lambda x: [el.split("-")[1] for el in x])
 
         # print(df_bad[["rot-moral-foundations", "haidt-value"]].head())
 
@@ -228,9 +212,10 @@ class DatasetHandler:
         # Lemmatization on the reddit thread title called "situation"
 
         df_bad["situation"] = df_bad["situation"].str.replace("\"","")
+        
         df_bad["situation_lemmatized"]= df_bad["situation"].apply(lambda x: DatasetHandler.__lemmatize(x.split(" ")))
-    
-        df_bad.drop_duplicates(subset=['rot-moral-foundations','situation_lemmatized'], inplace = True)
+        df_bad.drop_duplicates(subset=['rot-moral-foundations',"situation_lemmatized"], inplace = True)
+
         df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("i be","I am")
         df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("I be","I am")
 
@@ -255,7 +240,8 @@ class DatasetHandler:
     
         df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("they be","they are")
         df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("They be","They are")
-        
+
+
         print()
         print(f"Dataframe \"bad\" length: {len(df_bad)}")
         print()
@@ -319,11 +305,19 @@ class DatasetHandler:
         print("",len(df_bad_out_cutted["text"].tolist()), " => ", len(df_bad_out_cutted["text"].unique().tolist()))
 
         print()
+
+
+        df_bad_ValueNet = df_bad_out_cutted[["text", "label"]]
+        df_bad_ValueNet = df_bad_ValueNet.groupby('text').agg({'text' : 'first', 'label' : ' '.join}).reset_index(drop=True)
+
         print("Export csv files")
         StorageHandler.save_data_csv(df_bad_out_uniqued_cutted[["text"]], name="df_bad_fred")
-        StorageHandler.save_data_csv(df_bad_out_cutted[["text", "label"]], name="df_bad_ValueNet")
 
-        return df_bad_out_uniqued_cutted[["text"]], df_bad_out_cutted[["text", "label"]]
+        # StorageHandler.save_data_csv(df_bad_out_cutted[["text", "label"]], name="df_bad_ValueNet")
+        # return df_bad_out_uniqued_cutted[["text"]], df_bad_out_cutted[["text", "label"]]
+
+        StorageHandler.save_data_csv(df_bad_ValueNet, name="df_bad_ValueNet")
+        return df_bad_out_uniqued_cutted[["text"]], df_bad_ValueNet
         
     def retrieve_fred_rdf(df, api_owner, download = True):
         #Retrieve Fred rdfs

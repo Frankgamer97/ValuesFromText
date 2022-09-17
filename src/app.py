@@ -50,5 +50,5 @@ if __name__ == "__main__" :
     print()
     DatasetHandler.retrieve_fred_rdf(df_fred, params["api_owner"], download=params["rdf_downloading"])
     print()
-    DatasetHandler.rdf_analysis(df_fred, df_ValueNet)
-    print()
+    # DatasetHandler.rdf_analysis(df_fred, df_ValueNet)
+    # print()
