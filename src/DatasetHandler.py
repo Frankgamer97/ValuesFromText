@@ -131,6 +131,80 @@ class DatasetHandler:
         return text
 
     @staticmethod
+    def expand_text(df, col_name):
+        # "situation_lemmatized"
+        df[col_name] = df[col_name].str.replace("i be","I am")
+        df[col_name] = df[col_name].str.replace("I be","I am")
+
+        df[col_name] = df[col_name].str.replace("i'm","I am")
+        df[col_name] = df[col_name].str.replace("I'm","I am")
+
+        df[col_name] = df[col_name].str.replace("i've","I have")
+        df[col_name] = df[col_name].str.replace("I've ","I have")
+
+        df[col_name] = df[col_name].str.replace("i'd","I would")
+        df[col_name] = df[col_name].str.replace("I'd","I would")
+
+        df[col_name] = df[col_name].str.replace("i not","I don't")
+        df[col_name] = df[col_name].str.replace("I not","I don't")
+
+        df[col_name] = df[col_name].str.replace("you be","you are")
+        df[col_name] = df[col_name].str.replace("You be","You are")
+
+        df[col_name] = df[col_name].str.replace("you're","you are")
+        df[col_name] = df[col_name].str.replace("You're","You are")
+
+        df[col_name] = df[col_name].str.replace("you've","you have")
+        df[col_name] = df[col_name].str.replace("You've ","You have")
+
+        df[col_name] = df[col_name].str.replace("you'd","you would")
+        df[col_name] = df[col_name].str.replace("You'd","You would")
+
+        df[col_name] = df[col_name].str.replace("he be","he is")
+        df[col_name] = df[col_name].str.replace("He be","He is")
+
+        df[col_name] = df[col_name].str.replace("he's","he is")
+        df[col_name] = df[col_name].str.replace("He's","he is")
+
+        df[col_name] = df[col_name].str.replace("he'd","he would")
+        df[col_name] = df[col_name].str.replace("He'd","He would")
+
+        df[col_name] = df[col_name].str.replace("it be","it is")
+        df[col_name] = df[col_name].str.replace("It be","It is")
+
+        df[col_name] = df[col_name].str.replace("it's","it is")
+        df[col_name] = df[col_name].str.replace("It's","It is")
+
+        df[col_name] = df[col_name].str.replace("it'd","it would")
+        df[col_name] = df[col_name].str.replace("It'd","It would")
+
+        df[col_name] = df[col_name].str.replace("we be","we are")
+        df[col_name] = df[col_name].str.replace("We be","We are")
+
+        df[col_name] = df[col_name].str.replace("we're","we are")
+        df[col_name] = df[col_name].str.replace("We're","We are")
+
+        df[col_name] = df[col_name].str.replace("we've","we have")
+        df[col_name] = df[col_name].str.replace("We've ","We have")
+
+        df[col_name] = df[col_name].str.replace("we'd","we would")
+        df[col_name] = df[col_name].str.replace("We'd","We would")
+
+        df[col_name] = df[col_name].str.replace("they be","they are")
+        df[col_name] = df[col_name].str.replace("They be","They are")
+
+        df[col_name] = df[col_name].str.replace("they're","they are")
+        df[col_name] = df[col_name].str.replace("They're","They are")
+
+        df[col_name] = df[col_name].str.replace("they've","they have")
+        df[col_name] = df[col_name].str.replace("They've ","They have")
+
+        df[col_name] = df[col_name].str.replace("they'd","they would")
+        df[col_name] = df[col_name].str.replace("They'd","They would")
+
+        return df
+
+    @staticmethod
     def preprocessing(overwrite = False):
 
         print("[Preprocessing]")
@@ -212,35 +286,10 @@ class DatasetHandler:
         # Lemmatization on the reddit thread title called "situation"
 
         df_bad["situation"] = df_bad["situation"].str.replace("\"","")
-        
+        df_bad = DatasetHandler.expand_text(df_bad, "situation")
+
         df_bad["situation_lemmatized"]= df_bad["situation"].apply(lambda x: DatasetHandler.__lemmatize(x.split(" ")))
         df_bad.drop_duplicates(subset=['rot-moral-foundations',"situation_lemmatized"], inplace = True)
-
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("i be","I am")
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("I be","I am")
-
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("i not","I don't")
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("I not","I don't")
-
-
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("you be","you are")
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("You be","You are")
-
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("he be","he is")
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("He be","He is")
-
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("she be","she is")
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("She be","She is")
-
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("it be","it is")
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("It be","It is")
-
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("we be","we are")
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("We be","We are")
-    
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("they be","they are")
-        df_bad["situation_lemmatized"] = df_bad["situation_lemmatized"].str.replace("They be","They are")
-
 
         print()
         print(f"Dataframe \"bad\" length: {len(df_bad)}")
@@ -317,6 +366,8 @@ class DatasetHandler:
         # return df_bad_out_uniqued_cutted[["text"]], df_bad_out_cutted[["text", "label"]]
 
         StorageHandler.save_data_csv(df_bad_ValueNet, name="df_bad_ValueNet")
+
+        print(len(df_bad_ValueNet)," - ", len(df_bad_out_uniqued_cutted[["text"]]))
         return df_bad_out_uniqued_cutted[["text"]], df_bad_ValueNet
         
     def retrieve_fred_rdf(df, api_owner, download = True):
@@ -428,8 +479,37 @@ class DatasetHandler:
         diz = {'sub':sub,
                 'obj':obj}  
         return diz, finalg
+
     @staticmethod
-    def rdf_analysis(df_fred, df_ValueNet):
+    def __remove_NameSpaces(data, namespace):
+        data = [
+        ele.replace(namespace,'').strip().lower() 
+            for ele in 
+                data
+        ]
+
+        return data
+
+    @staticmethod
+    def get_ValueNet_results(text_dict):
+        prediction = list(set([str(ele) for ele in text_dict['obj']]))
+        # prediction = DatasetHandler.__remove_NameSpaces(prediction, 'https://w3id.org/spice/SON/HaidtValues#')
+
+        prediction = [el.split("#")[-1] for el in prediction]
+
+        triggers = list(set([str(ele) for ele in text_dict['sub']]))
+        # triggers = DatasetHandler.__remove_NameSpaces(triggers, 'https://w3id.org/framester/wn/wn30/instances')
+        # triggers = DatasetHandler.__remove_NameSpaces(triggers, 'https://w3id.org/framester/vn/vn31/data')
+
+        triggers = [el.split("/")[-1] for el in triggers]
+
+        return prediction, triggers
+
+    @staticmethod
+    def rdf_analysis(df_fred, df_ValueNet, overwrite=True):
+
+        haidt_predictions = []
+        triggers = []
 
         error_file = []
         void_ValueNet_response = []
@@ -455,30 +535,39 @@ class DatasetHandler:
             try:
                 text_dict, turtle_extend = DatasetHandler.find_trigs(text)
 
-                # print()
-                # print("\tSUB:")
-                # print("\t",text_dict["sub"])
-                # print()
-                # print("\tOBJ:")
-                # print("\t",text_dict["obj"])
-
                 if not (text_dict["sub"] or text_dict["obj"]):
                     void_ValueNet_response.append(text)
+                    haidt_predictions.append("<no response>")
+                    triggers.append("<no response>")
                     print("\t No response from ValueNet")
-
+    
                 else:
+
                     text_hash = StorageHandler.get_text_hash(text)
                     StorageHandler.save_rdf(text_hash, turtle_extend, extended=True)
                     print("\tTurtle extended")
+
+                    prediction, text_triggers = DatasetHandler.get_ValueNet_results(text_dict)
+
+                    haidt_predictions.append(" ".join(prediction))
+                    triggers.append(" ".join(text_triggers))
+
             except:
                 print("\tDamaged tutrtle")
+                haidt_predictions.append("<damaged>")
+                triggers.append("<damaged>")
                 error_file.append(text)
+
+        error_file_length = len(error_file)
+        no_response_length = len(void_ValueNet_response)
 
         print()
         print()
-        print(f"Total damaged turtles: {len(error_file)}")
+        print(f"Total damaged turtles: {error_file_length}")
         print()
-        print(f"Total no response from ValueNet: {len(void_ValueNet_response)}")
+        print(f"Total no response from ValueNet: {no_response_length}")
+        print()
+        print(f"Total extended turtle: {text_list_len - no_response_length - error_file_length}")
         print()
 
         df_damaged = pd.DataFrame({"text": error_file})
@@ -486,5 +575,23 @@ class DatasetHandler:
 
         df_void = pd.DataFrame({"text": void_ValueNet_response})
         StorageHandler.save_data_csv(df_void, name="df_void_ValueNet_response")
+
+        print()
+        print(len(df_ValueNet))
+        print(len(haidt_predictions))
+        print(len(triggers))
+        print()
+
+        with open("predictions.txt", "w") as f:
+            f.write("\n".join(haidt_predictions))
+
+        
+        with open("triggers.txt", "w") as f:
+            f.write("\n".join(triggers))
+
+        df_ValueNet["label_predicted"] = haidt_predictions
+        df_ValueNet["label_triggers"] = triggers
+
+        StorageHandler.save_data_csv(df_ValueNet, name="df_ValueNet_response")
 
         

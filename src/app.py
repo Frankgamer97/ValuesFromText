@@ -17,6 +17,9 @@ def buildParser():
     parser.add_argument('--preprocessing', default=True, action='store_true')
     parser.add_argument('--no-preprocessing', dest='preprocessing', action='store_false')
 
+    parser.add_argument('--analysis', default=True, action='store_true')
+    parser.add_argument('--no-analysis', dest='analysis', action='store_false')
+
     return parser
 
 def get_params():
@@ -33,7 +36,8 @@ def get_params():
     params["api_owner"] = args.api_owner
     params["preprocessing"] = args.preprocessing
     params["rdf_downloading"] = args.rdf_downloading
-    
+    params["analysis"] = args.analysis
+
     return params
 
 if __name__ == "__main__" :
@@ -49,6 +53,7 @@ if __name__ == "__main__" :
     df_fred, df_ValueNet = DatasetHandler.preprocessing(overwrite=params["preprocessing"])
     print()
     DatasetHandler.retrieve_fred_rdf(df_fred, params["api_owner"], download=params["rdf_downloading"])
-    print()
-    # DatasetHandler.rdf_analysis(df_fred, df_ValueNet)
     # print()
+    # DatasetHandler.rdf_analysis(df_fred, df_ValueNet, overwrite=params["analysis"])
+
+    print()

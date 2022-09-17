@@ -19,6 +19,10 @@ class StorageHandler():
         "Primiano": {
             'accept': 'text/turtle',
             'Authorization': 'Bearer e7c13f41-a79e-367f-9a47-d532fce077c0',
+        },
+        "Luciano": {
+            'accept': 'text/turtle',
+            'Authorization': 'Bearer 16a84b70-1b8d-3d05-8d1a-7a37da9be9e8',
         }
     }
 

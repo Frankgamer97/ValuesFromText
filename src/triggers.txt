@@ -1,0 +1,2878 @@
+<no response>
+<damaged>
+Revenge synset-retaliation-noun-1 synset-parent-noun-1
+<damaged>
+synset-bogus-adjectivesatellite-1 CauseHarm ExperienceBodilyHarm
+Regard
+RevealSecret synset-unwrap-verb-2
+<no response>
+synset-telephone-noun-1 synset-parent-noun-1
+Grooming synset-shower-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+Grooming synset-shave-verb-1
+<no response>
+<no response>
+Regard
+synset-attack-noun-1 Attack
+<no response>
+<damaged>
+<no response>
+Grooming synset-shower-noun-1
+<no response>
+ExperienceBodilyHarm synset-play-verb-1 CauseHarm Break_45010000
+synset-cut-verb-1 Regard CauseHarm ExperienceBodilyHarm
+synset-seat-noun-1 Supply
+synset-detect-verb-1
+<damaged>
+<no response>
+<no response>
+Regard
+synset-fight-noun-2 HostileEncounter
+Lock_22040000 InhibitMovement synset-food-noun-1
+<damaged>
+<no response>
+Destroying synset-destroy-verb-2 Cheat_59000100 Ruin_44000000
+synset-house-noun-1
+synset-house-noun-1
+ComeTogether
+<no response>
+RevealSecret
+<damaged>
+<no response>
+<no response>
+synset-date-noun-1
+synset-cut-verb-1 CauseHarm ExperienceBodilyHarm
+<no response>
+synset-parent-noun-1
+synset-join-verb-1 synset-group-noun-1
+synset-smack-verb-1 synset-punch-verb-1 ExperienceBodilyHarm CauseHarm Punch_18020000
+<damaged>
+synset-doctor-noun-1
+<no response>
+<no response>
+<no response>
+Partiality
+<no response>
+Detaining synset-prevent-verb-2 InhibitMovement
+<damaged>
+synset-detect-verb-1
+<damaged>
+Regard synset-mother-noun-1
+Regard
+<no response>
+synset-hat-noun-1
+<no response>
+<no response>
+<no response>
+TakingSides synset-mother-noun-1 synset-food-noun-1
+synset-parent-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+Cure synset-mother-noun-1 synset-treatment-noun-1
+<no response>
+<no response>
+synset-colleague-noun-1 Collaboration
+synset-associate-noun-1 synset-contend-verb-6 HostileEncounter Collaboration
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+<no response>
+<no response>
+synset-racist-noun-1 synset-parent-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-laundry-noun-1
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-dish-noun-1 Grooming synset-wash-verb-1
+<no response>
+CauseHarm ExperienceBodilyHarm
+<no response>
+Defend_85000000 synset-defend-verb-1 Defend synset-beat-verb-1
+<no response>
+<no response>
+ExperienceBodilyHarm CauseHarm Break_45010000
+<no response>
+synset-house-noun-1 Cheat_59000100
+<no response>
+TakingSides
+synset-dinner-noun-1
+synset-boundary-noun-1
+synset-batch-noun-2
+TakingSides synset-infidelity-noun-1
+synset-care-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Destroying synset-destructive-adjective-1
+Regard
+synset-punch-verb-1 ExperienceBodilyHarm Break_45010000 CauseHarm Punch_18020000
+Killing synset-killer-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Revenge synset-retaliation-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+synset-team-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-group-noun-1
+<damaged>
+<damaged>
+<no response>
+synset-spouse-noun-1
+<damaged>
+synset-house-noun-1
+<no response>
+<damaged>
+synset-spouse-noun-1
+synset-telephone-noun-1
+Detaining synset-keep-verb-1 InhibitMovement synset-detention-noun-1
+<damaged>
+<no response>
+Protecting synset-fence-noun-1
+<no response>
+<no response>
+Hate_31020100
+synset-ruin-noun-1 synset-mother-noun-1 Destroying
+synset-mother-noun-1
+<damaged>
+<no response>
+<damaged>
+synset-doctor-noun-1
+synset-team-noun-1
+synset-parent-noun-1
+<no response>
+<damaged>
+Cheat_59000100
+synset-parent-noun-1
+synset-visit-verb-1
+<damaged>
+Offenses synset-swindle-noun-1
+<no response>
+synset-telephone-noun-1
+Revenge synset-vengeance-noun-1
+synset-detect-verb-1
+<damaged>
+<no response>
+<no response>
+<damaged>
+Protecting synset-guard-noun-1 Protect_85000000 Defend synset-play-verb-1 synset-protect-verb-1
+<no response>
+Lash_18010100 CauseHarm synset-flog-verb-1
+<no response>
+synset-group-noun-1 synset-member-noun-1
+HostileEncounter synset-confront-verb-1 Confront_98000000
+synset-house-noun-1
+CauseHarm synset-cut-verb-1 Cut_23020000 ExperienceBodilyHarm
+ComeTogether synset-keep-verb-1
+<no response>
+<no response>
+<no response>
+synset-ball-noun-1
+<damaged>
+<no response>
+Offenses synset-swindle-noun-1
+synset-parent-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+Destroying Happen_48030000
+synset-spouse-noun-1
+Destroying synset-destroy-verb-2 Ruin_44000000
+synset-cut-verb-1 Regard CauseHarm ExperienceBodilyHarm
+synset-contend-verb-6 HostileEncounter
+<no response>
+<no response>
+Death Expire_48020000
+<no response>
+<no response>
+<no response>
+synset-team-noun-1 synset-teammate-noun-1 Collaboration
+synset-apprehension-noun-4 Arrest synset-keep-verb-1 synset-parent-noun-1
+<no response>
+<no response>
+synset-detect-verb-1
+synset-threaten-verb-2 Threaten_31010000
+<no response>
+<no response>
+synset-bunch-noun-1
+<no response>
+<no response>
+synset-relieve-verb-1 Cure
+<no response>
+synset-house-noun-1
+synset-front-noun-1
+synset-spouse-noun-1
+synset-colleague-noun-1 Collaboration
+<damaged>
+<no response>
+<no response>
+ExperienceBodilyHarm CauseHarm Break_23020000
+synset-telephone-noun-1
+<no response>
+synset-threaten-verb-2 Threaten_31010000
+<damaged>
+<no response>
+Regard synset-mother-noun-1
+Destroying synset-destroy-verb-2 Ruin_44000000
+synset-agree-verb-1
+<no response>
+TakingSides
+synset-raper-noun-1 synset-detect-verb-1 synset-team-noun-1 Rape
+<no response>
+CauseHarm synset-cut-verb-1 Cut_23020000 ExperienceBodilyHarm
+<no response>
+synset-temper-noun-2 synset-keep-verb-1
+<no response>
+synset-preference-noun-1 synset-skin-noun-1 ExperienceBodilyHarm Inclination
+synset-slam-verb-2
+Regard
+<no response>
+ComeTogether synset-date-noun-1
+TakingSides
+<no response>
+<damaged>
+synset-cut-verb-1 CauseHarm synset-front-noun-1
+<no response>
+Regard
+<no response>
+<no response>
+synset-victim-noun-1
+<no response>
+synset-joint-noun-1
+<no response>
+synset-batch-noun-2
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-bull-noun-5
+<no response>
+<no response>
+<no response>
+synset-spouse-noun-1
+<no response>
+<no response>
+RevealSecret synset-parent-noun-1
+<no response>
+<no response>
+Regard synset-teammate-noun-1 Collaboration
+<damaged>
+synset-drug-noun-1
+<no response>
+<no response>
+synset-batch-noun-2
+<damaged>
+synset-drug-noun-1
+<no response>
+synset-house-noun-1
+synset-feed-noun-1
+synset-front-noun-1 synset-confront-verb-1 Confront_98000000
+synset-keep-verb-1
+<damaged>
+<no response>
+Cure synset-treatment-noun-1
+synset-parent-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+synset-spouse-noun-1
+<no response>
+<no response>
+synset-spouse-noun-1
+<no response>
+<damaged>
+<no response>
+<no response>
+Regard synset-parent-noun-1
+<no response>
+synset-punishment-noun-1
+<no response>
+synset-racism-noun-2
+<no response>
+<no response>
+<no response>
+synset-floor-noun-1 Supply synset-equipment-noun-1
+<no response>
+CauseHarm synset-group-noun-1 Kick_23020000
+CauseHarm synset-disability-noun-1 ExperienceBodilyHarm
+<no response>
+<no response>
+synset-dinner-noun-1
+ExperienceBodilyHarm CauseHarm synset-diss-verb-1 Break_45010000
+<no response>
+<no response>
+<no response>
+synset-front-noun-1
+synset-sympathy-noun-1 Inclination
+synset-house-noun-1 synset-mother-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Regard
+<no response>
+<no response>
+CauseHarm Kick_23020000
+<no response>
+<damaged>
+synset-help-verb-1 Help_72000100 Assistance
+<no response>
+synset-drug-noun-1
+<no response>
+Abusing synset-maltreatment-noun-1
+ComeTogether
+synset-temper-noun-2
+<no response>
+synset-food-noun-1
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1
+<no response>
+<no response>
+<no response>
+synset-food-noun-1
+Death synset-die-verb-1 Die_48020000
+Destroying synset-mother-noun-1 synset-destroy-verb-2 Ruin_44000000
+synset-fight-verb-3 synset-drug-noun-1
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1 Offenses synset-swindle-noun-1
+synset-keep-verb-1 synset-visit-verb-1
+Abusing synset-maltreatment-noun-1
+<damaged>
+synset-fear-noun-1
+synset-parent-noun-1
+<no response>
+<no response>
+Regard synset-date-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-cut-verb-1 synset-member-noun-1 ExperienceBodilyHarm CauseHarm synset-injury-noun-1
+<no response>
+<no response>
+<no response>
+Regard synset-custodian-noun-1 Defend
+synset-member-noun-1
+<no response>
+<no response>
+<no response>
+synset-keep-verb-1 Regard
+synset-play-verb-1
+<damaged>
+CauseHarm HostileEncounter synset-confront-verb-1 Attempt_61000000 Confront_98000000
+synset-doctor-noun-1
+synset-majority-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+synset-birth-noun-1 synset-parent-noun-1
+<damaged>
+<no response>
+<damaged>
+<damaged>
+<damaged>
+<no response>
+<no response>
+synset-group-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-police-noun-1
+<no response>
+<no response>
+<no response>
+Death synset-die-verb-1 Die_48020000
+Destroying Happen_48030000
+Catastrophe synset-incident-noun-1
+<no response>
+<no response>
+synset-telephone-noun-1
+synset-batch-noun-2 Kill_42030000 Killing synset-kill-verb-1
+<no response>
+<no response>
+TakingSides synset-government-noun-1
+<no response>
+<damaged>
+<no response>
+synset-care-noun-1
+<damaged>
+<damaged>
+synset-care-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+synset-group-noun-1
+CauseHarm synset-rock-noun-1
+<damaged>
+<no response>
+synset-mother-noun-1
+<no response>
+<no response>
+<no response>
+synset-care-noun-1
+<no response>
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+Death synset-death-noun-1
+Death CauseHarm synset-death-noun-1 synset-beat-verb-1
+<no response>
+synset-bed-noun-1 synset-telephone-noun-1 Supply
+<no response>
+Destroying Happen_48030000
+SocialConnection synset-intimate-adjectivesatellite-1
+synset-detect-verb-1
+synset-member-noun-1 synset-puzzle-noun-2
+synset-community-noun-1 synset-gate-noun-1 Supply
+<no response>
+synset-detect-verb-1
+<damaged>
+<no response>
+synset-food-noun-1
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1
+<no response>
+synset-struggle-noun-1 synset-help-verb-1 Help_72000100 Assistance
+<damaged>
+<no response>
+<no response>
+<damaged>
+synset-dick-noun-1
+synset-cut-verb-1 CauseHarm ExperienceBodilyHarm
+CauseHarm synset-smack-verb-1 ExperienceBodilyHarm
+synset-cut-verb-1 Break_45010000 CauseHarm ExperienceBodilyHarm
+<no response>
+<no response>
+Abusing synset-maltreatment-noun-1
+<damaged>
+CauseHarm Kick_23020000
+<no response>
+<no response>
+synset-aid-noun-2 Assistance
+<no response>
+<no response>
+synset-food-noun-1 synset-parent-noun-1
+synset-immunize-verb-2 synset-victim-noun-1
+<no response>
+synset-mother-noun-1
+synset-spouse-noun-1 Offenses synset-swindle-noun-1
+<no response>
+synset-cut-verb-1 CauseHarm synset-punishment-noun-1 ExperienceBodilyHarm
+<no response>
+<damaged>
+synset-care-noun-1 Killing Regard Euthanize_42010000
+<no response>
+synset-keep-verb-1
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1
+Regard
+<no response>
+Destroying synset-destroy-verb-2 Ruin_44000000
+<no response>
+<no response>
+<no response>
+<no response>
+synset-colleague-noun-1 synset-hate-noun-1 synset-member-noun-1 Collaboration
+<no response>
+<no response>
+Cheat_59000100
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1
+Regard
+synset-agree-verb-1 Regard Care_31030200
+TakingSides
+<no response>
+Regard
+Death synset-death-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-attack-noun-1 Attack synset-injury-noun-1
+<damaged>
+<damaged>
+Regard
+<no response>
+Attack Killing ExperienceBodilyHarm synset-shoot-verb-1 Shoot_42020000 CauseHarm
+CauseHarm ExperienceBodilyHarm
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<damaged>
+<no response>
+<damaged>
+synset-keep-verb-1 synset-batch-noun-2
+Lose_13020000 Attack
+<no response>
+Death synset-die-verb-1 Die_48020000
+synset-detect-verb-1
+<no response>
+<no response>
+<no response>
+Regard
+<no response>
+<no response>
+Destroying Happen_48030000
+synset-hate-verb-1 synset-death-noun-1 Hate_31020100 Death synset-parent-noun-1
+synset-bull-noun-5
+synset-ticket-noun-1 Supply
+<damaged>
+synset-free-adjective-1
+<damaged>
+Happen_48030000 Destroying ExperienceBodilyHarm Break_45010000 CauseHarm
+synset-racist-noun-1
+<no response>
+<no response>
+synset-hit-verb-3 synset-punch-verb-1 ExperienceBodilyHarm CauseHarm Punch_18020000
+<damaged>
+synset-doctor-noun-1
+synset-mother-noun-1
+Death synset-die-verb-1 Die_48020000 synset-bogus-adjectivesatellite-1
+Force_59000000
+RevealSecret synset-bogus-adjectivesatellite-1
+synset-keep-verb-1
+synset-doctor-noun-1
+<no response>
+<damaged>
+CauseHarm ExperienceBodilyHarm
+<no response>
+synset-keep-verb-1 Cheat_59000100
+<no response>
+<no response>
+RevealSecret synset-hat-noun-1
+<damaged>
+synset-mother-noun-1
+synset-bed-noun-1 Supply
+Supply synset-yield-verb-1
+synset-house-noun-1 Repel synset-resist-verb-4
+synset-shot-noun-2
+Offenses synset-swindle-noun-1
+Killing Euthanize_42010000
+<no response>
+<damaged>
+<damaged>
+<damaged>
+<no response>
+<damaged>
+<no response>
+synset-ruin-noun-1 Destroying
+Regard
+synset-poison-noun-1
+<no response>
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+synset-hate-verb-1 Hate_31020100
+<damaged>
+<no response>
+synset-offensive-adjectivesatellite-1
+ExperienceBodilyHarm CauseHarm Break_23020000
+synset-knock-verb-1
+synset-knife-verb-1 synset-knife-noun-1 synset-keep-verb-1 synset-member-noun-1 Stab_18020000 CauseHarm
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+Care_31030200
+<no response>
+synset-spouse-noun-1
+<no response>
+synset-hate-verb-1 Hate_31020100
+<no response>
+synset-play-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-hate-verb-1 Hate_31020100 synset-keep-verb-1
+synset-waiter-noun-1
+<no response>
+<damaged>
+synset-punch-verb-1 CauseHarm Punch_18020000
+<damaged>
+<no response>
+Death synset-die-verb-1 Die_48020000
+Regard
+<no response>
+synset-contend-verb-6 HostileEncounter
+<no response>
+CauseHarm synset-beat-verb-1 synset-parent-noun-1
+synset-mother-noun-1 Cheat_59000100
+synset-club-noun-2
+<no response>
+<no response>
+synset-hate-verb-1 Hate_31020100
+<damaged>
+<damaged>
+synset-shoot-verb-1 CauseHarm Attack ExperienceBodilyHarm
+<no response>
+<no response>
+<damaged>
+synset-stoner-noun-1 CauseHarm Attack
+<damaged>
+Regard
+<no response>
+<no response>
+synset-house-noun-1 synset-play-verb-1
+<no response>
+<no response>
+Catastrophe Suffer_31030400 synset-suffer-verb-2
+<damaged>
+synset-one-fourth-noun-1 Killing
+synset-hate-verb-1 Hate_31020100
+<no response>
+synset-approve-verb-1 Offenses synset-swindle-noun-1
+synset-bed-noun-1 Supply synset-bogus-adjectivesatellite-1
+<no response>
+synset-visit-verb-1
+Regard
+<no response>
+<no response>
+synset-injury-noun-1
+synset-assault-noun-1 synset-apprehension-noun-4 Arrest Attack
+synset-help-verb-1 Help_72000100 Assistance
+<no response>
+<damaged>
+<no response>
+synset-telephone-noun-1
+<damaged>
+<damaged>
+synset-parent-noun-1
+Regard synset-mother-noun-1
+synset-keep-verb-1 synset-food-noun-1
+<no response>
+synset-keep-verb-1 Regard
+Death synset-death-noun-1
+<damaged>
+synset-taw-noun-2
+<no response>
+synset-keep-verb-1
+synset-detect-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-telephone-noun-1
+<no response>
+synset-struggle-noun-1
+<no response>
+<no response>
+<no response>
+synset-mother-noun-1
+Death synset-die-verb-1 Die_48020000
+<damaged>
+synset-disfavor-noun-2 Inclination
+synset-victim-noun-1
+<no response>
+Offenses synset-swindle-noun-1
+ComeTogether
+<no response>
+synset-diss-verb-1
+<damaged>
+<no response>
+ExperienceBodilyHarm synset-innocent-adjective-1 CauseHarm Break_45010000
+<damaged>
+synset-approve-verb-1 synset-computer-noun-1
+synset-spouse-noun-1
+Revenge Regard synset-retaliation-noun-1
+<damaged>
+<no response>
+<no response>
+Regard synset-torture-noun-5
+<no response>
+<damaged>
+synset-detect-verb-1
+CauseHarm Preserving synset-can-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-keep-verb-1
+HostileEncounter synset-confront-verb-1 Confront_98000000
+<no response>
+Regard synset-pain-noun-1 ExperienceBodilyHarm synset-detect-verb-1 synset-ache-verb-3 Hurt_40081000 RevealSecret CauseHarm
+<no response>
+<no response>
+synset-slam-verb-2
+<no response>
+synset-kit-noun-1
+<no response>
+RevealSecret
+CauseHarm synset-bump-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-attack-verb-1 Attack synset-spouse-noun-1 Attack_33000000
+<no response>
+<damaged>
+Lose_13020000 Attack synset-lose-verb-1
+synset-care-noun-1 Cheat_59000100
+<no response>
+Regard
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<damaged>
+Revenge synset-retaliation-noun-1
+<no response>
+synset-threaten-verb-2 Threaten_31010000
+<no response>
+<no response>
+synset-majority-noun-1
+synset-parachute-noun-1
+synset-punch-verb-1 CauseHarm Punch_18020000
+Abusing synset-maltreatment-noun-1
+synset-struggle-noun-1 synset-injury-noun-1
+<no response>
+<no response>
+synset-hat-noun-1 Regard synset-parent-noun-1
+synset-racist-noun-1 synset-racism-noun-2
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+Regard
+<no response>
+<no response>
+Regard synset-telephone-noun-1
+synset-help-verb-1 Help_72000100 Assistance
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+synset-panic-noun-1
+<no response>
+synset-batch-noun-2 synset-parent-noun-1
+synset-detect-verb-1
+<no response>
+CauseHarm synset-breakfast-noun-1 Preserving synset-can-verb-1
+<damaged>
+Regard
+<damaged>
+<no response>
+CauseHarm ExperienceBodilyHarm
+synset-waiter-noun-1 synset-fight-noun-2 synset-ailment-noun-1 HostileEncounter
+synset-keep-verb-1
+Assistance
+<no response>
+Destroying Destroy_44000000 synset-destroy-verb-1
+<damaged>
+<no response>
+<damaged>
+<no response>
+synset-keep-verb-1 synset-bed-noun-1 Supply
+synset-cut-verb-1 ExperienceBodilyHarm synset-aid-noun-2 CauseHarm Assistance
+synset-detect-verb-1
+<no response>
+<damaged>
+<damaged>
+<no response>
+synset-bathe-verb-1 synset-coerce-verb-1 Force_59000000 Grooming synset-parent-noun-1
+synset-fight-noun-2 synset-punch-verb-1 HostileEncounter CauseHarm Punch_18020000
+<no response>
+synset-birth-noun-1 Death synset-death-noun-1
+Hate_31020100
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+Drown_40070000 Death Killing
+synset-computer-noun-1
+<damaged>
+Regard
+Regard
+<no response>
+<no response>
+synset-intimate-adjectivesatellite-1
+<no response>
+<no response>
+<no response>
+Regard synset-telephone-noun-1
+Cure synset-massage-noun-1 synset-therapist-noun-1
+synset-freedom-noun-1
+synset-keep-verb-1
+synset-superintendent-noun-2 synset-hate-noun-1 Loathe_31020000
+Regard
+synset-parent-noun-1
+Offenses synset-swindle-noun-1
+Cure Help_72000100 synset-therapist-noun-1 synset-help-verb-1 synset-bogus-adjectivesatellite-1 Assistance
+<no response>
+<no response>
+Cheat_59000100
+synset-detect-verb-1
+<damaged>
+Destroying synset-destroy-verb-2 Ruin_44000000
+<damaged>
+Destroying Happen_48030000
+<no response>
+synset-hate-verb-1 Hate_31020100
+<no response>
+synset-parent-noun-1
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+ComeTogether Death Celebrate_33000000 synset-death-noun-1
+Detaining Regard InhibitMovement synset-detention-noun-1
+<no response>
+synset-bully-noun-1 Attack synset-lunch-noun-1
+Death synset-die-verb-1 Die_48020000
+synset-aggressive-adjective-1 Attack synset-police-noun-1 ExperienceBodilyHarm synset-shoot-verb-1 synset-die-verb-1 Die_48020000 Death CauseHarm
+<no response>
+synset-adoption-noun-1
+<no response>
+synset-ruin-noun-1 Destroying synset-drug-noun-1 synset-fear-noun-1
+Regard
+synset-criminal-noun-1
+synset-detect-verb-1
+ComeTogether
+synset-taw-noun-2 Regard
+<no response>
+<damaged>
+Please_31010000 synset-bed-noun-1 Attack Supply
+synset-batch-noun-2
+Death CauseHarm synset-death-noun-1 synset-beat-verb-1
+Regard
+<no response>
+<no response>
+Regard
+<no response>
+synset-bit-noun-2
+<no response>
+<no response>
+synset-hate-verb-1 Hate_31020100
+<no response>
+<no response>
+<no response>
+<no response>
+Regard
+<damaged>
+synset-drug-noun-1
+<damaged>
+<no response>
+<damaged>
+<damaged>
+<no response>
+synset-food-noun-1
+<no response>
+Revenge synset-retaliation-noun-1
+<no response>
+<damaged>
+<no response>
+synset-keep-verb-1
+<no response>
+<no response>
+synset-supply-noun-1 synset-batch-noun-2
+synset-hate-verb-1 Hate_31020100
+<no response>
+synset-mother-noun-1 synset-ailment-noun-1
+synset-hate-noun-1
+<no response>
+<no response>
+synset-front-noun-1 synset-parent-noun-1
+synset-vomit-verb-1
+synset-punch-verb-1 CauseHarm Punch_18020000
+synset-hate-verb-1 Hate_31020100
+<no response>
+synset-water-noun-1
+<damaged>
+<damaged>
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+<no response>
+synset-hate-verb-1 Hate_31020100 SocialConnection
+Cure synset-therapy-noun-1
+<no response>
+<no response>
+Regard synset-hate-noun-1
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+RevealSecret synset-colleague-noun-1 Collaboration
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-breakfast-noun-1 Cheat_59000100
+<no response>
+synset-hate-verb-1 Hate_31020100
+<no response>
+<no response>
+<no response>
+<damaged>
+Offenses synset-swindle-noun-1
+<no response>
+<no response>
+synset-care-noun-1
+synset-detect-verb-1
+Lose_13020000 Attack synset-independence-noun-1 synset-lose-verb-1
+Care_31030200 ExperienceBodilyHarm synset-ache-verb-3 Hurt_40081000 CauseHarm
+<no response>
+Regard
+<no response>
+synset-house-noun-1
+synset-help-verb-1 Help_72000100 Assistance
+<damaged>
+Regard
+<no response>
+Regard
+<damaged>
+Regard
+<no response>
+<no response>
+<no response>
+<no response>
+synset-food-noun-1
+synset-pulp-noun-1 CauseHarm synset-beat-verb-1
+synset-telephone-noun-1
+<no response>
+<no response>
+<damaged>
+Death Die_48020000
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1
+<no response>
+Please_31010000 Attack Help_72000100 synset-help-verb-1 Assistance
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-confront-verb-2 HostileEncounter synset-oppression-noun-1
+synset-help-verb-1 synset-hate-noun-1 Help_72000100 Assistance
+synset-hate-verb-1 Hate_31020100
+<damaged>
+synset-feed-noun-1
+<no response>
+synset-drug-noun-1
+synset-detect-verb-1 synset-link-noun-1 SocialConnection
+<no response>
+<no response>
+<no response>
+synset-computer-noun-1
+synset-detect-verb-1 Assistance
+<damaged>
+synset-injury-noun-1
+<no response>
+synset-hate-verb-1 Hate_31020100 Regard
+<damaged>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<damaged>
+<no response>
+Destroying synset-destroy-verb-2 Ruin_44000000
+Regard Death synset-die-verb-1 Die_48020000
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+Grooming synset-shave-verb-1
+synset-hit-verb-3 synset-hammer-noun-2 ExperienceBodilyHarm synset-ache-verb-3 Hurt_40081000 CauseHarm
+<no response>
+synset-hate-verb-1 synset-suffer-verb-2 Suffer_31030400 Hate_31020100 Catastrophe
+synset-gate-noun-1 Destroying Destroy_44000000 synset-destroy-verb-1 synset-batch-noun-2 Supply
+CauseHarm Crack_43020000 synset-crack-verb-1
+<damaged>
+<no response>
+synset-knife-noun-1 synset-cut-verb-1 ExperienceBodilyHarm Grooming synset-wash-verb-1 CauseHarm
+synset-detect-verb-1
+Death Die_48020000
+<damaged>
+synset-limit-noun-1 synset-injury-noun-1
+synset-play-verb-1 synset-spot-noun-5 Supply
+<no response>
+<no response>
+synset-bed-noun-1 Grooming Supply
+<damaged>
+Cure synset-massage-noun-1
+synset-struggle-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-fear-noun-1
+<no response>
+Regard Abusing Abuse_33000000
+<no response>
+Grooming synset-shower-noun-1
+<no response>
+Regard synset-bathroom-noun-1 synset-parent-noun-1
+synset-detect-verb-1 synset-kidnap-verb-1 Kidnap_10050000 Kidnapping
+<damaged>
+synset-cut-verb-1 CauseHarm
+CauseHarm ExperienceBodilyHarm
+Abusing synset-maltreatment-noun-1
+<no response>
+synset-front-noun-1
+Choke_40070000 CauseHarm ExperienceBodilyHarm
+synset-hate-verb-1 Hate_31020100
+<no response>
+<no response>
+CauseHarm Kick_23020000
+synset-water-noun-1
+<no response>
+<no response>
+<no response>
+Regard synset-esteem-noun-1
+synset-detect-verb-1 synset-hate-noun-1
+synset-lunch-noun-1
+<no response>
+synset-ruin-noun-1 Destroying
+<damaged>
+synset-wall-noun-1 Force_59000000
+Regard
+synset-bathroom-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-threaten-verb-2 Threaten_31010000
+synset-detect-verb-1
+<no response>
+synset-mother-noun-1
+synset-lighting-noun-2
+<no response>
+synset-hate-verb-1 Hate_31020100 synset-mother-noun-1
+synset-trust-noun-1
+Lose_13020000 Attack synset-control-noun-1 synset-lose-verb-1
+<no response>
+<no response>
+<no response>
+synset-exclusive-adjectivesatellite-1
+synset-community-noun-1 Rule_29030000 synset-govern-verb-3
+Regard
+Abusing synset-abuser-noun-1
+<no response>
+<no response>
+Lose_13020000 synset-lose-verb-1
+synset-birth-noun-1 synset-control-noun-1
+<no response>
+synset-suffer-verb-2 ExperienceBodilyHarm synset-ache-verb-3 Hurt_40081000 Catastrophe CauseHarm Suffer_31030400 synset-infidelity-noun-1
+<no response>
+<no response>
+Regard
+<no response>
+<no response>
+<damaged>
+<no response>
+<damaged>
+ComeTogether
+<no response>
+Regard
+<no response>
+<no response>
+<no response>
+synset-help-verb-1 Help_72000100 Assistance
+synset-food-noun-1
+<no response>
+Partiality synset-advantage-noun-1
+synset-holocaust-noun-1 Killing
+synset-batch-noun-2 CauseHarm ExperienceBodilyHarm
+synset-fear-noun-1
+<no response>
+synset-spouse-noun-1
+Revenge synset-retaliation-noun-1 synset-bomb-noun-1
+Destroying synset-destroy-verb-2 Ruin_44000000
+<damaged>
+<damaged>
+<no response>
+Regard
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+CauseHarm ExperienceBodilyHarm
+<damaged>
+synset-colleague-noun-1 Collaboration
+<no response>
+<no response>
+<no response>
+synset-help-verb-1 synset-medicine-noun-2 Help_72000100 Assistance
+<no response>
+synset-mother-noun-1 ExperienceBodilyHarm Break_45010000 synset-ache-verb-3 Hurt_40081000 CauseHarm
+<no response>
+<damaged>
+Regard
+synset-hat-noun-1
+CauseHarm Supply ExperienceBodilyHarm synset-choke-noun-2
+ExperienceBodilyHarm synset-ache-verb-3 Hurt_40081000 CauseHarm synset-beat-verb-1 Crush_45010000
+<damaged>
+<no response>
+<no response>
+synset-hate-verb-1 Hate_31020100 synset-diss-verb-1
+synset-empathy-noun-1
+synset-fight-noun-2 HostileEncounter
+synset-detect-verb-1
+Destroying synset-destroy-verb-2 Ruin_44000000
+Attack synset-lose-verb-1 synset-die-verb-1 Die_48020000 Death Lose_13020000
+<no response>
+Destroying synset-detect-verb-1 synset-destroy-verb-2 Ruin_44000000
+<no response>
+<no response>
+CauseHarm synset-shoot-verb-1 Attack ExperienceBodilyHarm
+<no response>
+<no response>
+synset-house-noun-1 Regard Abusing synset-maltreatment-noun-1
+<no response>
+synset-bathroom-noun-1
+<damaged>
+Cheat_59000100
+ExperienceBodilyHarm synset-fetish-noun-3 synset-ache-verb-3 Hurt_40081000 CauseHarm
+synset-bull-noun-5 synset-house-noun-1 synset-feed-verb-1
+<no response>
+Offenses synset-swindle-noun-1
+synset-front-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Destroying synset-destroy-verb-2 Ruin_44000000
+Cheat_59000100
+Harass_59000100 synset-bogus-adjectivesatellite-1 synset-harass-verb-1
+<no response>
+<no response>
+synset-detect-verb-1 synset-supremacist-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+synset-crime-noun-1 synset-hate-noun-1 CommittingCrime
+<no response>
+<damaged>
+synset-ruin-noun-1 Regard Destroying Partiality synset-advantage-noun-1
+<no response>
+<damaged>
+synset-batch-noun-2
+Cheat_59000100
+synset-bit-noun-2
+synset-hate-verb-1 Hate_31020100
+<no response>
+<no response>
+<no response>
+CauseHarm synset-malice-noun-1
+<damaged>
+synset-food-noun-1
+Harass_59000100 synset-link-noun-1 synset-harass-verb-1 SocialConnection
+<no response>
+Regard Abusing synset-inclination-noun-1 Inclination synset-maltreatment-noun-1
+synset-seat-noun-3 Supply
+Grooming synset-shower-noun-1
+Regard
+<damaged>
+Regard
+Prison synset-jail-noun-1
+<no response>
+<no response>
+synset-gun-verb-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<damaged>
+<no response>
+Cheat_59000100
+<no response>
+<no response>
+synset-keep-verb-1 synset-mother-noun-1 CauseHarm synset-malice-noun-1
+<no response>
+<damaged>
+Regard Offenses synset-swindle-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+synset-keep-verb-1
+synset-police-noun-1 synset-parent-noun-1
+<damaged>
+<no response>
+<no response>
+synset-beat-verb-1
+<no response>
+Cheat_59000100
+<no response>
+Destroying synset-destroy-verb-2 Ruin_44000000
+Attempt_61000000 CauseHarm
+<no response>
+<no response>
+Death synset-die-verb-1 Die_48020000
+<no response>
+<no response>
+Death synset-mother-noun-1 Die_48020000
+synset-attack-noun-1 Regard Attack synset-panic-noun-1
+CauseHarm synset-rock-noun-1 ExperienceBodilyHarm
+<no response>
+<no response>
+<no response>
+Assistance Cheat_59000100 synset-aid-noun-2
+<no response>
+<damaged>
+Regard
+<no response>
+Death synset-die-verb-1 Die_48020000
+synset-chew-verb-1
+<no response>
+Care_31030200
+<no response>
+<no response>
+RevealSecret synset-restrict-verb-3
+Regard
+Regard
+synset-dainty-noun-1 Assistance
+<no response>
+<damaged>
+synset-attract-verb-1
+synset-hate-verb-1 Hate_31020100 synset-front-noun-1
+synset-coerce-verb-1 Force_59000000
+<no response>
+synset-drug-noun-1
+<no response>
+synset-batch-noun-2
+<no response>
+<damaged>
+Lose_13020000 Attack synset-lose-verb-1
+<damaged>
+synset-rend-verb-1 synset-decapitate-verb-1 Killing Decapitate_42020000
+<no response>
+synset-colleague-noun-1 Collaboration
+<no response>
+<no response>
+Behead_42020000 synset-weapon-noun-1
+synset-parent-noun-1
+Care_31030200 synset-pain-noun-1
+Abusing synset-mistreat-verb-1 Abuse_33000000
+<no response>
+synset-detect-verb-1
+<no response>
+<damaged>
+<no response>
+<no response>
+Abusing synset-maltreatment-noun-1
+Regard
+synset-doctor-noun-1
+<no response>
+ExperienceBodilyHarm Revenge synset-ache-verb-3 Hurt_40081000 synset-O.K.-noun-1 CauseHarm
+Destroying synset-keep-verb-1 synset-destroy-verb-2 Ruin_44000000
+<damaged>
+<no response>
+<no response>
+<no response>
+Regard
+Death synset-die-verb-1 Die_48020000
+synset-drug-noun-1
+synset-burn-verb-1 ExperienceBodilyHarm
+<no response>
+<no response>
+Regard
+Death synset-punishment-noun-1 synset-death-noun-1 TakingSides
+synset-drug-noun-1
+synset-hate-verb-1 Hate_31020100
+<no response>
+<damaged>
+<no response>
+synset-beat-verb-1
+<damaged>
+Cure synset-massage-noun-1
+synset-fight-verb-3
+Assistance synset-aid-noun-2
+synset-keep-verb-1 synset-burn-verb-1 ExperienceBodilyHarm
+<no response>
+synset-detect-verb-1
+<no response>
+<no response>
+<no response>
+<damaged>
+ComeTogether
+Regard
+synset-fear-noun-1
+<damaged>
+<no response>
+<no response>
+synset-trust-noun-1
+<no response>
+<no response>
+ComeTogether Celebrate_33000000
+Abusing synset-maltreatment-noun-1
+Offenses synset-swindle-noun-1
+Death synset-death-noun-1
+Please_31010000 Attack
+synset-doctor-noun-1 Regard
+Lose_13020000 Attack synset-lose-verb-1
+ExperienceBodilyHarm CauseHarm Break_45010000
+<no response>
+Regard Abusing synset-mistreat-verb-1
+<no response>
+Regard
+synset-bed-noun-1 synset-food-noun-1 Supply
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+synset-play-verb-1
+<damaged>
+synset-food-noun-1
+<no response>
+<no response>
+<no response>
+HostileEncounter CauseHarm ExperienceBodilyHarm synset-boxer-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+Regard synset-batch-noun-2
+<no response>
+Regard
+synset-injury-noun-1
+<no response>
+Prison synset-jail-noun-1 synset-police-noun-1
+synset-water-noun-1
+synset-food-noun-1
+Regard
+<no response>
+<damaged>
+<no response>
+SocialConnection synset-intimate-adjectivesatellite-1
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1 Cheat_59000100
+synset-humanness-noun-1
+<no response>
+synset-power-noun-1
+<no response>
+synset-club-noun-2 ComeTogether
+Death synset-die-verb-1 Die_48020000
+synset-cut-verb-1 ExperienceBodilyHarm synset-ache-verb-3 Hurt_40081000 CauseHarm
+synset-injury-noun-1
+synset-dwelling-noun-1
+synset-date-noun-1
+synset-mow-verb-1 CauseHarm
+synset-drug-noun-1
+<no response>
+<no response>
+synset-skin-noun-1 ExperienceBodilyHarm Break_45010000 synset-water-noun-1 CauseHarm
+<no response>
+<no response>
+synset-lipstick-noun-1
+synset-attract-verb-1
+Regard Supply synset-satellite-noun-1
+synset-help-verb-1 Help_72000100 Assistance
+<no response>
+synset-victim-noun-1 synset-maltreatment-noun-1
+synset-respect-verb-1
+synset-apprehension-noun-4 Arrest synset-bathroom-noun-1 synset-beat-verb-1
+Regard Cheat_59000100
+<damaged>
+<damaged>
+<no response>
+<no response>
+<no response>
+Grooming synset-wash-verb-1
+Lose_13020000 Attack synset-lose-verb-1
+synset-detect-verb-1
+synset-mother-noun-1
+<no response>
+<no response>
+Destroying synset-destroy-verb-2 Ruin_44000000
+Regard
+Death synset-die-verb-1 Die_48020000
+<damaged>
+<no response>
+<no response>
+synset-keep-verb-1
+<damaged>
+ExperienceBodilyHarm CauseHarm Break_45010000
+Destroying Destroy_44000000 Regard
+synset-massage-verb-1
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+synset-rend-verb-1
+synset-hate-verb-1 Hate_31020100
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+synset-bed-noun-1 Supply
+<no response>
+<no response>
+synset-print-verb-1
+<no response>
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+synset-hate-verb-1 Hate_31020100 synset-hat-noun-1 synset-batch-noun-2
+<no response>
+<no response>
+<no response>
+<damaged>
+<damaged>
+synset-colleague-noun-1 Collaboration
+synset-pain-noun-1
+synset-aid-noun-2 Harass_59000100 synset-harass-verb-1 synset-free-adjective-1
+<no response>
+<no response>
+<damaged>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+Lose_13020000 Regard Attack synset-lose-verb-1
+<no response>
+<damaged>
+<no response>
+synset-cut-verb-1 CauseHarm ExperienceBodilyHarm
+<damaged>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+synset-house-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Offenses Regard synset-swindle-noun-1
+CauseHarm Kick_18020000 synset-sock-verb-1
+<no response>
+<no response>
+synset-fight-noun-2 HostileEncounter synset-parent-noun-1
+<no response>
+<no response>
+synset-power-noun-1 synset-bathroom-noun-1
+<no response>
+synset-help-verb-1 Help_72000100 Assistance
+synset-relief-noun-1 Cure
+<damaged>
+<no response>
+<no response>
+Regard
+<no response>
+<no response>
+synset-spouse-noun-1
+synset-detect-verb-1 CauseHarm synset-bumper-noun-2
+synset-bogus-adjectivesatellite-1 synset-parent-noun-1
+<damaged>
+<damaged>
+<damaged>
+<no response>
+synset-power-noun-1
+<no response>
+<no response>
+<no response>
+CauseHarm Regard Preserving synset-can-verb-1
+<no response>
+<no response>
+<damaged>
+ComeTogether Celebrate_33000000
+<no response>
+<no response>
+<no response>
+<no response>
+synset-garden-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+synset-team-noun-1
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+<damaged>
+<damaged>
+<no response>
+<damaged>
+synset-bull-noun-5 synset-drug-noun-1 synset-food-noun-1
+synset-slit-noun-1 synset-cut-verb-1 synset-scar-verb-1 ExperienceBodilyHarm CauseHarm
+<no response>
+<no response>
+<no response>
+<damaged>
+<damaged>
+Supply synset-top-noun-1
+synset-hate-verb-1 synset-cut-verb-1 synset-agree-verb-1 Hate_31020100 CauseHarm
+<no response>
+synset-knock-verb-1
+<damaged>
+<damaged>
+synset-batch-noun-2 Regard
+<no response>
+synset-telephone-noun-1
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1 synset-key-noun-1
+<no response>
+synset-key-noun-1
+synset-war-noun-1
+<no response>
+synset-bit-noun-2
+<no response>
+synset-attract-verb-1
+Regard
+<no response>
+Offenses synset-swindle-noun-1 synset-fear-noun-1
+<no response>
+synset-rend-verb-1
+synset-detect-verb-1
+<no response>
+<damaged>
+<no response>
+<damaged>
+Partiality synset-advantage-noun-1 synset-beat-verb-1
+<no response>
+<damaged>
+synset-glass-noun-1
+<damaged>
+<no response>
+HostileEncounter CauseHarm synset-confront-verb-1 Confront_98000000
+ExperienceBodilyHarm synset-tear-verb-1
+Revenge synset-retaliation-noun-1
+<damaged>
+Lose_13020000 Attack synset-charger-noun-1 synset-lose-verb-1
+Kidnapping synset-kidnapper-noun-1
+synset-batch-noun-2
+<no response>
+CauseHarm synset-slap-verb-1 Slap_17010100
+<damaged>
+<no response>
+<damaged>
+synset-contend-verb-6 HostileEncounter
+synset-bunch-noun-1 synset-tie-verb-1 ExperienceBodilyHarm synset-burn-verb-1 Tie_22040000 InhibitMovement
+<no response>
+<damaged>
+synset-detect-verb-1
+CauseHarm Kick_23020000
+<no response>
+synset-mother-noun-1
+<no response>
+CauseHarm synset-swipe-verb-1
+<no response>
+synset-cut-verb-1 CauseHarm
+<damaged>
+<no response>
+RevealSecret Regard
+synset-house-noun-1 synset-burn-verb-1 ExperienceBodilyHarm
+Destroying Happen_48030000
+<no response>
+synset-print-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+Attack synset-war-noun-1 Help_72000100 Attack_33000000 synset-attack-verb-1 synset-help-verb-1 Assistance
+synset-ticket-noun-1 synset-abrasion-noun-1 Supply ExperienceBodilyHarm
+<damaged>
+<no response>
+<no response>
+Regard
+Regard
+synset-batch-noun-2 synset-telephone-noun-1
+Regard
+synset-date-noun-1
+synset-hate-verb-1 Hate_31020100
+synset-jab-verb-1 CauseHarm
+<no response>
+<no response>
+Detaining synset-prevent-verb-2 InhibitMovement
+<no response>
+Regard
+synset-water-noun-1 synset-bed-noun-1 Supply
+synset-ticket-noun-1 Supply
+<no response>
+<no response>
+<no response>
+Choke_40070000 CauseHarm synset-group-noun-1 ExperienceBodilyHarm
+Regard
+<no response>
+<no response>
+<damaged>
+<no response>
+Destroying synset-destroy-verb-2 Ruin_44000000
+<no response>
+<no response>
+Starve_40070000 Death Killing synset-starve-verb-1
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<damaged>
+<no response>
+<damaged>
+<damaged>
+synset-gunman-noun-1
+<no response>
+ExperienceBodilyHarm CauseHarm Break_45010000
+Abusing synset-maltreatment-noun-1
+<no response>
+<no response>
+<no response>
+synset-maul-noun-1 Regard CauseHarm synset-fetish-noun-3
+<no response>
+<damaged>
+synset-doctor-noun-1 synset-bogus-adjectivesatellite-1
+synset-drug-noun-1
+TakingSides
+Regard
+<damaged>
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+synset-bull-noun-5
+synset-harassment-noun-2
+<no response>
+<no response>
+<no response>
+<damaged>
+synset-sculpture-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+synset-hate-verb-1 Hate_31020100
+<no response>
+<no response>
+synset-bogus-adjectivesatellite-1
+<damaged>
+synset-beat-verb-1
+<no response>
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+<no response>
+<no response>
+Regard
+<no response>
+<no response>
+synset-batch-noun-2 synset-drug-noun-1
+synset-care-noun-1 Regard
+<damaged>
+<damaged>
+Regard
+synset-masseuse-noun-1 Cheat_59000100
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+Regard
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+<no response>
+Destroying Happen_48030000
+<no response>
+<no response>
+<damaged>
+synset-telephone-noun-1
+synset-detect-verb-1 synset-computer-noun-1
+<no response>
+Cheat_59000100
+<no response>
+synset-bed-noun-1 synset-sedative-noun-1 Supply
+<damaged>
+<damaged>
+<damaged>
+<no response>
+<damaged>
+<no response>
+synset-attract-verb-1
+<no response>
+<damaged>
+Torment_31010000
+<damaged>
+synset-temper-noun-2
+<damaged>
+synset-mill-noun-4
+synset-bed-noun-1 Supply
+<no response>
+<no response>
+synset-cut-verb-1 CauseHarm ExperienceBodilyHarm
+<no response>
+synset-spouse-noun-1
+InhibitMovement Lock_22040000
+synset-floor-noun-1
+Destroying Killing synset-eliminate-verb-3 Annihilate_42010000
+synset-floor-noun-1
+synset-hate-verb-1 Hate_31020100
+synset-tan-noun-1 synset-detect-verb-1 CauseHarm ExperienceBodilyHarm
+Regard
+Cure synset-therapy-noun-1
+<no response>
+<no response>
+Regard
+<no response>
+synset-hate-verb-1 Suffer_31020000 synset-suffer-verb-2 Hate_31020100 Catastrophe
+ExperienceBodilyHarm CauseHarm Break_45010000
+synset-house-noun-1 Regard synset-bathroom-noun-1
+<damaged>
+synset-maltreatment-noun-1
+<no response>
+synset-decapitate-verb-1 Killing Decapitate_42020000
+<damaged>
+synset-cut-verb-1 CauseHarm ExperienceBodilyHarm
+<damaged>
+<no response>
+<no response>
+synset-house-noun-1 synset-parent-noun-1
+synset-taw-noun-2
+<no response>
+ExperienceBodilyHarm synset-tear-verb-1 synset-parent-noun-1
+Death synset-die-verb-1 Die_48020000
+synset-bed-noun-1 Supply
+<no response>
+<damaged>
+<no response>
+<damaged>
+synset-traumatize-verb-1
+<damaged>
+<damaged>
+synset-detect-verb-1 synset-play-verb-1
+<no response>
+<no response>
+synset-member-noun-1
+<damaged>
+synset-edge-noun-1 Supply
+<no response>
+<no response>
+<no response>
+Destroying Happen_48030000
+<damaged>
+<no response>
+<no response>
+synset-hate-verb-1 Hate_31020100
+synset-telephone-noun-1
+<no response>
+synset-government-noun-1
+<no response>
+<damaged>
+<no response>
+<no response>
+Choke_40070000 CauseHarm ExperienceBodilyHarm
+CauseHarm Offend_31010000
+<no response>
+synset-hate-verb-1 Hate_31020100
+<no response>
+Cheat_59000100
+<no response>
+<no response>
+<no response>
+Death synset-death-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+synset-telephone-noun-1
+synset-detect-verb-1 Cheat_59000100
+synset-birth-noun-1
+Please_31010000 Attack Assistance synset-aid-noun-2
+TakingSides synset-drug-noun-1
+<no response>
+synset-hate-verb-1 Hate_31020100
+Partiality
+<damaged>
+Regard
+<no response>
+synset-cut-verb-1 CauseHarm ExperienceBodilyHarm
+synset-trust-noun-1
+<no response>
+Crack_18030000 CauseHarm synset-crack-verb-1
+Destroying Happen_48030000
+<no response>
+CauseHarm ExperienceBodilyHarm
+synset-cut-verb-1 CauseHarm
+synset-bull-noun-5
+synset-visit-verb-1
+synset-hate-verb-1 Hate_31020100
+synset-bathroom-noun-1
+synset-detect-verb-1
+<no response>
+<damaged>
+<damaged>
+<no response>
+Regard synset-computer-noun-1
+ComeTogether
+<no response>
+synset-bodyguard-noun-1 Defend
+<damaged>
+Death synset-death-noun-1
+<no response>
+<no response>
+<no response>
+synset-bull-noun-5 Destroying Happen_48030000
+<no response>
+synset-drug-noun-1
+<no response>
+Cheat_59000100
+synset-house-noun-1
+Regard
+Regard
+synset-bed-noun-1 Supply
+<no response>
+<damaged>
+<no response>
+synset-parent-noun-1
+<no response>
+synset-help-verb-1 Help_72000100 Assistance synset-injury-noun-1
+RevealSecret synset-leak-verb-1
+<no response>
+ExperienceBodilyHarm CauseHarm Break_45010000
+synset-detect-verb-1
+<no response>
+<damaged>
+<damaged>
+RevealSecret synset-punch-verb-1 CauseHarm Punch_18020000
+Regard synset-innocent-adjective-1
+<no response>
+Cure synset-treatment-noun-1
+synset-racism-noun-2 synset-victim-noun-1
+<no response>
+CauseHarm synset-poisoning-noun-1
+<no response>
+synset-war-noun-1
+synset-help-verb-1 Help_72000100 Assistance
+<damaged>
+<no response>
+Abusing synset-drug-noun-1 synset-maltreatment-noun-1
+synset-care-noun-1 synset-beat-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-scam-noun-1 synset-bomb-noun-1
+synset-food-noun-1
+Raid_35040000 Attack
+<no response>
+<no response>
+synset-hate-verb-1 Hate_31020100
+<no response>
+synset-detect-verb-1 Defend synset-defense-noun-1
+Regard
+synset-keep-verb-1 Regard
+<no response>
+<no response>
+synset-humiliate-verb-1
+<no response>
+synset-hate-verb-1 Hate_31020100
+<no response>
+synset-fight-noun-2 HostileEncounter
+<damaged>
+<no response>
+<no response>
+Threaten_31010000
+<no response>
+synset-lunch-noun-1
+<no response>
+synset-punch-verb-1 CauseHarm Punch_18020000
+<damaged>
+<no response>
+<no response>
+<no response>
+Destroying Destroy_44000000 synset-destroy-verb-1
+ComeTogether synset-detect-verb-1
+Attack synset-lurker-noun-1
+Abusing synset-maltreatment-noun-1
+<no response>
+CauseHarm synset-tap-verb-1
+<no response>
+<no response>
+<no response>
+synset-vandalize-verb-1 synset-house-noun-1
+<no response>
+synset-telephone-noun-1
+<damaged>
+synset-destroy-verb-2 Collaboration Destroying Ruin_44000000 synset-colleague-noun-1
+<damaged>
+synset-punch-verb-1 CauseHarm Punch_18020000
+CauseHarm Kick_18020000
+<damaged>
+<no response>
+Cure synset-massage-noun-1
+<no response>
+<no response>
+<damaged>
+<no response>
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+ComeTogether
+synset-burn-verb-1
+<no response>
+<no response>
+<no response>
+Destroying synset-mother-noun-1 synset-destroy-verb-2 Ruin_44000000
+<no response>
+<no response>
+Cheat_59000100
+<no response>
+Destroying Destroy_44000000 synset-destroy-verb-1
+<no response>
+Suffer_31020000 synset-suffer-verb-2 synset-supply-verb-1 Catastrophe synset-drug-noun-1 Supply Assistance
+<no response>
+CauseHarm Kick_23020000 synset-parent-noun-1
+synset-cut-verb-1 CauseHarm ExperienceBodilyHarm
+synset-bouncer-noun-1
+synset-war-noun-1
+<no response>
+<no response>
+Knee_18030000 CauseHarm
+<no response>
+Death synset-death-noun-1 synset-fear-noun-1
+synset-parent-noun-1
+<no response>
+Assistance synset-aid-noun-2
+RevealSecret
+<no response>
+<damaged>
+synset-dainty-noun-1
+<no response>
+synset-keep-verb-1
+synset-mother-noun-1
+<damaged>
+Attack synset-lose-verb-1 TakingSides synset-fear-noun-1 Lose_13020000
+Regard
+Happen_48030000 Destroying ExperienceBodilyHarm Break_45010000 CauseHarm
+Prison synset-prison-noun-1
+<no response>
+<damaged>
+Regard
+<no response>
+<no response>
+<no response>
+Regard
+synset-waiter-noun-1 synset-chaos-noun-1 synset-free-adjective-1
+synset-battle-verb-1 HostileEncounter
+<no response>
+<no response>
+<no response>
+Regard
+synset-drug-noun-1
+Cheat_59000100
+<no response>
+synset-detect-verb-1
+<no response>
+<damaged>
+<damaged>
+<no response>
+<no response>
+<no response>
+synset-exclusive-adjectivesatellite-1
+synset-help-verb-1 Help_72000100 Assistance
+synset-house-noun-1 synset-bed-noun-1 Supply
+synset-care-noun-1
+<no response>
+<no response>
+Regard
+synset-bogus-adjectivesatellite-1 synset-bomb-noun-1
+synset-racist-noun-1 synset-mother-noun-1 Preserving CauseHarm synset-can-verb-1
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+Destroying synset-destroy-verb-2 Ruin_44000000
+<no response>
+synset-apprehension-noun-4 synset-citizen-noun-1 Arrest
+<damaged>
+Prison synset-prison-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1 synset-slam-verb-2
+synset-hate-verb-1 Hate_31020100
+<no response>
+<damaged>
+<damaged>
+Cure synset-treatment-noun-1
+<no response>
+Death synset-death-noun-1
+<no response>
+<no response>
+Hate_31020100
+<no response>
+synset-food-noun-1
+<damaged>
+SocialConnection synset-parent-noun-1
+synset-bed-noun-1 Supply
+<no response>
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<damaged>
+synset-assistant-noun-1 synset-mother-noun-1
+synset-one-fourth-noun-1 Killing
+<no response>
+TakingSides
+<damaged>
+<no response>
+synset-keep-verb-1 synset-telephone-noun-1
+synset-cone-noun-1
+synset-hate-verb-1 Hate_31020100
+<damaged>
+<no response>
+<damaged>
+<no response>
+<damaged>
+Regard synset-parent-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Regard
+synset-scratch-verb-2
+<no response>
+Loathe_31020000
+<no response>
+synset-water-noun-1
+CauseHarm Kick_18020000
+synset-keep-verb-1
+synset-murder-noun-1 Offenses Killing
+<no response>
+<no response>
+synset-food-noun-1
+<damaged>
+synset-fight-noun-2 synset-mother-noun-1 synset-die-verb-1 Die_48020000 HostileEncounter Death
+synset-help-verb-1 Help_72000100 Assistance
+<damaged>
+<damaged>
+<no response>
+<no response>
+<damaged>
+synset-computer-noun-1
+<no response>
+<no response>
+Catastrophe Suffer_31030400 synset-suffer-verb-2
+Abusing synset-mistreat-verb-1 Abuse_33000000
+CauseHarm Preserving synset-can-verb-1
+<no response>
+<no response>
+synset-cut-verb-1 CauseHarm
+<no response>
+Destroying synset-destroy-verb-2 Ruin_44000000
+<no response>
+<no response>
+<no response>
+synset-contend-verb-6 synset-predatory-adjectivesatellite-2 HostileEncounter
+<no response>
+synset-fight-noun-2 HostileEncounter
+<no response>
+<no response>
+synset-telephone-noun-1
+<no response>
+<no response>
+<no response>
+Regard
+<no response>
+<no response>
+<no response>
+<no response>
+Attack Assault_33000000
+<no response>
+<no response>
+<no response>
+Threaten_31010000
+<no response>
+<no response>
+<no response>
+synset-play-verb-1
+synset-play-verb-1
+<no response>
+<no response>
+<no response>
+CauseHarm Kick_23020000
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+synset-detect-verb-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+synset-colleague-noun-1 Collaboration
+<no response>
+<no response>
+<no response>
+<no response>
+Destroying Ruin_44000000
+<no response>
+<no response>
+<no response>
+<no response>
+synset-batch-noun-2
+<damaged>
+<no response>
+RevealSecret
+<no response>
+<no response>
+Death Die_48020000
+Lose_13020000 Attack
+<no response>
+<damaged>
+synset-colleague-noun-1 Collaboration
+<no response>
+<no response>
+<damaged>
+<damaged>
+<no response>
+<no response>
+synset-pain-noun-1
+<no response>
+TakingSides
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Regard HostileEncounter Confront_98000000
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-disfavor-noun-2 synset-spouse-noun-1 Inclination
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+SocialConnection synset-connection-noun-1
+Death synset-death-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+CauseHarm ExperienceBodilyHarm
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-pain-noun-1
+Assistance synset-aid-noun-2
+<damaged>
+<no response>
+<no response>
+<no response>
+Regard
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+Cheat_59000100
+<no response>
+synset-help-verb-1 Help_72000100 Assistance
+<no response>
+<no response>
+<no response>
+synset-colleague-noun-1 Collaboration
+<no response>
+Partiality Force_59000000
+<no response>
+synset-fear-noun-1
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Cheat_59000100
+<damaged>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+RevealSecret Cure synset-remedy-noun-2 synset-fear-noun-1
+<damaged>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-visit-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+ComeTogether Celebrate_33000000
+Cheat_59000100
+<damaged>
+<no response>
+<no response>
+synset-fear-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+Cheat_59000100
+<damaged>
+synset-adoption-noun-1
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<damaged>
+Inclination
+Suffer_31020000 Catastrophe
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-infidelity-noun-1
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+ExperienceBodilyHarm CauseHarm synset-glass-noun-1 Break_45010000
+synset-bull-noun-5
+<no response>
+synset-play-verb-1 synset-telephone-noun-1
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1
+<damaged>
+<no response>
+synset-relieve-verb-1 Cure
+<no response>
+<damaged>
+<damaged>
+<no response>
+synset-negligence-noun-1 synset-spot-noun-5 Offenses Supply
+synset-play-verb-1 synset-doctor-noun-1
+ExperienceBodilyHarm synset-hammer-noun-2 CauseHarm Break_45010000
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+Regard
+<no response>
+synset-limit-noun-1
+synset-house-noun-1
+<no response>
+synset-staff-noun-1
+synset-pain-noun-1
+synset-keep-verb-1 synset-feed-verb-1
+ExperienceBodilyHarm synset-tear-verb-1
+synset-contend-verb-6 HostileEncounter
+<no response>
+<no response>
+Regard
+<no response>
+<damaged>
+<no response>
+<no response>
+synset-detect-verb-1
+synset-house-noun-1
+synset-club-noun-2
+<no response>
+synset-apprehension-noun-4 Arrest
+synset-breakfast-noun-1
+Prison synset-prison-noun-1
+<no response>
+<no response>
+synset-computer-noun-1
+<no response>
+<no response>
+synset-batch-noun-2
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+<no response>
+<no response>
+ComeTogether Death Die_48020000
+synset-help-verb-1 Help_72000100 Assistance
+<no response>
+<damaged>
+synset-mother-noun-1
+synset-birth-noun-1
+<no response>
+<damaged>
+<no response>
+synset-bed-noun-1
+<no response>
+synset-keep-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1 synset-police-noun-1
+Attack synset-guard-noun-1 Killing ExperienceBodilyHarm synset-shoot-verb-1 Defend Shoot_42020000 CauseHarm
+<no response>
+synset-drug-noun-1
+<no response>
+ComeTogether
+<damaged>
+synset-wall-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-violence-noun-1 Defend synset-defense-noun-1
+<damaged>
+synset-computer-noun-1 synset-parent-noun-1
+<damaged>
+<no response>
+synset-birth-noun-1 synset-control-noun-1 Partiality
+<no response>
+synset-policeman-noun-1 synset-police-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-motor-noun-1
+synset-detect-verb-1
+<no response>
+synset-skin-noun-1 ExperienceBodilyHarm
+synset-mother-noun-1
+<damaged>
+<no response>
+synset-house-noun-1
+<no response>
+synset-mother-noun-1
+synset-play-verb-1 synset-batch-noun-2
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<damaged>
+<no response>
+synset-threaten-verb-2 Threaten_31010000 synset-parent-noun-1
+synset-bully-noun-1 Attack Assistance synset-aid-noun-2
+<no response>
+synset-detect-verb-1 synset-police-noun-1
+<no response>
+<no response>
+<no response>
+Cheat_59000100
+synset-play-verb-1
+Starve_40070000 Death Killing
+synset-detect-verb-1 synset-police-noun-1
+<no response>
+synset-batch-noun-2 CauseHarm ExperienceBodilyHarm
+<no response>
+synset-grass-noun-1 synset-mow-verb-1 CauseHarm
+<no response>
+<no response>
+<no response>
+Harass_59000100 synset-harass-verb-1
+synset-preference-noun-1 Inclination
+<no response>
+<no response>
+<no response>
+ComeTogether synset-floor-noun-1 synset-pile-noun-1
+<no response>
+<damaged>
+<damaged>
+<no response>
+<no response>
+synset-gate-noun-1 Supply synset-detect-verb-1
+<no response>
+<no response>
+<damaged>
+<no response>
+synset-murder-noun-1 synset-connection-noun-1 Killing synset-collar-verb-1 Arrest SocialConnection Offenses
+Supply synset-ticket-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-parent-noun-1
+<no response>
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+synset-scratch-verb-2
+<no response>
+synset-food-noun-1
+ComeTogether synset-meet-verb-2
+synset-violence-noun-1
+<no response>
+synset-beat-verb-1
+synset-fight-noun-2 HostileEncounter
+synset-hate-verb-1 Hate_31020100
+synset-pain-noun-1
+<no response>
+<no response>
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+<no response>
+Lock_22040000 InhibitMovement synset-food-noun-1
+InhibitMovement HostileEncounter Lock_22040000 synset-duel-noun-1
+<no response>
+Regard
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-fight-verb-3
+<no response>
+<no response>
+synset-play-verb-1 synset-parent-noun-1
+synset-mother-noun-1 synset-attendant-noun-1 Assistance
+<damaged>
+<no response>
+<no response>
+<no response>
+synset-police-noun-1
+synset-wine-noun-1
+<no response>
+<no response>
+synset-dinner-noun-1
+synset-burn-verb-1 ExperienceBodilyHarm
+synset-team-noun-1 Attack Lose_13020000 synset-rag-noun-1
+<no response>
+RevealSecret
+synset-detect-verb-1
+<no response>
+synset-detect-verb-1
+<damaged>
+<no response>
+<no response>
+ExperienceBodilyHarm CauseHarm Break_45010000
+<damaged>
+synset-caller-noun-1
+<no response>
+synset-play-verb-1 CauseHarm
+synset-parent-noun-1
+<no response>
+<no response>
+<no response>
+synset-telephone-noun-1
+<no response>
+<no response>
+<damaged>
+synset-bit-noun-2
+<no response>
+<damaged>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-log-noun-1 Regard synset-front-noun-1
+synset-file-verb-1
+<no response>
+<no response>
+synset-vomit-verb-1 synset-pain-noun-1
+synset-house-noun-1 Attack synset-lose-verb-1 Lose_13020000 synset-parent-noun-1
+<no response>
+<no response>
+synset-chop-verb-5
+synset-pump-noun-1 synset-food-noun-1 Supply
+Partiality synset-advantage-noun-1
+<damaged>
+CauseHarm synset-ache-verb-3 Hurt_40081000 ExperienceBodilyHarm
+<no response>
+synset-cut-verb-1 ExperienceBodilyHarm HostileEncounter synset-contend-verb-6 CauseHarm
+synset-hairdo-noun-1
+<no response>
+synset-food-noun-1
+<no response>
+<no response>
+<no response>
+synset-approve-verb-1 synset-parent-noun-1
+<no response>
+CauseHarm synset-knock-verb-1
+<no response>
+Cheat_59000100
+<no response>
+<no response>
+Prison synset-jail-noun-1 synset-police-noun-1
+<no response>
+synset-detect-verb-1 synset-care-noun-1
+<no response>
+<no response>
+<no response>
+synset-help-verb-1 Help_72000100 Assistance
+<no response>
+<no response>
+synset-key-noun-1
+synset-fight-noun-2 HostileEncounter
+<no response>
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+<no response>
+<no response>
+CauseHarm synset-rock-noun-1
+synset-doctor-noun-1
+synset-detect-verb-1
+<no response>
+Supply synset-ticket-noun-1
+synset-knife-noun-1
+<damaged>
+<no response>
+Partiality
+<no response>
+<no response>
+synset-tan-noun-1 ExperienceBodilyHarm
+<no response>
+<no response>
+<no response>
+<no response>
+synset-detect-verb-1
+<no response>
+<no response>
+<no response>
+synset-batch-noun-2 synset-contend-verb-6 HostileEncounter
+synset-keep-verb-1
+<no response>
+Regard
+synset-detect-verb-1
+Break_45010000 ExperienceBodilyHarm synset-detect-verb-1 synset-trust-noun-1 CauseHarm
+synset-keep-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-bed-noun-1 Supply
+synset-horse-noun-1 Assistance
+synset-play-verb-1
+synset-contend-verb-6 HostileEncounter
+CauseHarm ExperienceBodilyHarm
+synset-help-verb-1 Help_72000100
+synset-revengeful-adjectivesatellite-1 Revenge
+CauseHarm synset-horse-noun-1 synset-knock-verb-1 Assistance
+<no response>
+<damaged>
+Regard
+<no response>
+<no response>
+synset-play-verb-1
+<no response>
+<no response>
+synset-floor-noun-1
+<no response>
+synset-lunch-noun-1
+synset-doctor-noun-1
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+synset-dainty-noun-1 Assistance
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+Regard
+synset-veterinarian-noun-1
+synset-shot-noun-2
+<no response>
+<no response>
+synset-fight-noun-2 ExperienceBodilyHarm Break_45010000 HostileEncounter CauseHarm
+<damaged>
+synset-killing-noun-2
+<no response>
+<no response>
+<no response>
+<no response>
+<no response>
+RevealSecret
+<no response>
+synset-one-fourth-noun-1 Killing
+<damaged>
+<no response>
+synset-bully-noun-1
+synset-detect-verb-1 synset-batch-noun-2
+Kill_42030000 Killing synset-kill-verb-1
+synset-food-noun-1
+<no response>
+synset-lunch-noun-1
+<no response>
+synset-detect-verb-1 CauseHarm synset-lumberman-noun-1
+<no response>
+<no response>
+Death synset-die-verb-1 Die_48020000
+<no response>
+<no response>
+<no response>
+<no response>
+Regard synset-food-noun-1
+Lose_13020000 Attack synset-lose-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+CauseHarm
+<no response>
+<no response>
+synset-hat-noun-1 synset-water-noun-1
+<no response>
+<no response>
+synset-telephone-noun-1
+Assistance synset-aid-noun-2
+<no response>
+synset-doctor-noun-1
+Regard
+<no response>
+<damaged>
+synset-bite-verb-2 CauseHarm
+<no response>
+synset-help-verb-1 Help_72000100 Assistance
+synset-help-verb-1 Help_72000100 Assistance
+Partiality
+Prison synset-prison-noun-1 synset-telephone-noun-1
+synset-group-noun-1
+<no response>
+Destroying Destroy_44000000 synset-destroy-verb-1 Preserve_85000000 Preserving
+synset-mother-noun-1 Cheat_59000100
+<no response>
+<no response>
+<no response>
+Regard
+synset-free-adjective-1
+<damaged>
+<damaged>
+<no response>
+<no response>
+synset-cut-verb-1 CauseHarm ExperienceBodilyHarm
+<no response>
+synset-mother-noun-1
+Regard
+<no response>
+<damaged>
+<no response>
+<damaged>
+synset-help-verb-1 Help_72000100 Assistance
+Abusing ExperienceBodilyHarm Break_45010000 CauseHarm synset-maltreatment-noun-1
+synset-house-noun-1
+<no response>
+Destroying Happen_48030000
+<no response>
+synset-date-noun-1
+<no response>
+<no response>
+Regard
+TakingSides Lose_13020000 Attack synset-lose-verb-1
+Regard synset-attract-verb-1
+<no response>
+<no response>
+<no response>
+<no response>
+synset-parent-noun-1
+synset-play-verb-1
+CauseHarm synset-rock-noun-1
+<no response>
+<no response>
+synset-climb-verb-1
+<no response>
+ExperienceBodilyHarm CauseHarm Break_23020000
+<no response>
