@@ -4,6 +4,9 @@ from email.policy import default
 from StorageHandler import StorageHandler
 from DatasetHandler import DatasetHandler
 
+import nltk
+import os
+
 def buildParser():
     parser=ArgumentParser()
     parser.add_argument("-api_owner",dest="api_owner", type=str, default=StorageHandler.default_api_owner)
@@ -42,6 +45,25 @@ def get_params():
 
 if __name__ == "__main__" :
         
+    apt = False
+    wn = False
+    omv = False
+
+    try:
+        nltk.data.find(os.path.join('taggers','averaged_perceptron_tagger'))
+        apt = True
+        nltk.data.find(os.path.join('corpora','wordnet'))
+        wn = True
+        nltk.data.find(os.path.join('corpora','omw-1.4'))
+        omv = True
+    except:
+        if not apt:
+            nltk.download('averaged_perceptron_tagger')
+        if not wn:
+            nltk.download('wordnet')
+        if not omv:
+            nltk.download('omw-1.4')
+
     StorageHandler.create_directories()
     DatasetHandler.download_social_chemstry()
 

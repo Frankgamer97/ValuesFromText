@@ -1,4 +1,3 @@
-from msilib import text
 from time import sleep
 from zlib import adler32
 
