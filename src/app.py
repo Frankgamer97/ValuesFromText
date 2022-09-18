@@ -31,7 +31,7 @@ def get_params():
 
     if args.api_owner not in owners:
         print("[WARNING] Wrong Api onwer, selecting default Api.")
-        return StorageHandler.default_api_owner
+        params["api_owner"] = args.api_owner
 
     params["api_owner"] = args.api_owner
     params["preprocessing"] = args.preprocessing
@@ -49,11 +49,11 @@ if __name__ == "__main__" :
 
     # for key, value in params.items():
     #     print(f"{key} => {value} (type = {type(value)})")
+    
     print()
     df_fred, df_ValueNet = DatasetHandler.preprocessing(overwrite=params["preprocessing"])
     print()
     DatasetHandler.retrieve_fred_rdf(df_fred, params["api_owner"], download=params["rdf_downloading"])
-    # print()
-    # DatasetHandler.rdf_analysis(df_fred, df_ValueNet, overwrite=params["analysis"])
-
+    print()
+    DatasetHandler.rdf_analysis(df_fred, df_ValueNet, overwrite=params["analysis"])
     print()
