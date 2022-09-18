@@ -1,4 +1,3 @@
-from msilib import text
 from time import sleep
 from zlib import adler32
 
@@ -17,10 +16,10 @@ class StorageHandler():
             'accept': 'text/turtle',
             'Authorization': 'Bearer ef127c72-fa55-3075-9729-7263d0ae50d2',
         },
-        "Primiano": {
-            'accept': 'text/turtle',
-            'Authorization': 'Bearer e7c13f41-a79e-367f-9a47-d532fce077c0',
-        },
+        # "Primiano": {
+        #     'accept': 'text/turtle',
+        #     'Authorization': 'Bearer e7c13f41-a79e-367f-9a47-d532fce077c0',
+        # },
         "Luciano": {
             'accept': 'text/turtle',
             'Authorization': 'Bearer 16a84b70-1b8d-3d05-8d1a-7a37da9be9e8',
