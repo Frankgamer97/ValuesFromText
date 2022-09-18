@@ -217,7 +217,7 @@ class DatasetHandler:
 
             if df_bad_fred is not None and df_bad_ValueNet is not None:
                 
-                print("Load cached files")
+                print("\tLoading cached files")
                 return df_bad_fred, df_bad_ValueNet
             else:
                 print("WARNING")
@@ -287,8 +287,9 @@ class DatasetHandler:
 
         df_bad["situation"] = df_bad["situation"].str.replace("\"","")
         df_bad = DatasetHandler.expand_text(df_bad, "situation")
-
         df_bad["situation_lemmatized"]= df_bad["situation"].apply(lambda x: DatasetHandler.__lemmatize(x.split(" ")))
+        df_bad = DatasetHandler.expand_text(df_bad, "situation_lemmatized")
+
         df_bad.drop_duplicates(subset=['rot-moral-foundations',"situation_lemmatized"], inplace = True)
 
         print()
@@ -506,92 +507,90 @@ class DatasetHandler:
         return prediction, triggers
 
     @staticmethod
-    def rdf_analysis(df_fred, df_ValueNet, overwrite=True):
-
-        haidt_predictions = []
-        triggers = []
-
-        error_file = []
-        void_ValueNet_response = []
-        text_list = df_fred["text"].tolist()
-
-
+    def retrieve_ValueNet_data(df_fred, df_ValueNet=None, overwrite=True):
         print()
+        print("[RDF LABELS-TRIGGERS]")
+        
+        if not overwrite:
+            file_path = StorageHandler.get_propreccesed_file_path("df_ValueNet_response")
+            df_ValueNet = StorageHandler.load_csv_to_dataframe(file_path)
+            print()
+            print("\tLoading cached file")
+
+        else:
+            assert df_ValueNet is not None
+
+            haidt_predictions = []
+            triggers = []
+
+            error_file = []
+            void_ValueNet_response = []
+
+            text_list = df_fred["text"].tolist()
+            text_list_len = len(text_list)
+
+            for i in range(text_list_len):
+                text = text_list[i]
+                print()
+                print(f"text [{i}/{text_list_len}]: {text}")
+                print()
+
+                try:
+                    text_dict, turtle_extend = DatasetHandler.find_trigs(text)
+
+                    if not (text_dict["sub"] or text_dict["obj"]):
+                        void_ValueNet_response.append(text)
+                        haidt_predictions.append("<no response>")
+                        triggers.append("<no response>")
+                        print("\t No response from ValueNet")
+        
+                    else:
+
+                        text_hash = StorageHandler.get_text_hash(text)
+                        StorageHandler.save_rdf(text_hash, turtle_extend, extended=True)
+                        print("\tTurtle extended")
+
+                        prediction, text_triggers = DatasetHandler.get_ValueNet_results(text_dict)
+
+                        haidt_predictions.append(" ".join(prediction))
+                        triggers.append(" ".join(text_triggers))
+
+                except:
+                    print("\tDamaged tutrtle")
+                    haidt_predictions.append("<damaged>")
+                    triggers.append("<damaged>")
+                    error_file.append(text)
+
+            error_file_length = len(error_file)
+            no_response_length = len(void_ValueNet_response)
+
+            print()
+            print()
+            print(f"Total damaged turtles: {error_file_length}")
+            print()
+            print(f"Total no response from ValueNet: {no_response_length}")
+            print()
+            print(f"Total extended turtle: {text_list_len - no_response_length - error_file_length}")
+            print()
+
+            df_damaged = pd.DataFrame({"text": error_file})
+            StorageHandler.save_data_csv(df_damaged, name="df_turtle_damaged")
+
+            df_void = pd.DataFrame({"text": void_ValueNet_response})
+            StorageHandler.save_data_csv(df_void, name="df_void_ValueNet_response")
+
+            df_ValueNet["label_predicted"] = haidt_predictions
+            df_ValueNet["label_triggers"] = triggers
+
+            StorageHandler.save_data_csv(df_ValueNet, name="df_ValueNet_response")
+
+        return df_ValueNet
+
+    @staticmethod
+    def rdf_analysis(df_ValueNet, overwrite = True):
         print("[RDF ANALYSIS]")
-        
-        text_list_len = len(text_list)
-        for i in range(text_list_len):
-        #     file_hash = StorageHandler.get_text_hash(text_list[0])
-        #     file_path = StorageHandler.get_rdf_path(file_hash)
-        #     g = rdflib.Graph()
-        #     result = g.parse(file_path, format='turtle')
-            # print(f"text: Someone has to stop that awful killer.")
-            
-            text = text_list[i]
-            print()
-            print(f"text [{i}/{text_list_len}]: {text}")
-            print()
 
-            try:
-                text_dict, turtle_extend = DatasetHandler.find_trigs(text)
-
-                if not (text_dict["sub"] or text_dict["obj"]):
-                    void_ValueNet_response.append(text)
-                    haidt_predictions.append("<no response>")
-                    triggers.append("<no response>")
-                    print("\t No response from ValueNet")
-    
-                else:
-
-                    text_hash = StorageHandler.get_text_hash(text)
-                    StorageHandler.save_rdf(text_hash, turtle_extend, extended=True)
-                    print("\tTurtle extended")
-
-                    prediction, text_triggers = DatasetHandler.get_ValueNet_results(text_dict)
-
-                    haidt_predictions.append(" ".join(prediction))
-                    triggers.append(" ".join(text_triggers))
-
-            except:
-                print("\tDamaged tutrtle")
-                haidt_predictions.append("<damaged>")
-                triggers.append("<damaged>")
-                error_file.append(text)
-
-        error_file_length = len(error_file)
-        no_response_length = len(void_ValueNet_response)
-
-        print()
-        print()
-        print(f"Total damaged turtles: {error_file_length}")
-        print()
-        print(f"Total no response from ValueNet: {no_response_length}")
-        print()
-        print(f"Total extended turtle: {text_list_len - no_response_length - error_file_length}")
-        print()
-
-        df_damaged = pd.DataFrame({"text": error_file})
-        StorageHandler.save_data_csv(df_damaged, name="df_turtle_damaged")
-
-        df_void = pd.DataFrame({"text": void_ValueNet_response})
-        StorageHandler.save_data_csv(df_void, name="df_void_ValueNet_response")
-
-        print()
-        print(len(df_ValueNet))
-        print(len(haidt_predictions))
-        print(len(triggers))
-        print()
-
-        with open("predictions.txt", "w") as f:
-            f.write("\n".join(haidt_predictions))
 
         
-        with open("triggers.txt", "w") as f:
-            f.write("\n".join(triggers))
-
-        df_ValueNet["label_predicted"] = haidt_predictions
-        df_ValueNet["label_triggers"] = triggers
-
-        StorageHandler.save_data_csv(df_ValueNet, name="df_ValueNet_response")
 
         
