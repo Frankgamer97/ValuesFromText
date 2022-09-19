@@ -6,6 +6,7 @@ import pickle
 import pandas as pd
 import requests
 import rdflib
+import json
 
 class StorageHandler():
 
@@ -125,6 +126,22 @@ class StorageHandler():
             else:
                 file.write(data)
 
+    @staticmethod
+    def save_json(json_name, data):
+        file_path = StorageHandler.get_propreccesed_file_path(json_name)
+
+        data_json = json.loads(json.dumps(data))
+        with open(file_path, "w") as f: 
+            json.dump(data_json, f, ensure_ascii=False, indent=4)
+        
+    @staticmethod
+    def load_json(json_name):
+        file_path = StorageHandler.get_propreccesed_file_path(json_name)
+        with open(file_path, "r") as f:
+
+            data_json = str(json.load(f))
+        return data_json
+        
     @staticmethod
     def download_txt_rdf(txt, out_name, headers):
         file_path = StorageHandler.get_rdf_path(out_name, extended=False)

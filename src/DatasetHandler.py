@@ -23,6 +23,7 @@ import os
 from collections import defaultdict
 import pandas as pd
 import openpyxl
+import numpy as np
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
@@ -99,7 +100,7 @@ class DatasetHandler:
 
             pos = DatasetHandler.__get_wordnet_pos(pos_tag_dict[x])
 
-            if not first_subject and pos_tag_dict[x] == 'PRP':
+            if not first_subject and (pos_tag_dict[x].startswith('PRP') or pos_tag_dict[x].startswith('NN')):
                 first_subject = True
 
             if not first_verb and pos == wordnet.VERB:
@@ -110,6 +111,7 @@ class DatasetHandler:
             
             if i == 0 and pos == wordnet.VERB:
                 add_subject = True
+                tokens[i] = tokens[i].lower()
 
             elif i == 1  and pos == wordnet.VERB and (tokens[0] == "not" or tokens[0] == "Not"):
                 add_subject = True
@@ -218,6 +220,7 @@ class DatasetHandler:
             if df_bad_fred is not None and df_bad_ValueNet is not None:
                 
                 print("\tLoading cached files")
+
                 return df_bad_fred, df_bad_ValueNet
             else:
                 print("WARNING")
@@ -269,12 +272,15 @@ class DatasetHandler:
 
         df_bad = df_mask
         # df_bad = df[df['rot-judgment'].str.contains("not")]
+
+        dyads_bad = df_bad["rot-moral-foundations"].unique().tolist()
         print("Dataframe \"bad\" length: "+ str(len(df_bad)))
         print()
-        print("Dyads: ",df_bad["rot-moral-foundations"].unique().tolist())
+        print("Dyads: ",dyads_bad)
         print()
 
         #Select the correct haidt value associated with "bad" 
+
         df_bad["haidt-value"] = df_bad["rot-moral-foundations"].apply(lambda x: x.split("-")[1])
         # df_bad['rot-moral-foundations'] = df_bad['rot-moral-foundations'].apply(lambda x: x.split("|"))
         # df_bad['haidt-value'] = df_bad['rot-moral-foundations'].apply(lambda x: [el.split("-")[1] for el in x])
@@ -328,7 +334,7 @@ class DatasetHandler:
         # Filter rows with a specific length range and remove duplicates. 
         # Check whether or not the charcater length distribution is preserved.
         # Note: everything that is over 164 is considered as an outliar (1% of data).
-        df_bad_out_cutted = df_bad_out[df_bad_out["text"].str.len() >= 60]
+        df_bad_out_cutted = df_bad_out[df_bad_out["text"].str.len() >= 59]
         df_bad_out_cutted = df_bad_out_cutted[df_bad_out_cutted["text"].str.len() < 164]
 
         df_bad_out_grouped_cutted = df_bad_out_cutted.groupby('label')["text"].nunique()
@@ -512,7 +518,7 @@ class DatasetHandler:
         print("[RDF LABELS-TRIGGERS]")
         
         if not overwrite:
-            file_path = StorageHandler.get_propreccesed_file_path("df_ValueNet_response")
+            file_path = StorageHandler.get_propreccesed_file_path("df_ValueNet_response.csv")
             df_ValueNet = StorageHandler.load_csv_to_dataframe(file_path)
             print()
             print("\tLoading cached file")
@@ -582,14 +588,155 @@ class DatasetHandler:
             df_ValueNet["label_predicted"] = haidt_predictions
             df_ValueNet["label_triggers"] = triggers
 
+
+            df_ValueNet["label"] = df_ValueNet["label"].str.lower()
+            df_ValueNet["label_predicted"] = df_ValueNet["label_predicted"].str.lower()
+            df_ValueNet["label_triggers"] = df_ValueNet["label_triggers"].str.lower()
+
             StorageHandler.save_data_csv(df_ValueNet, name="df_ValueNet_response")
 
         return df_ValueNet
 
     @staticmethod
+    def build_haidt_dict(df, show=False):
+        def __populate(data_dict, src, values, out_filename):
+            assert src == "label" or src == "trigger"
+
+            if src == "label":
+                column_name = "label_predicted"
+            else:
+                column_name = "label_triggers"
+
+            column_predicted = df[~df[column_name].str.contains("<damaged>")]
+            column_predicted = column_predicted[~column_predicted[column_name].str.contains("<no response>")][column_name].tolist()
+
+            for value, data in tuple(zip(values, column_predicted)):
+                value_split = value.split(" ")
+                for el in value_split:
+                    data_dict[el] = data_dict[el] + data.split(" ")
+
+            for key in label_dict.keys():
+                data_dict[key] = list(np.unique(data_dict[key]))
+
+
+
+            if src == "trigger":
+                for key in label_dict.keys():
+                    data_dict[key] = [el.split("_")[0] for el in data_dict[key]]
+                    data_dict[key] = ["-".join(el.split("-")[1:3]) if "-" in el else el for el in data_dict[key]]
+
+            if show:
+                print(f"[{src}]")
+                print()
+
+                for key in label_dict.keys():
+                    print(f"\t{key} : {data_dict[key]}")
+                
+                print()
+                print(f"[Saving {src}]")
+                print()
+                StorageHandler.save_json(out_filename, data_dict)
+
+            return data_dict
+
+        haidt_values = df["label"].tolist()
+        haidt_values = [value for el in haidt_values for value in el.split(" ")]
+        haidt_values = np.array(haidt_values)
+        haidt_values = list(np.unique(haidt_values))
+
+        label_dict = {}
+        trigger_dict = {}
+
+        for value in haidt_values:
+            label_dict[value] = []
+            trigger_dict[value] = []
+
+        values = df["label"].tolist()
+
+        label_dict = __populate(label_dict, "label", values, "label_predicted.json")
+        trigger_dict = __populate(trigger_dict, "trigger", values, "trigger_predicted.json")
+
+        return label_dict, trigger_dict
+
+            
+
+    @staticmethod
+    def build_count(row, count_dict, haidt_response_partition):
+        labels_true = row["label"].split(" ")
+        labels_predicted = row["label_predicted"].split(" ")
+
+        # print(f"{labels_true} -> {labels_predicted}")
+
+        count = 0
+
+        for label in labels_true:
+            if label in labels_predicted:
+                count += 1
+                count_dict[label]["count"] += 1
+                count_dict[label]["percentage"] = round(count_dict[label]["count"] / haidt_response_partition[label],2) * 100
+        row["label_count"] = count
+
+        return row
+
+
+    @staticmethod 
+    def print_dict(mydict):
+        parsed = json.loads(str(mydict).replace("'","\""))
+        print(json.dumps(parsed, indent=4))
+
+    @staticmethod
     def rdf_analysis(df_ValueNet, overwrite = True):
         print("[RDF ANALYSIS]")
 
+        if not overwrite:
+            pass
+        else:
+
+
+            damaged_count = df_ValueNet[df_ValueNet["label_predicted"].str.contains("<damaged>")]["label_predicted"].count()
+            df_ValueNet = df_ValueNet[~df_ValueNet["label_predicted"].str.contains("<damaged>")]
+
+            no_response_count = df_ValueNet[df_ValueNet["label_predicted"].str.contains("<no response>")]["label_predicted"].count()
+            df_ValueNet = df_ValueNet[~df_ValueNet["label_predicted"].str.contains("<no response>")]
+
+            haidt_values = df_ValueNet["label"].tolist()
+            haidt_values = [value for el in haidt_values for value in el.split(" ")]
+            haidt_values = np.array(haidt_values)
+            haidt_values = list(np.unique(haidt_values))
+
+            print("haidt values")
+            print(haidt_values)
+            print()
+
+            count_dict = dict(zip(haidt_values,([{"count":0, "percentage": 0} for i in range(len(haidt_values))])))
+            haidt_response_partition = {}
+
+            for value in haidt_values:
+                haidt_response_partition[value] = df_ValueNet[df_ValueNet["label"].str.contains(value)]["label"].count()
+
+            response_count = sum(list(haidt_response_partition.values()))
+            response_raw_count =len(df_ValueNet)
+            print()
+            print(f"Fred damaged response: {damaged_count}")
+            print(f"ValueNet no response: {no_response_count}")
+            print(f"ValueNet haidt raw response count: {response_raw_count} ")
+            print(f"ValueNet haidt response repetition: {response_count}")
+
+            print("ValueNet haidt partion response")
+            DatasetHandler.print_dict(haidt_response_partition)
+            print()
+
+            df_ValueNet = df_ValueNet.apply(lambda x: DatasetHandler.build_count(x, count_dict, haidt_response_partition), axis=1)
+
+            print("ValueNet correct prediction")
+            DatasetHandler.print_dict(count_dict)
+            print()
+
+            
+            correct_response_count = [ el["count"] for el in count_dict.values()]
+            correct_response_count = sum(correct_response_count)
+            print("Total percentage: ", round(correct_response_count / response_count,2) * 100)
+            # label_dict, trigger_dict = DatasetHandler.build_haidt_dict(df_ValueNet, show=True)
 
         
 

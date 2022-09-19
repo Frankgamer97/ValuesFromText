@@ -77,7 +77,7 @@ if __name__ == "__main__" :
     #     print(f"{key} => {value} (type = {type(value)})")
     
     print()
-    df_fred, df_ValueNet = DatasetHandler.preprocessing(overwrite=params["preprocessing"])
+    df_fred, df_ValueNet= DatasetHandler.preprocessing(overwrite=params["preprocessing"])
     print()
     DatasetHandler.retrieve_fred_rdf(df_fred, params["api_owner"], download=params["rdf_downloading"])
     print()

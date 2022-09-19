@@ -1,0 +1,65 @@
+{
+    "betrayal": [
+        "Authority",
+        "Betrayal",
+        "Care",
+        "Cheating",
+        "Degradation",
+        "Fairness",
+        "Harm",
+        "Liberty",
+        "Loyalty",
+        "Oppression",
+        "Subversion"
+    ],
+    "cheating": [
+        "Authority",
+        "Betrayal",
+        "Care",
+        "Cheating",
+        "Degradation",
+        "Fairness",
+        "Harm",
+        "Liberty",
+        "Loyalty",
+        "Oppression",
+        "Subversion"
+    ],
+    "degradation": [
+        "Authority",
+        "Betrayal",
+        "Care",
+        "Cheating",
+        "Degradation",
+        "Fairness",
+        "Harm",
+        "Loyalty",
+        "Oppression",
+        "Subversion"
+    ],
+    "harm": [
+        "Authority",
+        "Betrayal",
+        "Care",
+        "Cheating",
+        "Degradation",
+        "Fairness",
+        "Harm",
+        "Liberty",
+        "Loyalty",
+        "Oppression",
+        "Subversion"
+    ],
+    "subversion": [
+        "Authority",
+        "Betrayal",
+        "Care",
+        "Cheating",
+        "Degradation",
+        "Fairness",
+        "Harm",
+        "Loyalty",
+        "Oppression",
+        "Subversion"
+    ]
+}
