@@ -119,19 +119,34 @@ class StorageHandler():
     def save_rdf(turtle_name, data, extended = False):
         turtle_path = StorageHandler.get_rdf_path(turtle_name, extended=extended)
 
-        with open(turtle_path,'w', encoding="utf-8") as file: 
-
-            if extended:
-                file.write(data.serialize(format='turtle'))
-            else:
+        if extended:
+            data.serialize(destination=turtle_path, format="turtle")
+        else:
+            with open(turtle_path,'w', encoding="utf-8") as file: 
                 file.write(data)
+
+    @staticmethod
+    def load_rdf(text, extended = False):
+        turtle_name = StorageHandler.get_text_hash(text)
+        print("hash: ", turtle_name)
+        
+        turtle_path = StorageHandler.get_rdf_path(turtle_name, extended=extended)
+        print("exist: ", os.path.exists(turtle_path))
+        graph = None
+        try:
+            graph = rdflib.Graph()
+            graph.parse(turtle_path, format='turtle')
+        except:
+            print("[Error] Unable to load rdf")
+
+        return graph
 
     @staticmethod
     def save_json(json_name, data):
         file_path = StorageHandler.get_propreccesed_file_path(json_name)
 
         data_json = json.loads(json.dumps(data))
-        with open(file_path, "w") as f: 
+        with open(file_path, "w", encoding="utf-8") as f: 
             json.dump(data_json, f, ensure_ascii=False, indent=4)
         
     @staticmethod

@@ -384,24 +384,14 @@ class DatasetHandler:
             
         
     @staticmethod
-    def find_trigs(txt):    
+    def find_trigs(cell_graph):    
             
         # generate graphs to be used later 
 
         g_valueObj = rdflib.Graph()
         g_valueSubj = rdflib.Graph()
 
-        g = rdflib.Graph()
         finalg = rdflib.Graph()
-
-        file_hash = txt
-        if txt != "out1":
-            file_hash = StorageHandler.get_text_hash(txt)
-
-        file_path = StorageHandler.get_rdf_path(file_hash)
-
-        # print(f"FILE PATH: {file_path}")
-        cell_graph = g.parse(file_path, format="ttl")
 
         # create list of subject and objects of triples to store entities URIs in order to iterate on them
 
@@ -513,7 +503,7 @@ class DatasetHandler:
         return prediction, triggers
 
     @staticmethod
-    def retrieve_ValueNet_data(df_fred, df_ValueNet=None, overwrite=True):
+    def retrieve_ValueNet_data(df_ValueNet, overwrite=True):
         print()
         print("[RDF LABELS-TRIGGERS]")
         
@@ -532,35 +522,57 @@ class DatasetHandler:
             error_file = []
             void_ValueNet_response = []
 
-            text_list = df_fred["text"].tolist()
+            text_list = df_ValueNet["text"].tolist()
             text_list_len = len(text_list)
 
+            text_log = []
             for i in range(text_list_len):
                 text = text_list[i]
+                
                 print()
                 print(f"text [{i}/{text_list_len}]: {text}")
                 print()
 
                 try:
-                    text_dict, turtle_extend = DatasetHandler.find_trigs(text)
+                    text_hash = StorageHandler.get_text_hash(text)
+                    file_path = StorageHandler.get_rdf_path(text_hash)
 
-                    if not (text_dict["sub"] or text_dict["obj"]):
-                        void_ValueNet_response.append(text)
-                        haidt_predictions.append("<no response>")
-                        triggers.append("<no response>")
-                        print("\t No response from ValueNet")
-        
-                    else:
+                    g = rdflib.Graph()
+                    cell_graph = g.parse(file_path, format="ttl")
 
-                        text_hash = StorageHandler.get_text_hash(text)
-                        StorageHandler.save_rdf(text_hash, turtle_extend, extended=True)
-                        print("\tTurtle extended")
+                    try:
+                        text_dict, turtle_extend = DatasetHandler.find_trigs(cell_graph)
 
-                        prediction, text_triggers = DatasetHandler.get_ValueNet_results(text_dict)
+                        if not (text_dict["sub"] or text_dict["obj"]):
+                            void_ValueNet_response.append(text)
+                            haidt_predictions.append("<no response>")
+                            triggers.append("<no response>")
+                            print("\t No response from ValueNet")
+            
+                        else:
 
-                        haidt_predictions.append(" ".join(prediction))
-                        triggers.append(" ".join(text_triggers))
+                            text_hash = StorageHandler.get_text_hash(text)
+                            StorageHandler.save_rdf(text_hash, turtle_extend, extended=True)
+                            print("\tTurtle extended")
 
+                            text_path = StorageHandler.get_rdf_path(text_hash, extended=True)
+                            info_dict = {}
+                            info_dict["text"] = text
+                            info_dict["hash"] = text_hash
+                            info_dict["saved"] = os.path.exists(text_path)
+
+                            text_log.append(info_dict)
+
+                            prediction, text_triggers = DatasetHandler.get_ValueNet_results(text_dict)
+
+                            haidt_predictions.append(" ".join(prediction))
+                            triggers.append(" ".join(text_triggers))
+
+                    except:
+                        print()
+                        print("[ERROR] ValueNet server is not working")
+                        print()
+                        break
                 except:
                     print("\tDamaged tutrtle")
                     haidt_predictions.append("<damaged>")
@@ -569,6 +581,7 @@ class DatasetHandler:
 
             error_file_length = len(error_file)
             no_response_length = len(void_ValueNet_response)
+            StorageHandler.save_json("file_info.json", text_log)
 
             print()
             print()
@@ -685,58 +698,148 @@ class DatasetHandler:
         print(json.dumps(parsed, indent=4))
 
     @staticmethod
-    def rdf_analysis(df_ValueNet, overwrite = True):
-        print("[RDF ANALYSIS]")
+    def rdf_statistical_analysis(df_ValueNet):
+        print("[RDF STATISTICAL ANALYSIS]")
+
+        damaged_count = df_ValueNet[df_ValueNet["label_predicted"].str.contains("<damaged>")]["label_predicted"].count()
+        df_ValueNet = df_ValueNet[~df_ValueNet["label_predicted"].str.contains("<damaged>")]
+
+        no_response_count = df_ValueNet[df_ValueNet["label_predicted"].str.contains("<no response>")]["label_predicted"].count()
+        df_ValueNet = df_ValueNet[~df_ValueNet["label_predicted"].str.contains("<no response>")]
+
+        haidt_values = df_ValueNet["label"].tolist()
+        haidt_values = [value for el in haidt_values for value in el.split(" ")]
+        haidt_values = np.array(haidt_values)
+        haidt_values = list(np.unique(haidt_values))
+
+        print("haidt values")
+        print(haidt_values)
+        print()
+
+        count_dict = dict(zip(haidt_values,([{"count":0, "percentage": 0} for i in range(len(haidt_values))])))
+        haidt_response_partition = {}
+
+        for value in haidt_values:
+            haidt_response_partition[value] = df_ValueNet[df_ValueNet["label"].str.contains(value)]["label"].count()
+
+        response_count = sum(list(haidt_response_partition.values()))
+        response_raw_count =len(df_ValueNet)
+        print()
+        print(f"Fred damaged response: {damaged_count}")
+        print(f"ValueNet no response: {no_response_count}")
+        print(f"ValueNet haidt raw response count: {response_raw_count} ")
+        print(f"ValueNet haidt response repetition: {response_count}")
+
+        print("ValueNet haidt partion response")
+        DatasetHandler.print_dict(haidt_response_partition)
+        print()
+
+        df_ValueNet = df_ValueNet.apply(lambda x: DatasetHandler.build_count(x, count_dict, haidt_response_partition), axis=1)
+
+        print("ValueNet correct prediction")
+        DatasetHandler.print_dict(count_dict)
+        print()
+
+        
+        correct_response_count = [ el["count"] for el in count_dict.values()]
+        correct_response_count = sum(correct_response_count)
+        print("Total percentage: ", round(correct_response_count / response_count,2) * 100)
+        # label_dict, trigger_dict = DatasetHandler.build_haidt_dict(df_ValueNet, show=True)
+
+        return df_ValueNet
+
+    @staticmethod
+    def trigger_query(graph):
+
+        prefixes = "PREFIX dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>\
+                    PREFIX haidt: <https://w3id.org/spice/SON/HaidtValues#>\
+                    PREFIX ns1: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/>\
+                    PREFIX ns2: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#>\
+                    PREFIX ns3: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#>\
+                    PREFIX owl: <http://www.w3.org/2002/07/owl#>\
+                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\
+                    PREFIX vcvf: <http://www.semanticweb.org/sdg/ontologies/2022/0/valuecore_with_value_frames.owl#>\
+                    PREFIX wn30instances: <https://w3id.org/framester/wn/wn30/instances/>\
+                    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
+
+        query =prefixes +"SELECT ?s ?type ?o ?v \
+                WHERE \
+                { \
+                ?s ?p ?o . \
+                ?o vcvf:triggers ?v . \
+                ?s rdf:type ?type \
+                }"
+
+        res = graph.query(query)
+        res_list=[]
+        for row in res:
+            row_dict = {}
+
+            row_dict["s"] = row.s
+            row_dict["type"] = row.type
+            row_dict["o"] = row.o
+            row_dict["v"] = row.v
+
+            print()
+            print(f"{row.s} -> {row.type}")
+            print(f"{row.o} -> {row.v}")
+            print()
+            res_list.append(row_dict)
+        
+        return res_list
+
+    @staticmethod
+    def rdf_semantic_analysis(df_ValueNet, overwrite=False):
+
+        # bho = []
+        # for file in os.listdir(StorageHandler.get_data_rdf()):
+        #     try:
+        #         g = rdflib.Graph()
+        #         g.parse(StorageHandler.get_rdf_path(file.split(".")[0],extended=False),format='turtle')
+        #     except:
+        #         bho.append(file.split(".")[0])
+
 
         if not overwrite:
             pass
         else:
 
+            # texts = df_ValueNet[df_ValueNet["label_predicted"] == "<damaged>"]["text"].tolist()
+            # texts_hash =[StorageHandler.get_text_hash(txt) for txt in texts]
 
-            damaged_count = df_ValueNet[df_ValueNet["label_predicted"].str.contains("<damaged>")]["label_predicted"].count()
-            df_ValueNet = df_ValueNet[~df_ValueNet["label_predicted"].str.contains("<damaged>")]
+            # np_bho = np.array(bho)
+            # np_texts = np.array(texts_hash)
+            # control = True
+            # for file in bho:
+            #     if not file in texts_hash:
+            #         control = False
+            #         break
 
-            no_response_count = df_ValueNet[df_ValueNet["label_predicted"].str.contains("<no response>")]["label_predicted"].count()
-            df_ValueNet = df_ValueNet[~df_ValueNet["label_predicted"].str.contains("<no response>")]
+            # print("VA TUTTO BENE? ", control)
+            # print("Damaged files not present in ValueNet",np_bho[[True if el not in np_texts else False for el in np_bho]])
+            # print("ValueNet files not present in damaged files", np_texts[[True if el not in np_bho else False for el in np_texts]])
 
-            haidt_values = df_ValueNet["label"].tolist()
-            haidt_values = [value for el in haidt_values for value in el.split(" ")]
-            haidt_values = np.array(haidt_values)
-            haidt_values = list(np.unique(haidt_values))
+            texts = df_ValueNet["text"].tolist()
 
-            print("haidt values")
-            print(haidt_values)
-            print()
+            for text in texts:
+                print()
+                print(f"text: {text}")
+                print()
+                print(StorageHandler.get_text_hash(text))
+                print()
+                graph = StorageHandler.load_rdf(text, extended=True)
+                if graph is not None: 
+                    res = DatasetHandler.trigger_query(graph)
 
-            count_dict = dict(zip(haidt_values,([{"count":0, "percentage": 0} for i in range(len(haidt_values))])))
-            haidt_response_partition = {}
+                    print(f"results: {len(res)}")
+                    for data in res:
+                        print()
+                        DatasetHandler.print_dict(data)
+                        print()
 
-            for value in haidt_values:
-                haidt_response_partition[value] = df_ValueNet[df_ValueNet["label"].str.contains(value)]["label"].count()
-
-            response_count = sum(list(haidt_response_partition.values()))
-            response_raw_count =len(df_ValueNet)
-            print()
-            print(f"Fred damaged response: {damaged_count}")
-            print(f"ValueNet no response: {no_response_count}")
-            print(f"ValueNet haidt raw response count: {response_raw_count} ")
-            print(f"ValueNet haidt response repetition: {response_count}")
-
-            print("ValueNet haidt partion response")
-            DatasetHandler.print_dict(haidt_response_partition)
-            print()
-
-            df_ValueNet = df_ValueNet.apply(lambda x: DatasetHandler.build_count(x, count_dict, haidt_response_partition), axis=1)
-
-            print("ValueNet correct prediction")
-            DatasetHandler.print_dict(count_dict)
-            print()
-
-            
-            correct_response_count = [ el["count"] for el in count_dict.values()]
-            correct_response_count = sum(correct_response_count)
-            print("Total percentage: ", round(correct_response_count / response_count,2) * 100)
-            # label_dict, trigger_dict = DatasetHandler.build_haidt_dict(df_ValueNet, show=True)
+                    break
+                
+                
 
         
 

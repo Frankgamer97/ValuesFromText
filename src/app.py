@@ -78,10 +78,24 @@ if __name__ == "__main__" :
     
     print()
     df_fred, df_ValueNet= DatasetHandler.preprocessing(overwrite=params["preprocessing"])
+
+    # texts = df_fred["text"].tolist()
+    # texts_valuenet = df_ValueNet["text"].tolist()
+
+    # print()
+    # print(len(texts))
+    # print(len([ el for el in texts if el in texts_valuenet]))
+    # print()
+    # print(len(texts_valuenet))
+    # print(len([ el for el in texts_valuenet if el in texts]))
+    # print()
+
     print()
-    DatasetHandler.retrieve_fred_rdf(df_fred, params["api_owner"], download=params["rdf_downloading"])
+    DatasetHandler.retrieve_fred_rdf(df_ValueNet, params["api_owner"], download=params["rdf_downloading"])
     print()
-    df_ValueNet = DatasetHandler.retrieve_ValueNet_data(df_fred, df_ValueNet, overwrite=params["valuenet"])
+    df_ValueNet = DatasetHandler.retrieve_ValueNet_data(df_ValueNet, overwrite=params["valuenet"])
     print()
-    df_ValueNet = DatasetHandler.rdf_analysis(df_ValueNet, overwrite=params["analysis"])
+    df_ValueNet = DatasetHandler.rdf_statistical_analysis(df_ValueNet)
+    print()
+    df_ValueNet = DatasetHandler.rdf_semantic_analysis(df_ValueNet, overwrite=params["analysis"])
     print()

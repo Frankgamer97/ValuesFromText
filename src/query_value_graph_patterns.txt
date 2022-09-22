@@ -1,0 +1,168 @@
+
+
+ 
+
+1. query per individuare il tipo ontologico di un value trigger:
+
+
+SELECT ?s ?type ?o ?v
+WHERE
+{
+?s ?p ?o . ?o vcvf:triggers ?v .
+?s rdf:type ?type
+}
+
+SELECT ?s ?s_p ?s_o ?o ?v
+WHERE
+{
+?s ?p ?o . 
+?o vcvf:triggers ?v .
+?s ?s_p ?s_o
+}
+
+Consiglio di ottenere dati statistici in merito e trovare e.g. il tipo ontologico più comune tra tutti i trigger valoriali (anche per avere statistiche di utilizzo in merito al funzionamento ti ValueNet)
+
+
+
+
+2. Seguono query di esempio per individuare pattern a partire dai ruoli di VerbNet:
+
+2.1 Query per individuare tutti i ?s che hanno come vn:Patient some ?o, e ?s triggera qualche ?v.
+
+SELECT ?s ?o ?v
+WHERE
+{
+?s <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . 
+?s vcvf:triggers ?v .
+}
+
+
+oppure, saltando di un ulteriore nodo sul grafo:
+
+2.2 query per individuare ogni ?s che abbia una property ?p verso qualche ?x, e ?x abbia come vn:Patient qualche ?o, per ?s che sia trigger di un qualche valore ?v.
+
+SELECT ?s ?x ?p ?o ?v
+WHERE
+{
+?s ?p ?x .
+?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . ?s vcvf:triggers ?v .
+}
+
+oppure considerando ?o come trigger:
+
+2.3 query per individuare ogni ?s che abbia una property ?p verso qualche ?x, e ?x abbia come vn:Patient qualche ?o, per ?o che sia trigger di un qualche valore ?v.
+
+SELECT ?s ?x ?p ?o ?v
+WHERE
+{
+?s ?p ?x .
+?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . ?o vcvf:triggers ?v .
+}
+
+oppure considerando ?x come trigger:
+
+2.4 query per individuare ogni ?s che abbia una property ?p verso qualche ?x, e ?x abbia come vn:Patient qualche ?o, per ?x che sia trigger di un qualche valore ?v.
+
+SELECT ?s ?x ?p ?o ?v
+WHERE
+{
+?s ?p ?x .
+?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . ?x vcvf:triggers ?v .
+}
+
+
+
+
+
+3. Query leggermente più intricata, ma che segue un pattern comune sui grafi di FRED:
+
+SELECT ?s ?o1 ?o2 ?o3 ?v
+WHERE {
+
+?s <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Theme> ?o1 .
+?o1 a ?o2 .
+?o2 owl:equivalentClass ?o3 .
+?o3 vcvf:triggers ?v .
+}
+
+Notare che al posto di <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Theme> potete mettere tutti i ruoli elencati qui di seguito, consiglio di cominciare dai primi che ho già raggruppato come più probabili.
+
+
+# ruoli di VerbNet da usare per query
+
+# Prioritari
+
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Agent
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Actor
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Beneficiary
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Cause
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Experiencer
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Recipient
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Theme
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Toward
+
+# Secondari
+
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Abstract_or_physical
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Actor1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Actor2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Agent_i
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Agent_j
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Asset
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Attribute
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Destination
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Directedmotion
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Direction
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/During_Event
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/During_Event1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/During_Event2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Emotion
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/End_Event
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/End_Event1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/End_Event2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Endstate
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Event
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Event1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Event2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Extent
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Forceful
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Form
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/From
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Illegal
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Instrument
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Location
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Location1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Location2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Material
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Motion
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Oblique
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Oblique1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Odor
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient1_or_Patient2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Physical
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Physical_or_Abstract
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Pivot
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Pos
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Predicate
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Prep_Dir
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Product
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Prop
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Proposition
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Result
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Result_Event
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Role
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Sound
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Source
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Start_Event
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Start_Event1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Start_Event2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Stimulus
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Theme1
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Theme2
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Time
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Topic
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Value
+http://www.ontologydesignpatterns.org/ont/vn/abox/role/Weather_type
