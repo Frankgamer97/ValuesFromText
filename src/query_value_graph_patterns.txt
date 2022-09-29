@@ -11,15 +11,21 @@ WHERE
 ?s ?p ?o . ?o vcvf:triggers ?v .
 ?s rdf:type ?type
 }
-
-SELECT ?s ?s_p ?s_o ?o ?v
+-------------------------------
+SELECT ?s ?s_o ?o ?v
 WHERE
 {
 ?s ?p ?o . 
 ?o vcvf:triggers ?v .
-?s ?s_p ?s_o
+?s rdfs:subClassOf ?s_o
 }
 
+SELECT ?s ?p ?s_o ?o ?v \
+                WHERE \
+                { \
+                ?s ?p ?o . \
+                ?s vcvf:triggers ?v . \
+                }
 Consiglio di ottenere dati statistici in merito e trovare e.g. il tipo ontologico più comune tra tutti i trigger valoriali (anche per avere statistiche di utilizzo in merito al funzionamento ti ValueNet)
 
 
@@ -45,7 +51,8 @@ SELECT ?s ?x ?p ?o ?v
 WHERE
 {
 ?s ?p ?x .
-?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . ?s vcvf:triggers ?v .
+?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . 
+?s vcvf:triggers ?v .
 }
 
 oppure considerando ?o come trigger:
@@ -56,7 +63,8 @@ SELECT ?s ?x ?p ?o ?v
 WHERE
 {
 ?s ?p ?x .
-?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . ?o vcvf:triggers ?v .
+?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . 
+?o vcvf:triggers ?v .
 }
 
 oppure considerando ?x come trigger:
@@ -67,12 +75,9 @@ SELECT ?s ?x ?p ?o ?v
 WHERE
 {
 ?s ?p ?x .
-?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . ?x vcvf:triggers ?v .
+?x <http://www.ontologydesignpatterns.org/ont/vn/abox/role/Patient> ?o . 
+?x vcvf:triggers ?v .
 }
-
-
-
-
 
 3. Query leggermente più intricata, ma che segue un pattern comune sui grafi di FRED:
 
@@ -166,3 +171,34 @@ http://www.ontologydesignpatterns.org/ont/vn/abox/role/Time
 http://www.ontologydesignpatterns.org/ont/vn/abox/role/Topic
 http://www.ontologydesignpatterns.org/ont/vn/abox/role/Value
 http://www.ontologydesignpatterns.org/ont/vn/abox/role/Weather_type
+
+
+Query che ritorna trigger valoriali appartenti a frame (?o_c3)
+"SELECT ?s ?o ?o_c ?o_p ?o_c2 ?o_c3 ?o_p2 ?v \
+                                WHERE{\
+                                ?s <http://www.ontologydesignpatterns.org/ont/vn/abox/role/"+role+"> ?o .\
+                                ?o <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o_c.\
+                                ?o_c ?o_p ?o_c2.\
+                                ?o_c2 ?o_p2 ?o_c3.\
+                                ?o_c3 vcvf:triggers ?v\
+                                }"
+
+
+SELECT ?s ?o ?o_c ?o_p ?o_c2 ?o_c3 ?o_p2 ?o_p3 ?o_c4 ?v\
+                                WHERE{\
+                                ?s <http://www.ontologydesignpatterns.org/ont/vn/abox/role/"+role+"> ?o .\
+                                ?o <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o_c.\
+                                ?o_c ?o_p ?o_c2.\
+                                ?o_c2 ?o_p2 ?o_c3.\
+                                ?o_c3 ?o_p3 ?o_c4.\
+                                ?o_c4 vcvf:triggers ?v\
+                                }
+
+"SELECT ?s4 ?s3 ?p3 ?s2 ?p2 ?s1 ?p1 ?trigger ?trigger_value\
+	                        WHERE{\
+		                    ?trigger vcvf:triggers ?trigger_value.\
+                            ?s1 ?p1 ?trigger.\
+                            ?s2 ?p2 ?s1.\
+                            ?s3 ?p3 ?s2.\
+                            ?s4 ns1:"+role+" ?s3\
+	                        }"

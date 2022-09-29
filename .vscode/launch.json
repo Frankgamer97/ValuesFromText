@@ -8,12 +8,13 @@
             "name": "rdf analysis debug",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "src/app.py",
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
                 "--no-rdf_downloading",
-                "--no-preprocessing"
+                "--no-preprocessing",
+                "--no-valuenet"
             ]
         },
         {

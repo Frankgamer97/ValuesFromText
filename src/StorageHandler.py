@@ -128,16 +128,16 @@ class StorageHandler():
     @staticmethod
     def load_rdf(text, extended = False):
         turtle_name = StorageHandler.get_text_hash(text)
-        print("hash: ", turtle_name)
+        # print("hash: ", turtle_name)
         
         turtle_path = StorageHandler.get_rdf_path(turtle_name, extended=extended)
-        print("exist: ", os.path.exists(turtle_path))
+        # print("exist: ", os.path.exists(turtle_path))
         graph = None
         try:
             graph = rdflib.Graph()
             graph.parse(turtle_path, format='turtle')
         except:
-            print("[Error] Unable to load rdf")
+            print("[Error] Unable to load rdf. Exist: ", os.path.exists(turtle_path))
 
         return graph
 

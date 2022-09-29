@@ -1,5 +1,7 @@
+from importlib.resources import path
 from lib2to3.pgen2 import token
 from re import sub
+from winreg import QueryInfoKey
 from StorageHandler import StorageHandler
 
 from nltk.stem import WordNetLemmatizer, PorterStemmer
@@ -44,6 +46,97 @@ all_names = [
 ]
 
 valuesparql = SPARQLWrapper('http://localhost:3030/ValueNet/sparql')
+turtleNet = SPARQLWrapper('http://localhost:3030/turtle_analysis/sparql')
+
+prefixes = "PREFIX dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>\
+            PREFIX haidt: <https://w3id.org/spice/SON/HaidtValues#>\
+            PREFIX ns1: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/>\
+            PREFIX ns2: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#>\
+            PREFIX ns3: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#>\
+            PREFIX owl: <http://www.w3.org/2002/07/owl#>\
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+            PREFIX vcvf: <http://www.semanticweb.org/sdg/ontologies/2022/0/valuecore_with_value_frames.owl#>\
+            PREFIX wn30instances: <https://w3id.org/framester/wn/wn30/instances/>\
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
+
+primary_role = [
+    "Agent",
+    "Actor",
+    "Beneficiary",
+    "Cause",
+    "Experiencer",
+    "Patient",
+    "Recipient",
+    "Theme",
+    "Toward"
+]
+
+secondary_role = [
+    "Abstract_or_physical",
+    "Actor1",
+    "Actor2",
+    "Agent_i",
+    "Agent_j",
+    "Asset",
+    "Attribute",
+    "Destination",
+    "Directedmotion",
+    "Direction",
+    "During_Event",
+    "During_Event1",
+    "During_Event2",
+    "Emotion",
+    "End_Event",
+    "End_Event1",
+    "End_Event2",
+    "Endstate",
+    "Event",
+    "Event1",
+    "Event2",
+    "Extent",
+    "Forceful",
+    "Form",
+    "From",
+    "Illegal",
+    "Instrument",
+    "Location",
+    "Location1",
+    "Location2",
+    "Material",
+    "Motion",
+    "Oblique",
+    "Oblique1",
+    "Odor",
+    "Patient1",
+    "Patient1_or_Patient2",
+    "Patient2",
+    "Physical",
+    "Physical_or_Abstract",
+    "Pivot",
+    "Pos",
+    "Predicate",
+    "Prep_Dir",
+    "Product",
+    "Prop",
+    "Proposition",
+    "Result",
+    "Result_Event",
+    "Role",
+    "Sound",
+    "Source",
+    "Start_Event",
+    "Start_Event1",
+    "Start_Event2",
+    "Stimulus",
+    "Theme1",
+    "Theme2",
+    "Time",
+    "Topic",
+    "Value",
+    "Weather_type"
+
+]
 
 class DatasetHandler:
 
@@ -636,7 +729,7 @@ class DatasetHandler:
             if src == "trigger":
                 for key in label_dict.keys():
                     data_dict[key] = [el.split("_")[0] for el in data_dict[key]]
-                    data_dict[key] = ["-".join(el.split("-")[1:3]) if "-" in el else el for el in data_dict[key]]
+                    data_dict[key] = ["-".join(el.split("-")[1:]) if "-" in el else el for el in data_dict[key]]
 
             if show:
                 print(f"[{src}]")
@@ -751,94 +844,409 @@ class DatasetHandler:
     @staticmethod
     def trigger_query(graph):
 
-        prefixes = "PREFIX dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>\
-                    PREFIX haidt: <https://w3id.org/spice/SON/HaidtValues#>\
-                    PREFIX ns1: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/>\
-                    PREFIX ns2: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#>\
-                    PREFIX ns3: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#>\
-                    PREFIX owl: <http://www.w3.org/2002/07/owl#>\
-                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\
-                    PREFIX vcvf: <http://www.semanticweb.org/sdg/ontologies/2022/0/valuecore_with_value_frames.owl#>\
-                    PREFIX wn30instances: <https://w3id.org/framester/wn/wn30/instances/>\
-                    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
+        global prefixes
 
-        query =prefixes +"SELECT ?s ?type ?o ?v \
-                WHERE \
-                { \
-                ?s ?p ?o . \
-                ?o vcvf:triggers ?v . \
-                ?s rdf:type ?type \
-                }"
+        query =prefixes +"SELECT ?s ?s_o ?o ?v\
+                        WHERE{ ?s ?p ?o .\
+                        ?o vcvf:triggers ?v .\
+                        ?s rdfs:subClassOf ?s_o\
+                        }"
 
         res = graph.query(query)
         res_list=[]
         for row in res:
             row_dict = {}
 
-            row_dict["s"] = row.s
-            row_dict["type"] = row.type
-            row_dict["o"] = row.o
-            row_dict["v"] = row.v
+            row_dict["subject"] = str(row.s)
+            row_dict["subject_subClassOf"] = str(row.s_o)
+            row_dict["trigger"] = str(row.o)
+            row_dict["trigger_value"] = str(row.v)
+            # row_dict["s"] = str(row.s)
+            # row_dict["s superClass"] = str(row.s_o)
+            # row_dict["s trigger"] = str(row.s_oo)
+            # row_dict["o"] = str(row.o)
+            # row_dict["v"] = str(row.v)
+            # row_dict["p"] = str(row.p)
 
-            print()
-            print(f"{row.s} -> {row.type}")
-            print(f"{row.o} -> {row.v}")
-            print()
             res_list.append(row_dict)
         
         return res_list
 
     @staticmethod
+    def __path_query(role, intermediate_nodes = 0):
+        global prefixes
+
+        if intermediate_nodes <= 0:
+            intermediate_nodes = 0        
+        
+        query = "?o_c0 "
+        query += " ".join(["?o_c"+str(i+1) for i in range(intermediate_nodes)])
+        query = prefixes + " SELECT "+ query + " ?v WHERE{ "
+        query += "?s ns1:"+role+" ?o. "
+        query += "?o rdf:type ?o_c0. "
+        query += " ".join(["?o_c"+str(i)+" rdfs:subClassOf ?o_c"+str(i+1)+". " for i in range(intermediate_nodes)])
+        query += "?o_c"+str(intermediate_nodes)+" vcvf:triggers ?v"
+        query +="}"
+
+        return query
+
+
+    @staticmethod
+    def __remove_local_cycle(l,i, cleaned_l):
+        if i >= len(l):
+            return
+
+        if l.index(l[i]) == i:
+            cleaned_l.append(l[i])
+        else:
+            prev_index = l.index(l[i])
+            s_l = l[:prev_index]
+            cleaned_l[:] = s_l + [l[i]]
+        
+        DatasetHandler.__remove_local_cycle(l,i+1, cleaned_l)
+
+
+    @staticmethod
+    def __check_path(path_dict, visited_paths: list):
+        path = [ el["value"] for el in path_dict.values()]
+
+        is_ok = True
+        
+        # for i in range(len(path)):
+
+        for v_path in visited_paths:
+            if " ".join(v_path) in " ".join(path):
+                is_ok = False
+                break
+    
+        
+        if is_ok:
+        
+            cleaned_path = []
+            DatasetHandler.__remove_local_cycle(path,0,cleaned_path)
+
+            if cleaned_path not in visited_paths:
+                visited_paths.append(cleaned_path)
+            else:
+                is_ok = False
+
+        return is_ok, visited_paths
+
+
+    """
+    
+    A -> B -> C -> D -> B -> C -> D -> F 
+
+
+    A -> B -> C -> D -> B -> C -> D -> B -> C -> D -> F 
+
+    -------------------------------
+
+    A -> B -> F
+    A -> B -> D -> F
+    A -> B -> C -> D -> F
+
+    A -> Z -> X -> Z -> X -> F =>     A -> Z -> X -> F
+
+    A -> Z -> X -> Z -> X -> F
+
+    """
+    # (1)
+    @staticmethod
+    def get_path_avg_distance():
+        roles = primary_role#  + secondary_role 
+        role_dict = {role:[] for role in roles}
+
+        visited_paths = []
+
+        for role in roles:
+            i = 0
+            result = []
+            
+            only_one = True
+            
+            while True:
+                query = DatasetHandler.__path_query(role, intermediate_nodes=i)
+                
+                turtleNet.setQuery(query)
+                turtleNet.setReturnFormat(JSON)
+                data = turtleNet.query().convert()
+
+                result = data["results"]["bindings"]
+                cleaned_result = []
+
+                for path in result:
+                    is_ok, visited_paths = DatasetHandler.__check_path(path, visited_paths)
+                    if is_ok:
+                        cleaned_result.append(path)
+
+                result = cleaned_result
+
+                if len(result) > 0 or i == 0:      
+
+                    #############################àà
+                    if i >= 6 and only_one:
+                        # print(query)
+                        # print()
+                        print(result)
+                        print()
+
+                        if i == 7: 
+                            only_one = False
+                            print()
+
+                    role_dict[role].append(len(result))
+
+                    print()
+                    print(f"{role}-{i}: {len(result)}")
+
+                    i += 1
+                else:
+                    break
+
+            print()
+            role_dict[role] = sum(role_dict[role])/len(role_dict[role])
+        
+        StorageHandler.save_json("average_path.json", role_dict)
+        return role_dict
+
+    # (3)
+    @staticmethod
+    def path_analysis_old():
+        roles = primary_role#  + secondary_role 
+        paths = []
+
+        df_dict = {"role":[], "haidt":[], "path":[]}
+        for role in roles:
+            i = 0
+            result = []
+            while True:
+                query = DatasetHandler.__path_query(role, intermediate_nodes=i)
+                
+                turtleNet.setQuery(query)
+                turtleNet.setReturnFormat(JSON)
+                data = turtleNet.query().convert()
+
+                results = data["results"]["bindings"]
+                
+                if len(result) > 0 or i == 0:                
+
+                    get_path = lambda x: " ".join([el["value"].split("/")[-1] for el in x.values()])
+                    
+                    for result in results:
+                        haidt = result["v"]["values"].split("/")[-1]
+                        path = get_path(result)
+
+                        df_dict["role"].append(role)
+                        df_dict["haidt"].append(haidt)
+                        df_dict["path"].append(path)
+                    
+                    paths.append(data)
+                    i += 1
+                else:
+                    break
+
+            df_path = pd.DataFrame(df_dict)
+            StorageHandler.save_data_csv(df_path, name="path_info")
+
+    # (1) - (3)
+    @staticmethod
+    def path_analysis():
+
+        roles = primary_role#  + secondary_role 
+        role_dict = {role:[] for role in roles}
+        visited_paths = []
+        df_dict = {"role":[], "haidt":[], "path":[]}
+        
+        for role in roles:
+            i = 0
+            # result = []
+
+            while True:
+                query = DatasetHandler.__path_query(role, intermediate_nodes=i)
+                
+                turtleNet.setQuery(query)
+                turtleNet.setReturnFormat(JSON)
+                data = turtleNet.query().convert()
+
+                results = data["results"]["bindings"]
+                #########
+                cleaned_result = []
+
+                for path in results:
+                    is_ok, visited_paths = DatasetHandler.__check_path(path, visited_paths)
+                    if is_ok:
+                        cleaned_result.append(path)
+
+                results = cleaned_result   
+                ########
+
+                if len(results) > 0 or i == 0:  
+                    role_dict[role].append(len(results))
+
+                    print()
+                    print(f"{role}-{i}: {len(results)}")        
+
+                    # get_path = lambda x: " ".join([el["value"].split("/")[-1] for el in x.values()])
+                    get_path = lambda x: [el["value"] for el in x.values()]
+                    
+                    for result in results:
+                        # haidt = result["v"]["value"].split("/")[-1]
+                        haidt = result["v"]["value"].split("#")[-1]
+                        path = get_path(result)
+
+                        df_dict["role"].append(role)
+                        df_dict["haidt"].append(haidt)
+                        df_dict["path"].append(path)
+
+                    i += 1
+                else:
+                    break
+
+            role_dict[role] = sum(role_dict[role])/len(role_dict[role])
+
+        df_path = pd.DataFrame(df_dict)
+        StorageHandler.save_data_csv(df_path, name="path_info")
+
+        StorageHandler.save_json("average_path.json", role_dict)
+
+        return role_dict, df_path
+
+            
+
+
+    @staticmethod
+    def __is_verbnet(uri):
+        return True if "vn" == uri.split(":")[0] else False
+
+    def __is_wordnet(uri):
+        
+        return True if "synset" in uri.split(":")[1] else False
+
+    def __is_frame(uri):
+        return True if "fsdata" in uri else False
+
+    # (2)
+    @staticmethod
+    def trigger_info(df_ValueNet):
+        global prefixes
+
+        query = prefixes + "SELECT ?s ?o WHERE \
+                {\
+                ?s vcvf:triggers ?o.\
+                }"
+
+        # turtleNet.setQuery(query)
+        # turtleNet.setReturnFormat(JSON)
+        # data = turtleNet.query().convert()
+
+        triggers_dict = {
+            "verbnet": 0,
+            "wordnet": 0,
+            "frame": 0,
+            "other": 0
+        }
+
+        for text in df_ValueNet["text"].tolist():
+            try:
+                # print(text)
+                graph = StorageHandler.load_rdf(text, extended=True)
+                res = graph.query(query)
+                subs = [graph.qname(el) for el in list(dict(res).keys())]
+                # print(f"{subs}")
+
+                for sub in subs:
+                    if DatasetHandler.__is_verbnet(sub):
+                        triggers_dict["verbnet"] += 1
+                    elif DatasetHandler.__is_wordnet(sub):
+                        triggers_dict["wordnet"] += 1
+                    elif DatasetHandler.__is_frame(sub):
+                        triggers_dict["frame"] += 1
+                    else:
+                        triggers_dict["other"] += 1
+            except:
+                print("ERROR")
+                break
+
+        print()
+        print(triggers_dict)
+        print()
+        return triggers_dict
+
+    @staticmethod
+    def role_query(graph):
+
+        global prefixes
+        global primary_role
+        global secondary_role
+
+        roles = primary_role#  + secondary_role 
+        role_dict = {role:[] for role in roles}
+        # role_dict = {"ALL":[]}
+
+        for role in roles:
+            query =prefixes +"SELECT ?s4 ?s3 ?p3 ?s2 ?p2 ?s1 ?p1 ?trigger ?trigger_value\
+	                        WHERE{\
+		                    ?trigger vcvf:triggers ?trigger_value.\
+                            ?s1 ?p1 ?trigger.\
+                            ?s2 ?p2 ?s1.\
+                            ?s3 ?p3 ?s2.\
+                            ?s4 ns1:"+role+" ?s3\
+	                        }"
+                                # ?s rdfs:equivalentClass ?s_c.\
+                                #?s vcvf:triggers ?v .\
+
+            res = graph.query(query)
+            # print(query)
+
+            for row in res:
+                row_dict = {}
+
+                row_dict["s4"] = str(row.s4)
+                row_dict["s3"] = str(row.s3)
+                row_dict["p3"] = str(row.p3)
+                row_dict["s2"] = str(row.s2)
+                row_dict["p2"] = str(row.p2)
+                row_dict["s1"] = str(row.s1)
+                row_dict["p1"] = str(row.p1)
+                row_dict["trigger"] = str(row.trigger)
+                row_dict["trigger_value"] = str(row.trigger_value)
+
+
+                role_dict[role].append(row_dict)
+            # break
+            
+        return role_dict
+
+    @staticmethod
     def rdf_semantic_analysis(df_ValueNet, overwrite=False):
-
-        # bho = []
-        # for file in os.listdir(StorageHandler.get_data_rdf()):
-        #     try:
-        #         g = rdflib.Graph()
-        #         g.parse(StorageHandler.get_rdf_path(file.split(".")[0],extended=False),format='turtle')
-        #     except:
-        #         bho.append(file.split(".")[0])
-
 
         if not overwrite:
             pass
         else:
 
-            # texts = df_ValueNet[df_ValueNet["label_predicted"] == "<damaged>"]["text"].tolist()
-            # texts_hash =[StorageHandler.get_text_hash(txt) for txt in texts]
+            DatasetHandler.get_path_avg_distance()
+            # DatasetHandler.trigger_info(df_ValueNet)
+            
+            # DatasetHandler.path_analysis()
+            # texts = df_ValueNet["text"].tolist()
 
-            # np_bho = np.array(bho)
-            # np_texts = np.array(texts_hash)
-            # control = True
-            # for file in bho:
-            #     if not file in texts_hash:
-            #         control = False
-            #         break
+            # for text in texts:
+            #     print()
+            #     print(f"text: {text}")
 
-            # print("VA TUTTO BENE? ", control)
-            # print("Damaged files not present in ValueNet",np_bho[[True if el not in np_texts else False for el in np_bho]])
-            # print("ValueNet files not present in damaged files", np_texts[[True if el not in np_bho else False for el in np_texts]])
+            #     graph = StorageHandler.load_rdf(text, extended=True)
+            #     if graph is not None: 
+            #         # res = DatasetHandler.trigger_query(graph)
+            #         # for data in res:
+            #         #     print()
+            #         #     DatasetHandler.print_dict(data)
 
-            texts = df_ValueNet["text"].tolist()
+            #         res = DatasetHandler.role_query(graph)
+            #         DatasetHandler.print_dict(res)
+            #         # break
+                    
 
-            for text in texts:
-                print()
-                print(f"text: {text}")
-                print()
-                print(StorageHandler.get_text_hash(text))
-                print()
-                graph = StorageHandler.load_rdf(text, extended=True)
-                if graph is not None: 
-                    res = DatasetHandler.trigger_query(graph)
-
-                    print(f"results: {len(res)}")
-                    for data in res:
-                        print()
-                        DatasetHandler.print_dict(data)
-                        print()
-
-                    break
-                
                 
 
         
