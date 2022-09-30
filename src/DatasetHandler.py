@@ -1,33 +1,26 @@
-from importlib.resources import path
-from lib2to3.pgen2 import token
-from re import sub
-from winreg import QueryInfoKey
 from StorageHandler import StorageHandler
 
-from nltk.stem import WordNetLemmatizer, PorterStemmer
-from nltk import pos_tag, download
+from nltk.stem import WordNetLemmatizer
+from nltk import pos_tag
 from nltk.corpus import wordnet
 
 import pandas as pd
 import gdown
 import zipfile
 import os
-import requests
 import rdflib
 
 import requests
 import rdflib
-from rdflib import Graph, Literal, RDF, URIRef, Namespace, BNode
+from rdflib import Namespace
 import SPARQLWrapper
 from SPARQLWrapper import SPARQLWrapper, JSON, N3, TURTLE, RDF, CSV
 import json
 import os
-from collections import defaultdict
 import pandas as pd
-import openpyxl
+
 import numpy as np
-from openpyxl import Workbook
-from openpyxl import load_workbook
+
 
 all_names = [
     Namespace("https://w3id.org/framester/wn/wn30/"), 
@@ -873,20 +866,37 @@ class DatasetHandler:
         return res_list
 
     @staticmethod
-    def __path_query(role, intermediate_nodes = 0):
+    def __path_query(role, intermediate_nodes = 0, role_start = "obj"):
         global prefixes
 
-        if intermediate_nodes <= 0:
-            intermediate_nodes = 0        
+        assert intermediate_nodes >= 0
+        assert role_start == "sub" or role_start == "obj"
+   
         
-        query = "?o_c0 "
-        query += " ".join(["?o_c"+str(i+1) for i in range(intermediate_nodes)])
-        query = prefixes + " SELECT "+ query + " ?v WHERE{ "
-        query += "?s ns1:"+role+" ?o. "
-        query += "?o rdf:type ?o_c0. "
-        query += " ".join(["?o_c"+str(i)+" rdfs:subClassOf ?o_c"+str(i+1)+". " for i in range(intermediate_nodes)])
-        query += "?o_c"+str(intermediate_nodes)+" vcvf:triggers ?v"
-        query +="}"
+        query = ""
+
+        if role_start == "obj":
+
+            query = "?o_c0 "
+            query += " ".join(["?o_c"+str(i+1) for i in range(intermediate_nodes)])
+            query = prefixes + " SELECT "+ query + " ?v WHERE{ "
+            query += "?s ns1:"+role+" ?o. "
+            query += "?o rdf:type ?o_c0. "
+            query += " ".join(["?o_c"+str(i)+" rdfs:subClassOf ?o_c"+str(i+1)+". " for i in range(intermediate_nodes)])
+            query += "?o_c"+str(intermediate_nodes)+" vcvf:triggers ?v"
+            query +="}"
+
+        else:
+
+            query = "?s_c0 "
+            query += " ".join(["?s_c"+str(i+1) for i in range(intermediate_nodes)])
+            query = prefixes + " SELECT "+ query + " ?v WHERE{ "
+            query += "?s ns1:"+role+" ?o. "
+
+            query += "?s rdf:type ?s_c0. "
+            query += " ".join(["?s_c"+str(i)+" rdfs:subClassOf ?s_c"+str(i+1)+". " for i in range(intermediate_nodes)])
+            query += "?s_c"+str(intermediate_nodes)+" vcvf:triggers ?v"
+            query +="}"
 
         return query
 
@@ -934,136 +944,32 @@ class DatasetHandler:
 
 
     """
-    
     A -> B -> C -> D -> B -> C -> D -> F 
-
-
     A -> B -> C -> D -> B -> C -> D -> B -> C -> D -> F 
-
     -------------------------------
-
     A -> B -> F
     A -> B -> D -> F
     A -> B -> C -> D -> F
 
     A -> Z -> X -> Z -> X -> F =>     A -> Z -> X -> F
-
     A -> Z -> X -> Z -> X -> F
-
     """
-    # (1)
-    @staticmethod
-    def get_path_avg_distance():
-        roles = primary_role#  + secondary_role 
-        role_dict = {role:[] for role in roles}
-
-        visited_paths = []
-
-        for role in roles:
-            i = 0
-            result = []
-            
-            only_one = True
-            
-            while True:
-                query = DatasetHandler.__path_query(role, intermediate_nodes=i)
-                
-                turtleNet.setQuery(query)
-                turtleNet.setReturnFormat(JSON)
-                data = turtleNet.query().convert()
-
-                result = data["results"]["bindings"]
-                cleaned_result = []
-
-                for path in result:
-                    is_ok, visited_paths = DatasetHandler.__check_path(path, visited_paths)
-                    if is_ok:
-                        cleaned_result.append(path)
-
-                result = cleaned_result
-
-                if len(result) > 0 or i == 0:      
-
-                    #############################àà
-                    if i >= 6 and only_one:
-                        # print(query)
-                        # print()
-                        print(result)
-                        print()
-
-                        if i == 7: 
-                            only_one = False
-                            print()
-
-                    role_dict[role].append(len(result))
-
-                    print()
-                    print(f"{role}-{i}: {len(result)}")
-
-                    i += 1
-                else:
-                    break
-
-            print()
-            role_dict[role] = sum(role_dict[role])/len(role_dict[role])
-        
-        StorageHandler.save_json("average_path.json", role_dict)
-        return role_dict
-
-    # (3)
-    @staticmethod
-    def path_analysis_old():
-        roles = primary_role#  + secondary_role 
-        paths = []
-
-        df_dict = {"role":[], "haidt":[], "path":[]}
-        for role in roles:
-            i = 0
-            result = []
-            while True:
-                query = DatasetHandler.__path_query(role, intermediate_nodes=i)
-                
-                turtleNet.setQuery(query)
-                turtleNet.setReturnFormat(JSON)
-                data = turtleNet.query().convert()
-
-                results = data["results"]["bindings"]
-                
-                if len(result) > 0 or i == 0:                
-
-                    get_path = lambda x: " ".join([el["value"].split("/")[-1] for el in x.values()])
-                    
-                    for result in results:
-                        haidt = result["v"]["values"].split("/")[-1]
-                        path = get_path(result)
-
-                        df_dict["role"].append(role)
-                        df_dict["haidt"].append(haidt)
-                        df_dict["path"].append(path)
-                    
-                    paths.append(data)
-                    i += 1
-                else:
-                    break
-
-            df_path = pd.DataFrame(df_dict)
-            StorageHandler.save_data_csv(df_path, name="path_info")
 
     # (1) - (3)
     @staticmethod
-    def path_analysis():
+    def path_analysis(role_start: str, df_overwrite = True):
 
         roles = primary_role#  + secondary_role 
         role_dict = {role:[] for role in roles}
         visited_paths = []
-        df_dict = {"role":[], "haidt":[], "path":[]}
+        df_dict = {"role":[], "role_start": [], "haidt":[], "path":[]}
         
         for role in roles:
             i = 0
             # result = []
 
             while True:
-                query = DatasetHandler.__path_query(role, intermediate_nodes=i)
+                query = DatasetHandler.__path_query(role, intermediate_nodes=i, role_start=role_start)
                 
                 turtleNet.setQuery(query)
                 turtleNet.setReturnFormat(JSON)
@@ -1096,6 +1002,7 @@ class DatasetHandler:
                         path = get_path(result)
 
                         df_dict["role"].append(role)
+                        df_dict["role_start"].append(role_start)
                         df_dict["haidt"].append(haidt)
                         df_dict["path"].append(path)
 
@@ -1106,9 +1013,32 @@ class DatasetHandler:
             role_dict[role] = sum(role_dict[role])/len(role_dict[role])
 
         df_path = pd.DataFrame(df_dict)
-        StorageHandler.save_data_csv(df_path, name="path_info")
+        json_file = {role_start: role_dict}
 
-        StorageHandler.save_json("average_path.json", role_dict)
+        if not df_overwrite:
+            df_file_path = StorageHandler.get_propreccesed_file_path("path_info.csv")
+
+            if df_file_path:
+                df_file = StorageHandler.load_csv_to_dataframe(df_file_path)
+                df_path = pd.concat([df_file, df_path])
+
+            else:
+                print("[ERROR] No previous path_info.csv found")
+                return role_dict, df_path
+
+            json_file = dict(StorageHandler.load_json("average_path.json"))
+
+            if not json_file:
+                print("[ERROR] No previous average_path found")
+                return role_dict, df_path
+
+            json_file[role_start] = role_dict
+
+
+        StorageHandler.save_data_csv(df_path, name="path_info")
+        StorageHandler.save_json("average_path.json", json_file)
+
+
 
         return role_dict, df_path
 
@@ -1135,10 +1065,6 @@ class DatasetHandler:
                 {\
                 ?s vcvf:triggers ?o.\
                 }"
-
-        # turtleNet.setQuery(query)
-        # turtleNet.setReturnFormat(JSON)
-        # data = turtleNet.query().convert()
 
         triggers_dict = {
             "verbnet": 0,
@@ -1173,6 +1099,39 @@ class DatasetHandler:
         print()
         return triggers_dict
 
+    @staticmethod
+    def rdf_semantic_analysis(df_ValueNet, overwrite=False):
+
+        if not overwrite:
+            pass
+        else:
+
+            # DatasetHandler.get_path_avg_distance()
+            # DatasetHandler.trigger_info(df_ValueNet)
+            
+
+            DatasetHandler.path_analysis("obj")
+            DatasetHandler.path_analysis("sub", df_overwrite=False)
+            
+            # texts = df_ValueNet["text"].tolist()
+
+            # for text in texts:
+            #     print()
+            #     print(f"text: {text}")
+
+            #     graph = StorageHandler.load_rdf(text, extended=True)
+            #     if graph is not None: 
+            #         # res = DatasetHandler.trigger_query(graph)
+            #         # for data in res:
+            #         #     print()
+            #         #     DatasetHandler.print_dict(data)
+
+            #         res = DatasetHandler.role_query(graph)
+            #         DatasetHandler.print_dict(res)
+            #         # break
+                    
+
+    # useless?
     @staticmethod
     def role_query(graph):
 
@@ -1217,36 +1176,6 @@ class DatasetHandler:
             # break
             
         return role_dict
-
-    @staticmethod
-    def rdf_semantic_analysis(df_ValueNet, overwrite=False):
-
-        if not overwrite:
-            pass
-        else:
-
-            DatasetHandler.get_path_avg_distance()
-            # DatasetHandler.trigger_info(df_ValueNet)
-            
-            # DatasetHandler.path_analysis()
-            # texts = df_ValueNet["text"].tolist()
-
-            # for text in texts:
-            #     print()
-            #     print(f"text: {text}")
-
-            #     graph = StorageHandler.load_rdf(text, extended=True)
-            #     if graph is not None: 
-            #         # res = DatasetHandler.trigger_query(graph)
-            #         # for data in res:
-            #         #     print()
-            #         #     DatasetHandler.print_dict(data)
-
-            #         res = DatasetHandler.role_query(graph)
-            #         DatasetHandler.print_dict(res)
-            #         # break
-                    
-
                 
 
         

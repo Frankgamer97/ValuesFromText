@@ -152,9 +152,14 @@ class StorageHandler():
     @staticmethod
     def load_json(json_name):
         file_path = StorageHandler.get_propreccesed_file_path(json_name)
-        with open(file_path, "r") as f:
 
-            data_json = str(json.load(f))
+        try:
+            with open(file_path, "r") as f:
+
+                data_json = json.load(f)
+        except:
+            data_json = None
+            
         return data_json
         
     @staticmethod

@@ -1,11 +1,24 @@
 {
-    "Agent": 8.25,
-    "Actor": 0.0,
-    "Beneficiary": 0.0,
-    "Cause": 0.0,
-    "Experiencer": 0.0,
-    "Patient": 4.666666666666667,
-    "Recipient": 0.0,
-    "Theme": 14.0,
-    "Toward": 0.0
+    "obj": {
+        "Agent": 8.25,
+        "Actor": 0.0,
+        "Beneficiary": 0.0,
+        "Cause": 0.0,
+        "Experiencer": 0.0,
+        "Patient": 4.666666666666667,
+        "Recipient": 0.0,
+        "Theme": 14.0,
+        "Toward": 0.0
+    },
+    "sub": {
+        "Agent": 31.666666666666668,
+        "Actor": 1.0,
+        "Beneficiary": 0.0,
+        "Cause": 3.0,
+        "Experiencer": 2.0,
+        "Patient": 0.0,
+        "Recipient": 0.5,
+        "Theme": 2.3333333333333335,
+        "Toward": 0.0
+    }
 }
