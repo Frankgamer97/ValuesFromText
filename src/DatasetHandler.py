@@ -12,7 +12,7 @@ import rdflib
 
 import requests
 import rdflib
-from rdflib import Namespace
+from rdflib import Namespace, URIRef
 import SPARQLWrapper
 from SPARQLWrapper import SPARQLWrapper, JSON, N3, TURTLE, RDF, CSV
 import json
@@ -918,6 +918,7 @@ class DatasetHandler:
 
     @staticmethod
     def __check_path(path_dict, visited_paths: list):
+
         path = [ el["value"] for el in path_dict.values()]
 
         is_ok = True
@@ -955,15 +956,16 @@ class DatasetHandler:
     A -> Z -> X -> Z -> X -> F
     """
 
-    # (1) - (3)
+    # (1) - (3) - (4)
     @staticmethod
-    def path_analysis(role_start = "obj", df_concatenate = True, overwrite = True):
+    def path_analysis(df_ValueNet, role_start = "obj", df_concatenate = False, overwrite = True, fuseki = True):
 
+        
         if not overwrite:
             df_file_path = StorageHandler.get_propreccesed_file_path("df_path_info.csv")
             df_file = StorageHandler.load_csv_to_dataframe(df_file_path)
 
-            if df_file is not None:
+            if df_file is None:
                 print("[ERROR] No previous path_info.csv found")
 
             json_file = dict(StorageHandler.load_json("average_path.json"))
@@ -973,6 +975,22 @@ class DatasetHandler:
 
             return json_file, df_file
 
+        local_turtleNet = rdflib.Graph()
+        
+        if not fuseki:
+            texts = df_ValueNet["text"].tolist()
+
+            for text in texts:
+
+                graph = StorageHandler.load_rdf(text, extended=True)
+                if graph is not None: 
+                    for s, p, o in graph.triples((None, None, None)):
+                        s = str(s)
+                        p = str(p)
+                        o = str(o)
+                        local_turtleNet.add((URIRef(s), URIRef(p), URIRef(o)))
+
+            print("LOADED LOCAL TURTLENET")
 
         roles = primary_role#  + secondary_role 
         role_dict = {role:[] for role in roles}
@@ -986,15 +1004,31 @@ class DatasetHandler:
             while True:
                 query = DatasetHandler.__path_query(role, intermediate_nodes=i, role_start=role_start)
                 
-                turtleNet.setQuery(query)
-                turtleNet.setReturnFormat(JSON)
-                data = turtleNet.query().convert()
+                result = None
+                if fuseki:
+                    
+                    turtleNet.setQuery(query)
+                    turtleNet.setReturnFormat(JSON)
+                    data = turtleNet.query().convert()
 
-                results = data["results"]["bindings"]
+                    results = data["results"]["bindings"]
+
+                else:
+                    data = local_turtleNet.query(query)
+                    results = data.bindings
+
                 #########
-                cleaned_result = []
+
+                cleaned_result = [] 
+
 
                 for path in results:
+
+                    if not fuseki:
+                        path_keys = [str(el) for el in list(path.keys())]
+                        path_values = [{'type':'uri', 'value': str(el)} for el in list(path.values())]
+                        path = dict(zip(path_keys, path_values))
+
                     is_ok, visited_paths = DatasetHandler.__check_path(path, visited_paths)
                     if is_ok:
                         cleaned_result.append(path)
@@ -1019,7 +1053,7 @@ class DatasetHandler:
                         df_dict["role"].append(role)
                         df_dict["role_start"].append(role_start)
                         df_dict["haidt"].append(haidt)
-                        df_dict["path"].append(path)
+                        df_dict["path"].append(" ".join(path))
 
                     i += 1
                 else:
@@ -1030,12 +1064,12 @@ class DatasetHandler:
         df_path = pd.DataFrame(df_dict)
         json_file = {role_start: role_dict}
 
-        if not df_concatenate:
+        if df_concatenate:
             df_file_path = StorageHandler.get_propreccesed_file_path("df_path_info.csv")
             df_file = StorageHandler.load_csv_to_dataframe(df_file_path)
 
             if df_file is not None:
-                df_path = pd.concat([df_file, df_path])
+                df_path = pd.concat([df_file, df_path]).reset_index(drop=True)
 
             else:
                 print("[ERROR] No previous path_info.csv found")
@@ -1121,15 +1155,15 @@ class DatasetHandler:
             pass
         else:
 
-            # DatasetHandler.get_path_avg_distance()
             # DatasetHandler.trigger_info(df_ValueNet)
             
 
-            # _, df_role_obj = DatasetHandler.path_analysis(role_start="obj")
-            # _, df_role = DatasetHandler.path_analysis(role_start="sub", df_overwrite=False)
+            # DatasetHandler.path_analysis(df_ValueNet,role_start="obj", fuseki=False)
+            
+            # _, df_role = DatasetHandler.path_analysis(df_ValueNet, role_start="sub", df_concatenate=True, fuseki=False)
 
-            _, df_role = DatasetHandler.path_analysis(overwrite=False)
-
+            _, df_role = DatasetHandler.path_analysis(df_ValueNet, overwrite=False)
+            
             df_role_grouped = df_role.groupby(["role","haidt","role_start"]).nunique()
 
             print()
