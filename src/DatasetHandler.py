@@ -957,7 +957,22 @@ class DatasetHandler:
 
     # (1) - (3)
     @staticmethod
-    def path_analysis(role_start: str, df_overwrite = True):
+    def path_analysis(role_start = "obj", df_concatenate = True, overwrite = True):
+
+        if not overwrite:
+            df_file_path = StorageHandler.get_propreccesed_file_path("df_path_info.csv")
+            df_file = StorageHandler.load_csv_to_dataframe(df_file_path)
+
+            if df_file is not None:
+                print("[ERROR] No previous path_info.csv found")
+
+            json_file = dict(StorageHandler.load_json("average_path.json"))
+
+            if not json_file:
+                print("[ERROR] No previous average_path found")
+
+            return json_file, df_file
+
 
         roles = primary_role#  + secondary_role 
         role_dict = {role:[] for role in roles}
@@ -1015,11 +1030,11 @@ class DatasetHandler:
         df_path = pd.DataFrame(df_dict)
         json_file = {role_start: role_dict}
 
-        if not df_overwrite:
-            df_file_path = StorageHandler.get_propreccesed_file_path("path_info.csv")
+        if not df_concatenate:
+            df_file_path = StorageHandler.get_propreccesed_file_path("df_path_info.csv")
+            df_file = StorageHandler.load_csv_to_dataframe(df_file_path)
 
-            if df_file_path:
-                df_file = StorageHandler.load_csv_to_dataframe(df_file_path)
+            if df_file is not None:
                 df_path = pd.concat([df_file, df_path])
 
             else:
@@ -1035,7 +1050,7 @@ class DatasetHandler:
             json_file[role_start] = role_dict
 
 
-        StorageHandler.save_data_csv(df_path, name="path_info")
+        StorageHandler.save_data_csv(df_path, name="df_path_info")
         StorageHandler.save_json("average_path.json", json_file)
 
 
@@ -1110,8 +1125,21 @@ class DatasetHandler:
             # DatasetHandler.trigger_info(df_ValueNet)
             
 
-            DatasetHandler.path_analysis("obj")
-            DatasetHandler.path_analysis("sub", df_overwrite=False)
+            # _, df_role_obj = DatasetHandler.path_analysis(role_start="obj")
+            # _, df_role = DatasetHandler.path_analysis(role_start="sub", df_overwrite=False)
+
+            _, df_role = DatasetHandler.path_analysis(overwrite=False)
+
+            df_role_grouped = df_role.groupby(["role","haidt","role_start"]).nunique()
+
+            print()
+            print(df_role_grouped)
+            print()
+
+            df_role_grouped = df_role_grouped.reset_index(["role","haidt","role_start"])
+
+            StorageHandler.save_data_csv(df_role_grouped, name="df_path_relation_info")
+
             
             # texts = df_ValueNet["text"].tolist()
 
