@@ -1,4 +1,5 @@
 from StorageHandler import StorageHandler
+from Statistic import Statistic
 
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
@@ -131,6 +132,17 @@ secondary_role = [
 
 ]
 
+complex_haidt_dict = {
+            "francinelock" : "lock",
+            "massagetherapist" : "therapist",
+            "finderkeeper" : "keeper",
+            "notedchildkidnapper" : "kidnapper",
+            "sociopathictendency" : "sociopathic",
+            "mentaldisability" : "disability",
+            "icompletelyannihilate" : "annihilate",
+            "accidentallybump" : "bump"
+        }
+
 class DatasetHandler:
 
     datasetFileName = "social-chem"
@@ -158,7 +170,7 @@ class DatasetHandler:
     def __get_wordnet_pos(tag):
         if tag.startswith('J'):
             return wordnet.ADJ
-        if tag.startswith('V'):
+        if tag.startswith('V') or tag.startswith('MD'):
             return wordnet.VERB
         if tag.startswith('N'):
             return wordnet.NOUN
@@ -779,13 +791,24 @@ class DatasetHandler:
 
 
     @staticmethod 
-    def print_dict(mydict):
+    def print_dict(mydict, level = 0):
         parsed = json.loads(str(mydict).replace("'","\""))
-        print(json.dumps(parsed, indent=4))
+        print("".join(["\t" for _ in range(level)]),"",json.dumps(parsed, indent=4))
 
     @staticmethod
-    def rdf_statistical_analysis(df_ValueNet):
+    def rdf_statistical_analysis(df_ValueNet, overwrite = True):
         print("[RDF STATISTICAL ANALYSIS]")
+        df_name = "df_ValueNet_statistics"
+
+        if not overwrite:
+            df_path = StorageHandler.get_propreccesed_file_path(df_name+".csv")
+            df_ValueNet = StorageHandler.load_csv_to_dataframe(df_path)
+
+            if not df_ValueNet:
+                print("\t[Error] Dataframe not found")
+            else:
+                print("\tusing cached file")
+            return df_ValueNet
 
         damaged_count = df_ValueNet[df_ValueNet["label_predicted"].str.contains("<damaged>")]["label_predicted"].count()
         df_ValueNet = df_ValueNet[~df_ValueNet["label_predicted"].str.contains("<damaged>")]
@@ -830,8 +853,11 @@ class DatasetHandler:
         correct_response_count = [ el["count"] for el in count_dict.values()]
         correct_response_count = sum(correct_response_count)
         print("Total percentage: ", round(correct_response_count / response_count,2) * 100)
+        print()
         # label_dict, trigger_dict = DatasetHandler.build_haidt_dict(df_ValueNet, show=True)
 
+        StorageHandler.save_data_csv(df_ValueNet, name=df_name)
+        print("\tdataframe saved")
         return df_ValueNet
 
     @staticmethod
@@ -960,18 +986,24 @@ class DatasetHandler:
     @staticmethod
     def path_analysis(df_ValueNet, role_start = "obj", df_concatenate = False, overwrite = True, fuseki = True):
 
+        print("\t[Path analysis]")
         
         if not overwrite:
+
             df_file_path = StorageHandler.get_propreccesed_file_path("df_path_info.csv")
             df_file = StorageHandler.load_csv_to_dataframe(df_file_path)
 
             if df_file is None:
-                print("[ERROR] No previous path_info.csv found")
-
+                print("\t\t[ERROR] No previous path_info.csv found")
+            else:
+                print("\t\tCached dataframe loaded")
+            
             json_file = dict(StorageHandler.load_json("average_path.json"))
 
             if not json_file:
-                print("[ERROR] No previous average_path found")
+                print("\t\t[ERROR] No previous average_path found")
+            else:
+                print("\t\tCached json loaded")
 
             return json_file, df_file
 
@@ -990,13 +1022,15 @@ class DatasetHandler:
                         o = str(o)
                         local_turtleNet.add((URIRef(s), URIRef(p), URIRef(o)))
 
-            print("LOADED LOCAL TURTLENET")
+            print("\t\tLoaded local turtleNet")
 
         roles = primary_role#  + secondary_role 
         role_dict = {role:[] for role in roles}
         visited_paths = []
         df_dict = {"role":[], "role_start": [], "haidt":[], "path":[]}
-        
+
+        print("\t\t Path analysis for role "+("subject" if role_start == "sub" else "object"))
+
         for role in roles:
             i = 0
             # result = []
@@ -1040,7 +1074,7 @@ class DatasetHandler:
                     role_dict[role].append(len(results))
 
                     print()
-                    print(f"{role}-{i}: {len(results)}")        
+                    print(f"\t\t\t{role}-{i}: {len(results)}")        
 
                     # get_path = lambda x: " ".join([el["value"].split("/")[-1] for el in x.values()])
                     get_path = lambda x: [el["value"] for el in x.values()]
@@ -1072,26 +1106,25 @@ class DatasetHandler:
                 df_path = pd.concat([df_file, df_path]).reset_index(drop=True)
 
             else:
-                print("[ERROR] No previous path_info.csv found")
+                print("\t\t[ERROR] No previous path_info.csv found")
                 return role_dict, df_path
-
+            
             json_file = dict(StorageHandler.load_json("average_path.json"))
 
             if not json_file:
-                print("[ERROR] No previous average_path found")
+                print("\t\t[ERROR] No previous average_path found")
                 return role_dict, df_path
-
+            
             json_file[role_start] = role_dict
 
 
         StorageHandler.save_data_csv(df_path, name="df_path_info")
+        print("\t\tDataframe saved")
+
         StorageHandler.save_json("average_path.json", json_file)
+        print("\t\tJson file saved")
 
-
-
-        return role_dict, df_path
-
-            
+        return json_file, df_path
 
 
     @staticmethod
@@ -1107,7 +1140,21 @@ class DatasetHandler:
 
     # (2)
     @staticmethod
-    def trigger_info(df_ValueNet):
+    def trigger_info(df_ValueNet, overwrite = True):
+        json_file = "triggers_group.json"
+
+        print("\t[Trigger groups]")
+        if not overwrite:
+            json_path = StorageHandler.get_propreccesed_file_path(json_file)
+            triggers_dict = dict(StorageHandler.load_json(json_path))
+
+            if not triggers_dict:
+                print("\t\t[ERROR] Json file not found")
+            else:
+                print("\t\tCached file loaded")
+
+            return triggers_dict
+        
         global prefixes
 
         query = prefixes + "SELECT ?s ?o WHERE \
@@ -1140,41 +1187,112 @@ class DatasetHandler:
                     else:
                         triggers_dict["other"] += 1
             except:
-                print("ERROR")
+                print("\t\t[ERROR] Unable to run the query")
                 break
 
-        print()
-        print(triggers_dict)
-        print()
+        DatasetHandler.print_dict(triggers_dict)
+
+        StorageHandler.save_json(json_file, triggers_dict)
+        print("\t\tJson file saved")
         return triggers_dict
+
+    @staticmethod
+    def get_path_embedding(path):
+
+        global complex_haidt_dict
+        first = path.split(" ")[0]
+        token = first.split("#")[-1].lower()
+        
+        lemmatizer = WordNetLemmatizer()
+        pos_tag_dict = dict(pos_tag ([token]))
+        pos = DatasetHandler.__get_wordnet_pos(pos_tag_dict[token])
+
+        token = lemmatizer.lemmatize(token, pos = pos)
+
+        embd = [0]*int(StorageHandler.glove_ver)
+        
+        try:
+            embd = StorageHandler.glove[token]
+        except:
+            
+            if token in complex_haidt_dict.keys():
+                embd = StorageHandler.glove[complex_haidt_dict[token]]
+                print(f"[Warning] Unknown {token} -> resolved ")
+            else:
+                print(f"[ERROR] {token}")
+
+        return embd
+
+
+    @staticmethod
+    def build_haidt_dict(df):
+        global complex_haidt_dict
+        haidt_dict = {}
+
+        haidt_values = df["haidt"].unique().tolist()
+        
+        for value in haidt_values[0:3]:
+            df_value = df[df["haidt"] == value]
+            paths = df_value["path"].tolist()
+            words = [path.split(" ")[0] for path in paths]
+            words = [word.split("#")[-1] for word in words]
+            words = [word.lower() for word in words]
+            words = [
+                complex_haidt_dict[word] if word in complex_haidt_dict.keys() else word 
+                for word in words
+            ]
+
+            haidt_dict[value] = words
+            
+        # DatasetHandler.print_dict(haidt_dict)
+        return haidt_dict
 
     @staticmethod
     def rdf_semantic_analysis(df_ValueNet, overwrite=False):
 
+        print("[Semantic analysis]")
+
+        trigger_dict = DatasetHandler.trigger_info(df_ValueNet, overwrite=overwrite)
+        df_role = None
+        role_dict = None
+
         if not overwrite:
-            pass
+            role_dict, df_role = DatasetHandler.path_analysis(df_ValueNet, overwrite=False)
         else:
 
-            # DatasetHandler.trigger_info(df_ValueNet)
+            DatasetHandler.path_analysis(df_ValueNet,role_start="obj", fuseki=False)
             
-
-            # DatasetHandler.path_analysis(df_ValueNet,role_start="obj", fuseki=False)
-            
-            # _, df_role = DatasetHandler.path_analysis(df_ValueNet, role_start="sub", df_concatenate=True, fuseki=False)
-
-            _, df_role = DatasetHandler.path_analysis(df_ValueNet, overwrite=False)
-            
-            df_role_grouped = df_role.groupby(["role","haidt","role_start"]).nunique()
-
-            print()
-            print(df_role_grouped)
-            print()
-
-            df_role_grouped = df_role_grouped.reset_index(["role","haidt","role_start"])
-
-            StorageHandler.save_data_csv(df_role_grouped, name="df_path_relation_info")
+            role_dict, df_role = DatasetHandler.path_analysis(df_ValueNet, role_start="sub", df_concatenate=True, fuseki=False)
 
             
+        df_role_grouped = df_role.groupby(["role","haidt","role_start"]).nunique()
+
+        print()
+        print(df_role_grouped)
+        print()
+
+        df_role_grouped = df_role_grouped.reset_index(["role","haidt","role_start"])
+
+        StorageHandler.save_data_csv(df_role_grouped, name="df_path_relation_info")
+
+        df_role["start_embedding"] = df_role["path"].apply(lambda x: DatasetHandler.get_path_embedding(x)) 
+        df_role["haidt_embedding"] = df_role["haidt"].apply(lambda x: DatasetHandler.get_path_embedding(x)) 
+
+
+        haidt_dict = DatasetHandler.build_haidt_dict(df_role)
+        Statistic.plot_haidt_embeddings(haidt_dict)
+
+
+
+
+            
+
+
+
+
+    @staticmethod
+    def trash():
+        pass
             # texts = df_ValueNet["text"].tolist()
 
             # for text in texts:

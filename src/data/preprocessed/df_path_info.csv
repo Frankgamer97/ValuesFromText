@@ -1,14 +1,14 @@
 role,role_start,haidt,path
 Agent,obj,Fairness,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Think https://w3id.org/framester/data/framestercore/Regard https://w3id.org/spice/SON/HaidtValues#Fairness
 Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Go https://w3id.org/framester/data/framestercore/Death https://w3id.org/spice/SON/HaidtValues#Harm
-Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Break https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Break https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Break https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,obj,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Relieve https://w3id.org/framester/data/framestercore/Cure https://w3id.org/spice/SON/HaidtValues#Care
 Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Cheat https://w3id.org/framester/data/framestercore/Offenses https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Abuse https://w3id.org/framester/data/framestercore/Abusing https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,obj,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Help https://w3id.org/framester/data/framestercore/Assistance https://w3id.org/spice/SON/HaidtValues#Care
-Agent,obj,Oppression,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Arrest https://w3id.org/framester/data/framestercore/Arrest https://w3id.org/spice/SON/HaidtValues#Oppression
 Agent,obj,Authority,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Arrest https://w3id.org/framester/data/framestercore/Arrest https://w3id.org/spice/SON/HaidtValues#Authority
+Agent,obj,Oppression,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Arrest https://w3id.org/framester/data/framestercore/Arrest https://w3id.org/spice/SON/HaidtValues#Oppression
 Agent,obj,Loyalty,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Meet https://w3id.org/framester/data/framestercore/ComeTogether https://w3id.org/spice/SON/HaidtValues#Loyalty
 Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Kill https://w3id.org/framester/data/framestercore/Killing https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Murder https://w3id.org/framester/data/framestercore/Offenses https://w3id.org/spice/SON/HaidtValues#Harm
@@ -35,8 +35,8 @@ Agent,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#NotedCh
 Patient,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Face https://w3id.org/framester/data/framestercore/HostileEncounter https://w3id.org/spice/SON/HaidtValues#Harm
 Patient,obj,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Massage https://w3id.org/framester/data/framestercore/Cure https://w3id.org/spice/SON/HaidtValues#Care
 Patient,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Ruin https://w3id.org/framester/data/framestercore/Destroying https://w3id.org/spice/SON/HaidtValues#Harm
-Patient,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Crush https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Patient,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Crush https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Patient,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Crush https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Patient,obj,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Treat https://w3id.org/framester/data/framestercore/Assistance https://w3id.org/spice/SON/HaidtValues#Care
 Patient,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Incident https://w3id.org/framester/data/framestercore/Catastrophe https://w3id.org/spice/SON/HaidtValues#Harm
 Patient,obj,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Gate https://w3id.org/framester/data/framestercore/Supply https://w3id.org/spice/SON/HaidtValues#Care
@@ -55,8 +55,8 @@ Theme,obj,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Choke h
 Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Choke https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Choke https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Knock https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
-Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Hurt https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Hurt https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Hurt https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,obj,Oppression,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Keep https://w3id.org/framester/data/framestercore/InhibitMovement https://w3id.org/spice/SON/HaidtValues#Oppression
 Theme,obj,Oppression,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Keep https://w3id.org/framester/data/framestercore/Detaining https://w3id.org/spice/SON/HaidtValues#Oppression
 Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Cut https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
@@ -86,14 +86,14 @@ Theme,obj,Loyalty,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Link
 Theme,obj,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Ticket https://w3id.org/framester/data/framestercore/Supply https://w3id.org/spice/SON/HaidtValues#Care
 Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Raid https://w3id.org/framester/data/framestercore/Attack https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,obj,Fairness,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Taste https://w3id.org/framester/data/framestercore/Inclination https://w3id.org/spice/SON/HaidtValues#Fairness
-Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#MentalDisability http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Disability https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#MentalDisability http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Disability https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Theme,obj,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#MentalDisability http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Disability https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Kick https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Fairness,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Think https://w3id.org/framester/data/framestercore/Regard https://w3id.org/spice/SON/HaidtValues#Fairness
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Punch https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Face https://w3id.org/framester/data/framestercore/HostileEncounter https://w3id.org/spice/SON/HaidtValues#Harm
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Break https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Break https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Break https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Cheat https://w3id.org/framester/data/framestercore/Offenses https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Give https://w3id.org/framester/data/framestercore/Supply https://w3id.org/spice/SON/HaidtValues#Care
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Beat https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
@@ -124,20 +124,20 @@ Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Destroy
 Agent,sub,Loyalty,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Oppose https://w3id.org/framester/data/framestercore/TakingSides https://w3id.org/spice/SON/HaidtValues#Loyalty
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Ruin https://w3id.org/framester/data/framestercore/Destroying https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Tear https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Crush https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Crush https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Crush https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Loyalty,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Communicate https://w3id.org/framester/data/framestercore/SocialConnection https://w3id.org/spice/SON/HaidtValues#Loyalty
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Bully https://w3id.org/framester/data/framestercore/Attack https://w3id.org/spice/SON/HaidtValues#Harm
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Shoot https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Shoot https://w3id.org/framester/data/framestercore/Killing https://w3id.org/spice/SON/HaidtValues#Harm
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Shoot https://w3id.org/framester/data/framestercore/Attack https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Shoot https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Shoot https://w3id.org/framester/data/framestercore/Attack https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Shoot https://w3id.org/framester/data/framestercore/Killing https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Shoot https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Swipe https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Attack https://w3id.org/framester/data/framestercore/Attack https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Loyalty,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Promote https://w3id.org/framester/data/framestercore/TakingSides https://w3id.org/spice/SON/HaidtValues#Loyalty
 Agent,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Shave https://w3id.org/framester/data/framestercore/Grooming https://w3id.org/spice/SON/HaidtValues#Care
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Attempt https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Confront https://w3id.org/framester/data/framestercore/HostileEncounter https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Attempt https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Fairness,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Believe https://w3id.org/framester/data/framestercore/Regard https://w3id.org/spice/SON/HaidtValues#Fairness
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Burn https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Wash https://w3id.org/framester/data/framestercore/Grooming https://w3id.org/spice/SON/HaidtValues#Care
@@ -158,15 +158,15 @@ Agent,sub,Betrayal,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Con
 Agent,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Serve https://w3id.org/framester/data/framestercore/Assistance https://w3id.org/spice/SON/HaidtValues#Care
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Combat https://w3id.org/framester/data/framestercore/HostileEncounter https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Bathe https://w3id.org/framester/data/framestercore/Grooming https://w3id.org/spice/SON/HaidtValues#Care
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Drown https://w3id.org/framester/data/framestercore/Death https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Drown https://w3id.org/framester/data/framestercore/Killing https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Drown https://w3id.org/framester/data/framestercore/Death https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Behead https://w3id.org/framester/data/framestercore/Killing https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Scratch https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Protect https://w3id.org/framester/data/framestercore/Protecting https://w3id.org/spice/SON/HaidtValues#Care
 Agent,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Provide https://w3id.org/framester/data/framestercore/Supply https://w3id.org/spice/SON/HaidtValues#Care
 Agent,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Provide https://w3id.org/framester/data/framestercore/Assistance https://w3id.org/spice/SON/HaidtValues#Care
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Smack https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Smack https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Smack https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Mow https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Tap https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Fairness,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#View https://w3id.org/framester/data/framestercore/Regard https://w3id.org/spice/SON/HaidtValues#Fairness
@@ -181,8 +181,8 @@ Agent,sub,Loyalty,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Gath
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Bash https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Fairness,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Incline https://w3id.org/framester/data/framestercore/Inclination https://w3id.org/spice/SON/HaidtValues#Fairness
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Slap https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
-Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#IcompletelyAnnihilate http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Annihilate https://w3id.org/framester/data/framestercore/Killing https://w3id.org/spice/SON/HaidtValues#Harm
 Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#IcompletelyAnnihilate http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Annihilate https://w3id.org/framester/data/framestercore/Destroying https://w3id.org/spice/SON/HaidtValues#Harm
+Agent,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#IcompletelyAnnihilate http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Annihilate https://w3id.org/framester/data/framestercore/Killing https://w3id.org/spice/SON/HaidtValues#Harm
 Actor,sub,Loyalty,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Meet https://w3id.org/framester/data/framestercore/ComeTogether https://w3id.org/spice/SON/HaidtValues#Loyalty
 Actor,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Fight https://w3id.org/framester/data/framestercore/HostileEncounter https://w3id.org/spice/SON/HaidtValues#Harm
 Cause,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Relieve https://w3id.org/framester/data/framestercore/Cure https://w3id.org/spice/SON/HaidtValues#Care
@@ -191,15 +191,15 @@ Cause,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Please 
 Cause,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Suffer https://w3id.org/framester/data/framestercore/Catastrophe https://w3id.org/spice/SON/HaidtValues#Harm
 Cause,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Torment https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Cause,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Offend https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
-Experiencer,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Hurt https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Experiencer,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Hurt https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm
+Experiencer,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Hurt https://w3id.org/framester/data/framestercore/ExperienceBodilyHarm https://w3id.org/spice/SON/HaidtValues#Harm
 Experiencer,sub,Fairness,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Dislike https://w3id.org/framester/data/framestercore/Inclination https://w3id.org/spice/SON/HaidtValues#Fairness
 Experiencer,sub,Fairness,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Appreciate https://w3id.org/framester/data/framestercore/Regard https://w3id.org/spice/SON/HaidtValues#Fairness
 Recipient,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Treat https://w3id.org/framester/data/framestercore/Assistance https://w3id.org/spice/SON/HaidtValues#Care
 Theme,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Go https://w3id.org/framester/data/framestercore/Death https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Happen https://w3id.org/framester/data/framestercore/Destroying https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Die https://w3id.org/framester/data/framestercore/Death https://w3id.org/spice/SON/HaidtValues#Harm
-Theme,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Starve https://w3id.org/framester/data/framestercore/Death https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Starve https://w3id.org/framester/data/framestercore/Killing https://w3id.org/spice/SON/HaidtValues#Harm
+Theme,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Starve https://w3id.org/framester/data/framestercore/Death https://w3id.org/spice/SON/HaidtValues#Harm
 Theme,sub,Care,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Preserve https://w3id.org/framester/data/framestercore/Preserving https://w3id.org/spice/SON/HaidtValues#Care
 Theme,sub,Harm,http://www.ontologydesignpatterns.org/ont/fred/domain.owl#AccidentallyBump http://www.ontologydesignpatterns.org/ont/fred/domain.owl#Bump https://w3id.org/framester/data/framestercore/CauseHarm https://w3id.org/spice/SON/HaidtValues#Harm

@@ -14,7 +14,7 @@
             "args": [
                 "--no-rdf_downloading",
                 "--no-preprocessing",
-                "--no-valuenet"
+                "--no-valuenet",
             ]
         },
         {

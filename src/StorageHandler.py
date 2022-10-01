@@ -1,12 +1,17 @@
+from pathlib import Path
 from time import sleep
+import zipfile
 from zlib import adler32
 
 import os
 import pickle
+import numpy as np
 import pandas as pd
 import requests
 import rdflib
 import json
+
+import urllib
 
 class StorageHandler():
 
@@ -26,6 +31,9 @@ class StorageHandler():
         #     'Authorization': 'Bearer 16a84b70-1b8d-3d05-8d1a-7a37da9be9e8',
         # }
     }
+
+    glove = {}
+    glove_ver = "50"
 
     @staticmethod
     def __load_pickle(file_name: str, folder: str):
@@ -223,5 +231,54 @@ class StorageHandler():
         print()
         print("[DOWNLOADING TURTLE FILES COMPLETED]")
         print()
+
+    def Glove():
+        GLOVE_REMOTE_URL = "https://huggingface.co/stanfordnlp/glove/resolve/main/glove.6B.zip"
+        GLOVE_LOCAL_DIR = os.path.join(StorageHandler.get_data_raw_dir(), "Glove")
+        GLOVE_LOCAL_FILE_ZIP = os.path.join(StorageHandler.get_data_raw_dir(), "Glove", "glove_6B")
+
+        if not StorageHandler.glove == {}:
+            print("[Glove] Loaded")
+
+        else:
+            print("[Glove] Downloading")
+            ### prepare Glove directories
+            if not os.path.exists(GLOVE_LOCAL_DIR):
+                os.makedirs(GLOVE_LOCAL_DIR)
+
+            ### download the Glove .zip file
+            if not os.path.exists(GLOVE_LOCAL_FILE_ZIP):
+                urllib.request.urlretrieve(GLOVE_REMOTE_URL, GLOVE_LOCAL_FILE_ZIP)
+                print("[Glove] Successful download")
+                tmp = Path(GLOVE_LOCAL_FILE_ZIP)
+                tmp.rename(tmp.with_suffix(".zip"))
+
+
+            GLOVE_LOCAL_FILE = os.path.join(StorageHandler.get_data_raw_dir(), "Glove", "glove.6B."+StorageHandler.glove_ver+"d.txt")
+
+            if not os.path.exists(GLOVE_LOCAL_FILE):
+                print("[Glove] Unzipping models")
+                ### extract the Glove .zip file
+                with zipfile.ZipFile(f"{GLOVE_LOCAL_FILE_ZIP}.zip", 'r') as zip_ref:
+                    zip_ref.extractall(path=GLOVE_LOCAL_DIR)
+                    print("[Glove] Successful extraction")
+
+            print("[Glove] Loading model")
+
+            with open(GLOVE_LOCAL_FILE, encoding="utf8" ) as f:
+                lines = f.readlines()
+                
+            print("[Glove] Parsing model")
+
+            ### convert Glove embeddings format to a `dict` structure 
+            for line in lines:
+                splits = line.split()
+                word = splits[0]
+                embedding = np.array([float(val) for val in splits[1:]])
+                StorageHandler.glove[word] = embedding
+            print("[Glove] Parsing done.\n")
+
+
+        print("[Glove] ",len(StorageHandler.glove.keys()), "words loaded.")
         
             

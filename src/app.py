@@ -70,6 +70,7 @@ if __name__ == "__main__" :
 
     StorageHandler.create_directories()
     DatasetHandler.download_social_chemstry()
+    StorageHandler.Glove()
 
     params = get_params()
 
@@ -95,7 +96,7 @@ if __name__ == "__main__" :
     print()
     df_ValueNet = DatasetHandler.retrieve_ValueNet_data(df_ValueNet, overwrite=params["valuenet"])
     print()
-    df_ValueNet = DatasetHandler.rdf_statistical_analysis(df_ValueNet)
+    df_ValueNet = DatasetHandler.rdf_statistical_analysis(df_ValueNet, overwrite=params["analysis"])
     print()
     df_ValueNet = DatasetHandler.rdf_semantic_analysis(df_ValueNet, overwrite=params["analysis"])
     print()
