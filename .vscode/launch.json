@@ -12,9 +12,10 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "--no-rdf_downloading",
+                "--no-rdf-downloading",
                 "--no-preprocessing",
                 "--no-valuenet",
+                "--no-analysis"
             ]
         },
         {

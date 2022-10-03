@@ -804,7 +804,7 @@ class DatasetHandler:
             df_path = StorageHandler.get_propreccesed_file_path(df_name+".csv")
             df_ValueNet = StorageHandler.load_csv_to_dataframe(df_path)
 
-            if not df_ValueNet:
+            if df_ValueNet is not None:
                 print("\t[Error] Dataframe not found")
             else:
                 print("\tusing cached file")
@@ -1225,13 +1225,13 @@ class DatasetHandler:
 
 
     @staticmethod
-    def build_haidt_dict(df):
+    def build_pca_dict(df):
         global complex_haidt_dict
         haidt_dict = {}
 
         haidt_values = df["haidt"].unique().tolist()
         
-        for value in haidt_values[0:3]:
+        for value in haidt_values:
             df_value = df[df["haidt"] == value]
             paths = df_value["path"].tolist()
             words = [path.split(" ")[0] for path in paths]
@@ -1279,8 +1279,8 @@ class DatasetHandler:
         df_role["haidt_embedding"] = df_role["haidt"].apply(lambda x: DatasetHandler.get_path_embedding(x)) 
 
 
-        haidt_dict = DatasetHandler.build_haidt_dict(df_role)
-        Statistic.plot_haidt_embeddings(haidt_dict)
+        haidt_dict = DatasetHandler.build_pca_dict(df_role)
+        Statistic.plot_haidt_embeddings(StorageHandler.glove, haidt_dict)
 
 
 

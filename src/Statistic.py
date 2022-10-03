@@ -13,50 +13,33 @@ import pickle
 class Statistic:
 
     @staticmethod
-    def __load_words(model, words, global_vectors):
+    def __load_words2(words, words_dict):
         test_words = [word.strip() for word in words]
-        test_vectors = np.array([model[w] for w in test_words])
-        test_vectors_indexes = [np.where(global_vectors == vecna)[0][0] for vecna in test_vectors]
+        test_vectors_indexes = [words_dict[word] for word in test_words]
 
         return test_vectors_indexes
 
+
     @staticmethod
-    def plot_haidt_embeddings(data: dict):
+    def plot_haidt_embeddings(model: dict, data: dict):
 
-        model_name = os.path.join(StorageHandler.get_data_raw_dir(),"Glove","glove2word2vec_model.sav")
-        model = None
-
-        if not os.path.exists(model_name):
-            print("[PCA] Building model")
-            glove_file = os.path.join(StorageHandler.get_data_raw_dir(), "Glove","glove.6B.50d.txt")
-            glove_file = datapath(glove_file)
-
-            word2vec_glove_file = os.path.join(StorageHandler.get_data_raw_dir(), "Glove","glove.6B.50d.word2vec.txt")
-            if not os.path.exists(word2vec_glove_file):
-                word2vec_glove_file = get_tmpfile(word2vec_glove_file)
-
-            glove2word2vec(glove_file, word2vec_glove_file)
-
-            model = KeyedVectors.load_word2vec_format(word2vec_glove_file)
-            pickle.dump(model, open(model_name, 'wb'))
-
-        else:
-            print("[PCA] Using cached model")
-            model = pickle.load(open(model_name, 'rb'))
 
         print("[PCA] Fitting model")
-        words = [ word for word in model.vocab ]
-        word_vectors = np.array([model[w] for w in words])
 
-        pca = PCA(random_state=42)
-        components = pca.fit_transform(word_vectors)[:,:3]
+        words = list(model.keys())
+        word_vectors = list(model.values())
+
+        words_index = dict(zip(words, list(range(len(words)))))
+
+        pca = PCA(n_components = 3, random_state=42)
+        components = pca.fit_transform(word_vectors)
 
         traces = []
 
         print("[PCA] Building 3D embedding space")
 
         for haidt, words in data.items():
-            indexes = Statistic.__load_words(model, words, word_vectors)
+            indexes = Statistic.__load_words2(words, words_index)
             color = len(list(traces))
 
             trace = go.Scatter3d(

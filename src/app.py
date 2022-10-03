@@ -9,13 +9,13 @@ import os
 
 def buildParser():
     parser=ArgumentParser()
-    parser.add_argument("-api_owner",dest="api_owner", type=str, default=StorageHandler.default_api_owner)
+    parser.add_argument("-api-owner",dest="api_owner", type=str, default=StorageHandler.default_api_owner)
     # parser.add_argument("--preprocess",dest="preprocess", type=str, default="True")
     # parser.add_argument("-rdf_download",dest="rdf_download", type=str, default="True")
 
 
-    parser.add_argument('--rdf_downloading', default=True, action='store_true')
-    parser.add_argument('--no-rdf_downloading', dest='rdf_downloading', action='store_false')
+    parser.add_argument('--rdf-downloading', default=True, action='store_true')
+    parser.add_argument('--no-rdf-downloading', dest='rdf_downloading', action='store_false')
 
     parser.add_argument('--preprocessing', default=True, action='store_true')
     parser.add_argument('--no-preprocessing', dest='preprocessing', action='store_false')
@@ -39,9 +39,9 @@ def get_params():
         print("[WARNING] Wrong Api onwer, selecting default Api.")
         params["api_owner"] = args.api_owner
 
-    params["api_owner"] = args.api_owner
+    params["api-owner"] = args.api_owner
     params["preprocessing"] = args.preprocessing
-    params["rdf_downloading"] = args.rdf_downloading
+    params["rdf-downloading"] = args.rdf_downloading
     params["valuenet"] = args.valuenet
     params["analysis"] = args.analysis
 
@@ -92,7 +92,7 @@ if __name__ == "__main__" :
     # print()
 
     print()
-    DatasetHandler.retrieve_fred_rdf(df_ValueNet, params["api_owner"], download=params["rdf_downloading"])
+    DatasetHandler.retrieve_fred_rdf(df_ValueNet, params["api-owner"], download=params["rdf-downloading"])
     print()
     df_ValueNet = DatasetHandler.retrieve_ValueNet_data(df_ValueNet, overwrite=params["valuenet"])
     print()
