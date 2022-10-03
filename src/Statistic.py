@@ -13,7 +13,7 @@ import pickle
 class Statistic:
 
     @staticmethod
-    def __load_words2(words, words_dict):
+    def __load_words(words, words_dict):
         test_words = [word.strip() for word in words]
         test_vectors_indexes = [words_dict[word] for word in test_words]
 
@@ -39,7 +39,7 @@ class Statistic:
         print("[PCA] Building 3D embedding space")
 
         for haidt, words in data.items():
-            indexes = Statistic.__load_words2(words, words_index)
+            indexes = Statistic.__load_words(words, words_index)
             color = len(list(traces))
 
             trace = go.Scatter3d(

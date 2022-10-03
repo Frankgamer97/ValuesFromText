@@ -241,13 +241,13 @@ class StorageHandler():
             print("[Glove] Loaded")
 
         else:
-            print("[Glove] Downloading")
             ### prepare Glove directories
             if not os.path.exists(GLOVE_LOCAL_DIR):
                 os.makedirs(GLOVE_LOCAL_DIR)
 
             ### download the Glove .zip file
             if not os.path.exists(GLOVE_LOCAL_FILE_ZIP):
+                print("[Glove] Downloading")
                 urllib.request.urlretrieve(GLOVE_REMOTE_URL, GLOVE_LOCAL_FILE_ZIP)
                 print("[Glove] Successful download")
                 tmp = Path(GLOVE_LOCAL_FILE_ZIP)
