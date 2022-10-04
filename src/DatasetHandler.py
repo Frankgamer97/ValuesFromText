@@ -1136,7 +1136,7 @@ class DatasetHandler:
         return True if "synset" in uri.split(":")[1] else False
 
     def __is_frame(uri):
-        return True if "fsdata" in uri else False
+        return True if "https://w3id.org/framester/data/framestercore/" in uri else False
 
     # (2)
     @staticmethod
@@ -1272,6 +1272,8 @@ class DatasetHandler:
         print()
 
         df_role_grouped = df_role_grouped.reset_index(["role","haidt","role_start"])
+
+        df_role_grouped = df_role_grouped.rename(columns = {"path": "occurences"})
 
         StorageHandler.save_data_csv(df_role_grouped, name="df_path_relation_info")
 

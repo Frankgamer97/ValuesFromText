@@ -1,4 +1,4 @@
-role,haidt,role_start,path
+role,haidt,role_start,occurences
 Actor,Harm,sub,1
 Actor,Loyalty,sub,1
 Agent,Authority,obj,1
