@@ -22,7 +22,11 @@ import pandas as pd
 
 import numpy as np
 
+'''
 
+ipotesi: Harm è una superclasse rispetto a tutti (o quasi) gli altri valori di haidt
+ipotesi: Harm è troppo generica => non fornisce informazioni utili nell'embedding space
+'''
 all_names = [
     Namespace("https://w3id.org/framester/wn/wn30/"), 
     Namespace("https://w3id.org/framester/vn/vn31/data/"), 
@@ -140,7 +144,11 @@ complex_haidt_dict = {
             "sociopathictendency" : "sociopathic",
             "mentaldisability" : "disability",
             "icompletelyannihilate" : "annihilate",
-            "accidentallybump" : "bump"
+            "accidentallybump" : "bump",
+            "passengerseat": "seat",
+            "newtoiletseat": "seat",
+            "hugepatch": "patch",
+            "soulpatch": "patch"
         }
 
 class DatasetHandler:
@@ -1024,7 +1032,7 @@ class DatasetHandler:
 
             print("\t\tLoaded local turtleNet")
 
-        roles = primary_role#  + secondary_role 
+        roles = primary_role  + secondary_role 
         role_dict = {role:[] for role in roles}
         visited_paths = []
         df_dict = {"role":[], "role_start": [], "haidt":[], "path":[]}
@@ -1321,7 +1329,7 @@ class DatasetHandler:
         global primary_role
         global secondary_role
 
-        roles = primary_role#  + secondary_role 
+        roles = primary_role  + secondary_role 
         role_dict = {role:[] for role in roles}
         # role_dict = {"ALL":[]}
 

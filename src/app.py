@@ -68,28 +68,16 @@ if __name__ == "__main__" :
         if not omv:
             nltk.download('omw-1.4')
 
+
+    params = get_params()
+    print()
+
     StorageHandler.create_directories()
     DatasetHandler.download_social_chemstry()
     StorageHandler.Glove()
-
-    params = get_params()
-
-    # for key, value in params.items():
-    #     print(f"{key} => {value} (type = {type(value)})")
     
     print()
     df_fred, df_ValueNet= DatasetHandler.preprocessing(overwrite=params["preprocessing"])
-
-    # texts = df_fred["text"].tolist()
-    # texts_valuenet = df_ValueNet["text"].tolist()
-
-    # print()
-    # print(len(texts))
-    # print(len([ el for el in texts if el in texts_valuenet]))
-    # print()
-    # print(len(texts_valuenet))
-    # print(len([ el for el in texts_valuenet if el in texts]))
-    # print()
 
     print()
     DatasetHandler.retrieve_fred_rdf(df_ValueNet, params["api-owner"], download=params["rdf-downloading"])

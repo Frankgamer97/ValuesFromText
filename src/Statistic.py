@@ -16,7 +16,6 @@ class Statistic:
     def __load_words(words, words_dict):
         test_words = [word.strip() for word in words]
         test_vectors_indexes = [words_dict[word] for word in test_words]
-
         return test_vectors_indexes
 
 
@@ -75,7 +74,7 @@ class Statistic:
                     family = " Courier New ",
                     size = 15),
                 autosize = False,
-                width = 1000,
+                width = 1500,
                 height = 1000
                 )
 
