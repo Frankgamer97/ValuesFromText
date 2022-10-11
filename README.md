@@ -1,1 +1,1 @@
-# ValuesFromText
+This project aims to explain the[knuthwebsite] moral concern’s polarity based on the Haidt value by analysing patterns in the Resource Description Framework (RDF) of text corpora, contained in the Social Chemistry dataset.
