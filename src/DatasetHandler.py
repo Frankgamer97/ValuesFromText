@@ -632,7 +632,13 @@ class DatasetHandler:
             text_list_len = len(text_list)
 
             text_log = []
+
+            is_ok = True
+
             for i in range(text_list_len):
+                if not is_ok:
+                    break
+
                 text = text_list[i]
                 
                 print()
@@ -678,43 +684,45 @@ class DatasetHandler:
                         print()
                         print("[ERROR] ValueNet server is not working")
                         print()
-                        break
+                        is_ok = False
+                        # break
                 except:
-                    print("\tDamaged tutrtle")
+                    print("\tDamaged turtle")
                     haidt_predictions.append("<damaged>")
                     triggers.append("<damaged>")
                     error_file.append(text)
 
-            error_file_length = len(error_file)
-            no_response_length = len(void_ValueNet_response)
-            StorageHandler.save_json("file_info.json", text_log)
+            if is_ok:
+                error_file_length = len(error_file)
+                no_response_length = len(void_ValueNet_response)
+                StorageHandler.save_json("file_info.json", text_log)
+                
+                print()
+                print()
+                print(f"Total damaged turtles: {error_file_length}")
+                print()
+                print(f"Total no response from ValueNet: {no_response_length}")
+                print()
+                print(f"Total extended turtle: {text_list_len - no_response_length - error_file_length}")
+                print()
 
-            print()
-            print()
-            print(f"Total damaged turtles: {error_file_length}")
-            print()
-            print(f"Total no response from ValueNet: {no_response_length}")
-            print()
-            print(f"Total extended turtle: {text_list_len - no_response_length - error_file_length}")
-            print()
+                df_damaged = pd.DataFrame({"text": error_file})
+                StorageHandler.save_data_csv(df_damaged, name="df_turtle_damaged")
 
-            df_damaged = pd.DataFrame({"text": error_file})
-            StorageHandler.save_data_csv(df_damaged, name="df_turtle_damaged")
+                df_void = pd.DataFrame({"text": void_ValueNet_response})
+                StorageHandler.save_data_csv(df_void, name="df_void_ValueNet_response")
 
-            df_void = pd.DataFrame({"text": void_ValueNet_response})
-            StorageHandler.save_data_csv(df_void, name="df_void_ValueNet_response")
-
-            df_ValueNet["label_predicted"] = haidt_predictions
-            df_ValueNet["label_triggers"] = triggers
+                df_ValueNet["label_predicted"] = haidt_predictions
+                df_ValueNet["label_triggers"] = triggers
 
 
-            df_ValueNet["label"] = df_ValueNet["label"].str.lower()
-            df_ValueNet["label_predicted"] = df_ValueNet["label_predicted"].str.lower()
-            df_ValueNet["label_triggers"] = df_ValueNet["label_triggers"].str.lower()
+                df_ValueNet["label"] = df_ValueNet["label"].str.lower()
+                df_ValueNet["label_predicted"] = df_ValueNet["label_predicted"].str.lower()
+                df_ValueNet["label_triggers"] = df_ValueNet["label_triggers"].str.lower()
 
-            StorageHandler.save_data_csv(df_ValueNet, name="df_ValueNet_response")
+                StorageHandler.save_data_csv(df_ValueNet, name="df_ValueNet_response")
 
-        return df_ValueNet
+        return df_ValueNet, is_ok
 
     @staticmethod
     def build_haidt_dict(df, show=False):
@@ -793,7 +801,7 @@ class DatasetHandler:
                 count += 1
                 count_dict[label]["count"] += 1
                 count_dict[label]["percentage"] = round(count_dict[label]["count"] / haidt_response_partition[label],2) * 100
-        row["label_count"] = count
+        row["label_count_matched"] = count
 
         return row
 
@@ -829,9 +837,32 @@ class DatasetHandler:
         haidt_values = np.array(haidt_values)
         haidt_values = list(np.unique(haidt_values))
 
+        haidt_values_pred = df_ValueNet["label_predicted"].tolist()
+        haidt_values_pred = [value for el in haidt_values_pred for value in el.split(" ")]
+        haidt_values_pred = np.array(haidt_values_pred)
+        haidt_values_pred = list(np.unique(haidt_values_pred))
+
         print("haidt values")
         print(haidt_values)
         print()
+        # print("haidt values predicted")
+        # print(haidt_values_pred)
+        # print()
+
+
+        df_ValueNet["label_count"] = df_ValueNet["label"].apply(lambda x: len(x.split(" ")))
+        
+        print("Social Chemistry label distribution")
+        print(df_ValueNet["label_count"].describe(np.linspace(0.1,1.0,10).tolist()))
+        print()
+
+        df_ValueNet["label_predicted_count"] = df_ValueNet["label_predicted"].apply(lambda x: len(x.split(" ")))
+        print("ValueNet label predicted distribution")
+        print(df_ValueNet["label_predicted_count"].describe(np.linspace(0.1,1.0,10).tolist()))
+        print()
+
+        print("Social Chemistry haidt value count: ", df_ValueNet["label_count"].sum())
+        print("ValueNet predictions", df_ValueNet["label_predicted_count"].sum())
 
         count_dict = dict(zip(haidt_values,([{"count":0, "percentage": 0} for i in range(len(haidt_values))])))
         haidt_response_partition = {}

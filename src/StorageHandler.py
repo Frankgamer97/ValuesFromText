@@ -1,4 +1,5 @@
 from pathlib import Path
+from symbol import encoding_decl
 from time import sleep
 import zipfile
 from zlib import adler32
@@ -17,23 +18,44 @@ class StorageHandler():
 
 
     default_api_owner = "Francesco"
-    fred_headers = {
-        "Francesco": {
-            'accept': 'text/turtle',
-            'Authorization': 'Bearer ef127c72-fa55-3075-9729-7263d0ae50d2',
-        },
-        "Primiano": {
-            'accept': 'text/turtle',
-            'Authorization': 'Bearer e7c13f41-a79e-367f-9a47-d532fce077c0',
-        }# ,
-        # "Luciano": {
-        #     'accept': 'text/turtle',
-        #     'Authorization': 'Bearer 16a84b70-1b8d-3d05-8d1a-7a37da9be9e8',
-        # }
-    }
+    # fred_headers = {
+    #     "Francesco": {
+    #         'accept': 'text/turtle',
+    #         'Authorization': 'Bearer ef127c72-fa55-3075-9729-7263d0ae50d2',
+    #     },
+    #     "Primiano": {
+    #         'accept': 'text/turtle',
+    #         'Authorization': 'Bearer e7c13f41-a79e-367f-9a47-d532fce077c0',
+    #     }
+    # }
 
+    fred_headers = {}
     glove = {}
     glove_ver = "50"
+
+    @staticmethod
+    def load_api(filename:str):
+        is_ok = True
+        try:
+            filename = os.path.join(StorageHandler.__get_root_directory(),filename)
+
+            with open(filename,"r",encoding="utf-8") as f:
+                lines = f.readlines()
+                names  = [line.split(" ")[0] for line in lines]
+                keys = [line.split(" ")[1] for line in lines]
+                StorageHandler.fred_headers = { 
+                    names[i] : {
+                        'accept': 'text/turtle',
+                        'Authorization': "Bearer " + keys[i]
+                    } for i in range(len(lines))}
+                if len(lines) < 1:
+                    print("[ERROR] Empty FRED Api keys file")
+                    is_ok = False
+        except:
+            print("[ERROR] Unable to load the FRED Api keys from the file")
+            is_ok = False
+
+        return is_ok
 
     @staticmethod
     def __load_pickle(file_name: str, folder: str):
@@ -62,6 +84,11 @@ class StorageHandler():
     @staticmethod
     def __get_project_directory():
         return StorageHandler.__cd_parent(os.path.realpath(__file__))
+
+    @staticmethod
+    def __get_root_directory():
+        return StorageHandler.__cd_parent(StorageHandler.__get_project_directory())
+
 
     @staticmethod
     def get_tmp_dir():
@@ -204,7 +231,15 @@ class StorageHandler():
 
     @staticmethod
     def retrieve_text(texts, api_owner):
-        headers = list(StorageHandler.fred_headers.values())[0]
+
+        header = list(StorageHandler.fred_headers.values())[0]
+        
+        # print("OHI: ",list(StorageHandler.fred_headers.keys()))
+
+        if api_owner in StorageHandler.fred_headers.keys():
+            header = StorageHandler.fred_headers[api_owner]
+        else:
+            api_owner = list(StorageHandler.fred_headers.keys())[0]
 
         owners = list(StorageHandler.fred_headers.keys())
         owners_len = len(owners)
@@ -226,7 +261,7 @@ class StorageHandler():
 
             # text_hash = str(adler32(texts[i].encode("utf_8")))
             text_hash = StorageHandler.get_text_hash(texts[i])
-            StorageHandler.download_txt_rdf(texts[i], text_hash, headers)
+            StorageHandler.download_txt_rdf(texts[i], text_hash, header)
         
         print()
         print("[DOWNLOADING TURTLE FILES COMPLETED]")

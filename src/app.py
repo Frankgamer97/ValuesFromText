@@ -9,7 +9,8 @@ import os
 
 def buildParser():
     parser=ArgumentParser()
-    parser.add_argument("-api-owner",dest="api_owner", type=str, default=StorageHandler.default_api_owner)
+    parser.add_argument("-fred-api-file",dest="fred_api_file", type=str, default="")
+    parser.add_argument("-api-owner",dest="api_owner", type=str, default="")
     # parser.add_argument("--preprocess",dest="preprocess", type=str, default="True")
     # parser.add_argument("-rdf_download",dest="rdf_download", type=str, default="True")
 
@@ -33,22 +34,32 @@ def get_params():
     args = parser.parse_args()
 
     params = {}
-    owners = list(StorageHandler.fred_headers.keys())
-
-    if args.api_owner not in owners:
-        print("[WARNING] Wrong Api onwer, selecting default Api.")
-        params["api_owner"] = args.api_owner
+    params["api_owner"] = args.api_owner
 
     params["api-owner"] = args.api_owner
     params["preprocessing"] = args.preprocessing
     params["rdf-downloading"] = args.rdf_downloading
     params["valuenet"] = args.valuenet
     params["analysis"] = args.analysis
+    params["fred_api_file"] = args.fred_api_file
 
     return params
 
 if __name__ == "__main__" :
-        
+    
+    params = get_params()
+    if params["rdf-downloading"]:
+        if params["fred_api_file"] == "":
+            params["fred_api_file"] = "FRED_API.txt"
+            print("[WARNING] No FRED API key file selected, using the default file if exist")
+
+        assert StorageHandler.load_api(params["fred_api_file"])
+
+        owners = list(StorageHandler.fred_headers.keys())
+        if params["api_owner"] not in owners:
+            print("[WARNING] No valid FRED Api owner, selecting default Api.")
+    
+
     apt = False
     wn = False
     omv = False
@@ -69,7 +80,7 @@ if __name__ == "__main__" :
             nltk.download('omw-1.4')
 
 
-    params = get_params()
+
     print()
 
     StorageHandler.create_directories()
@@ -82,9 +93,11 @@ if __name__ == "__main__" :
     print()
     DatasetHandler.retrieve_fred_rdf(df_ValueNet, params["api-owner"], download=params["rdf-downloading"])
     print()
-    df_ValueNet = DatasetHandler.retrieve_ValueNet_data(df_ValueNet, overwrite=params["valuenet"])
-    print()
-    df_ValueNet = DatasetHandler.rdf_statistical_analysis(df_ValueNet, overwrite=params["analysis"])
-    print()
-    df_ValueNet = DatasetHandler.rdf_semantic_analysis(df_ValueNet, overwrite=params["analysis"])
-    print()
+    df_ValueNet, is_ok = DatasetHandler.retrieve_ValueNet_data(df_ValueNet, overwrite=params["valuenet"])
+
+    if is_ok:
+        print()
+        df_ValueNet = DatasetHandler.rdf_statistical_analysis(df_ValueNet, overwrite=params["analysis"])
+        print()
+        df_ValueNet = DatasetHandler.rdf_semantic_analysis(df_ValueNet, overwrite=params["analysis"])
+        print()

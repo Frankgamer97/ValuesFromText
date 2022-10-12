@@ -136,3 +136,6 @@ src/data/raw/
 src/data/rdf/
 src/data/rdf_extended/
 src/tmp/
+
+# DEFAULT FRED API KEY FILE
+FRED_API.txt
