@@ -25,4 +25,4 @@ python app.py -api-owner=[FRED API] <--no-preprocessing> <--no-rdf-downloading> 
   <li>--no-analysis: avoid the analysis phase and produce directly the results</li>
 </ul>
 
-Note: ValueNet need to be installed locally on a Web Server. For this project it has been placed on a Fuseki web-server
+Note: ValueNet need to be installed locally on a Web Server. For this project it has been placed on a Fuseki web-server.
