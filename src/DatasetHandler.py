@@ -612,6 +612,7 @@ class DatasetHandler:
     def retrieve_ValueNet_data(df_ValueNet, overwrite=True):
         print()
         print("[RDF LABELS-TRIGGERS]")
+        is_ok = True
         
         if not overwrite:
             file_path = StorageHandler.get_propreccesed_file_path("df_ValueNet_response.csv")
@@ -633,7 +634,7 @@ class DatasetHandler:
 
             text_log = []
 
-            is_ok = True
+            
 
             for i in range(text_list_len):
                 if not is_ok:
