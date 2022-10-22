@@ -1,9 +1,17 @@
+from regex import F
 from StorageHandler import StorageHandler
 from Statistic import Statistic
 
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 from nltk.corpus import wordnet
+
+from matplotlib import pyplot as plt
+import seaborn as sn
+
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import confusion_matrix, plot_confusion_matrix
 
 import pandas as pd
 import gdown
@@ -57,6 +65,8 @@ prefixes = "PREFIX dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
             PREFIX vcvf: <http://www.semanticweb.org/sdg/ontologies/2022/0/valuecore_with_value_frames.owl#>\
             PREFIX wn30instances: <https://w3id.org/framester/wn/wn30/instances/>\
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>"
+
+dyads_dict = {}
 
 primary_role = [
     "Agent",
@@ -315,6 +325,20 @@ class DatasetHandler:
     @staticmethod
     def preprocessing(overwrite = False):
 
+        def __build_dyads_dict(dyad):
+            global dyads_dict
+
+            hv = dyad.split("-") 
+            dyad_keys = dyads_dict.keys()
+
+            if hv[0] not in dyad_keys:
+                dyads_dict[hv[0]] = hv[1]
+            
+            if hv[1] not in dyad_keys:
+                dyads_dict[hv[1]] = hv[0]
+
+            return dyad
+
         print("[Preprocessing]")
         if not overwrite:
             df_bad_fred_path = StorageHandler.get_propreccesed_file_path("df_bad_fred.csv")
@@ -369,6 +393,9 @@ class DatasetHandler:
         .reset_index(level=1, drop=True).rename('rot-moral-foundations')) \
         .reset_index(drop=True) 
 
+
+        ###########################################à
+
         #-----------------------
         # Filter rows with only bad moral judgment (associated with the correct diade)
 
@@ -385,8 +412,10 @@ class DatasetHandler:
         print("Dyads: ",dyads_bad)
         print()
 
-        #Select the correct haidt value associated with "bad" 
 
+        #Select the correct haidt value associated with "bad" 
+        df_bad["rot-moral-foundations"] = df_bad["rot-moral-foundations"].apply(lambda x: __build_dyads_dict(x))
+        
         df_bad["haidt-value"] = df_bad["rot-moral-foundations"].apply(lambda x: x.split("-")[1])
         # df_bad['rot-moral-foundations'] = df_bad['rot-moral-foundations'].apply(lambda x: x.split("|"))
         # df_bad['haidt-value'] = df_bad['rot-moral-foundations'].apply(lambda x: [el.split("-")[1] for el in x])
@@ -789,7 +818,9 @@ class DatasetHandler:
             
 
     @staticmethod
-    def build_count(row, count_dict, haidt_response_partition):
+    def build_count(row, count_dict, label_total_count):
+        global dyads_dict
+
         labels_true = row["label"].split(" ")
         labels_predicted = row["label_predicted"].split(" ")
 
@@ -798,10 +829,10 @@ class DatasetHandler:
         count = 0
 
         for label in labels_true:
-            if label in labels_predicted:
+            if label in labels_predicted or dyads_dict[label] in labels_predicted:
                 count += 1
                 count_dict[label]["count"] += 1
-                count_dict[label]["percentage"] = round(count_dict[label]["count"] / haidt_response_partition[label],2) * 100
+                count_dict[label]["percentage"] = round(count_dict[label]["count"] / label_total_count, 3) * 100
         row["label_count_matched"] = count
 
         return row
@@ -811,6 +842,76 @@ class DatasetHandler:
     def print_dict(mydict, level = 0):
         parsed = json.loads(str(mydict).replace("'","\""))
         print("".join(["\t" for _ in range(level)]),"",json.dumps(parsed, indent=4))
+
+    @staticmethod
+    def build_haidt_value_statistical_data(df_ValueNet, haidt_values):
+
+        def __clear_predictions(row):
+
+            if row["label"] in row["label_predicted"]:
+                row["label_predicted"] = row["label"]
+
+            return row
+
+        # global dyads_dict
+
+        hv_token_dict = dict(zip(haidt_values, list(range(len(haidt_values)))))
+        
+        df_prediction_data = df_ValueNet[["label","label_predicted"]]
+
+        df_prediction_data = df_prediction_data.drop('label', axis=1) \
+        .join(df_prediction_data['label'] \
+        .str \
+        .split(' ', expand=True) \
+        .stack() \
+        .reset_index(level=1, drop=True).rename('label')) \
+        .reset_index(drop=True)
+
+        df_prediction_data = df_prediction_data.drop('label_predicted', axis=1) \
+        .join(df_prediction_data['label_predicted'] \
+        .str \
+        .split(' ', expand=True) \
+        .stack() \
+        .reset_index(level=1, drop=True).rename('label_predicted')) \
+        .reset_index(drop=True)
+
+        df_prediction_data = df_prediction_data[["label","label_predicted"]]
+        df_prediction_data = df_prediction_data.apply(lambda x: __clear_predictions(x), axis=1)
+
+
+        # df_prediction_data["label_token"] = df_prediction_data["label"].apply(lambda x: hv_token_dict[x])
+        # df_prediction_data["label_predicted_token"] = df_prediction_data["label_predicted"].apply(lambda x: hv_token_dict[x])
+        
+        Y_true = df_prediction_data["label"].tolist()
+        Y_pred = df_prediction_data["label_predicted"].tolist()
+        
+        # accuracy = accuracy_score(Y_true, Y_pred, normalize=False)
+        precision = precision_score(Y_true, Y_pred, average=None)
+        recall = recall_score(Y_true, Y_pred, average=None)
+        f1 = f1_score(Y_true, Y_pred, average=None)
+        conf_matrix = confusion_matrix(Y_true, Y_pred, labels=haidt_values)
+
+        conf_matrix_df = pd.DataFrame(conf_matrix, columns=haidt_values, index=haidt_values, dtype=int)
+
+        print("Confusion Matrix")
+        print(conf_matrix_df)
+        print()
+        # print("Accuracy: ", accuracy)
+        # print()
+        print("Precision: ", precision)
+        print()
+        print("Recall: ", recall)
+        print()
+        print("F1-score: ",f1)
+        print()
+        
+        sn.heatmap(conf_matrix_df, annot=True, fmt='g', cmap='Blues')
+        plt.show()
+
+        
+
+
+        pass
 
     @staticmethod
     def rdf_statistical_analysis(df_ValueNet, overwrite = True):
@@ -883,7 +984,8 @@ class DatasetHandler:
         DatasetHandler.print_dict(haidt_response_partition)
         print()
 
-        df_ValueNet = df_ValueNet.apply(lambda x: DatasetHandler.build_count(x, count_dict, haidt_response_partition), axis=1)
+
+        df_ValueNet = df_ValueNet.apply(lambda x: DatasetHandler.build_count(x, count_dict, response_count), axis=1)
 
         print("ValueNet correct prediction")
         DatasetHandler.print_dict(count_dict)
@@ -895,6 +997,9 @@ class DatasetHandler:
         print("Total percentage: ", round(correct_response_count / response_count,2) * 100)
         print()
         # label_dict, trigger_dict = DatasetHandler.build_haidt_dict(df_ValueNet, show=True)
+
+
+        DatasetHandler.build_haidt_value_statistical_data(df_ValueNet, haidt_values_pred)
 
         StorageHandler.save_data_csv(df_ValueNet, name=df_name)
         print("\tdataframe saved")
