@@ -88,16 +88,21 @@ if __name__ == "__main__" :
     StorageHandler.Glove()
     
     print()
-    df_fred, df_ValueNet= DatasetHandler.preprocessing(overwrite=params["preprocessing"])
+    df_fred, df_ValueNet, dyads_dict= DatasetHandler.preprocessing(overwrite=params["preprocessing"])
 
     print()
     DatasetHandler.retrieve_fred_rdf(df_ValueNet, params["api-owner"], download=params["rdf-downloading"])
     print()
     df_ValueNet, is_ok = DatasetHandler.retrieve_ValueNet_data(df_ValueNet, overwrite=params["valuenet"])
 
+    # df_ValueNet["text_hash"] = df_ValueNet["text"].apply(lambda x: StorageHandler.get_text_hash(x))
+    # columns = list(df_ValueNet.columns)
+    # df_ValueNet = df_ValueNet[[columns[0]] + ["text_hash"] + columns[1:]]
+    # StorageHandler.save_data_csv(df_ValueNet, name="df_ValueNet_response")
+    
     if is_ok:
         print()
-        df_ValueNet = DatasetHandler.rdf_statistical_analysis(df_ValueNet, overwrite=params["analysis"])
+        df_ValueNet = DatasetHandler.rdf_statistical_analysis(df_ValueNet, dyads_dict, overwrite=params["analysis"])
         print()
         df_ValueNet = DatasetHandler.rdf_semantic_analysis(df_ValueNet, overwrite=params["analysis"])
         print()

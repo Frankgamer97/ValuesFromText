@@ -325,8 +325,8 @@ class DatasetHandler:
     @staticmethod
     def preprocessing(overwrite = False):
 
+        global dyads_dict
         def __build_dyads_dict(dyad):
-            global dyads_dict
 
             hv = dyad.split("-") 
             dyad_keys = dyads_dict.keys()
@@ -348,10 +348,12 @@ class DatasetHandler:
             df_bad_ValueNet = StorageHandler.load_csv_to_dataframe(df_bad_ValueNet_path)
 
             if df_bad_fred is not None and df_bad_ValueNet is not None:
+
+                dyads_dict = StorageHandler.load_json("dyads_dict.json")
                 
                 print("\tLoading cached files")
 
-                return df_bad_fred, df_bad_ValueNet
+                return df_bad_fred, df_bad_ValueNet, dyads_dict
             else:
                 print("WARNING")
                 
@@ -508,9 +510,10 @@ class DatasetHandler:
         # return df_bad_out_uniqued_cutted[["text"]], df_bad_out_cutted[["text", "label"]]
 
         StorageHandler.save_data_csv(df_bad_ValueNet, name="df_bad_ValueNet")
+        StorageHandler.save_json("dyads_dict.json",dyads_dict)
 
         print(len(df_bad_ValueNet)," - ", len(df_bad_out_uniqued_cutted[["text"]]))
-        return df_bad_out_uniqued_cutted[["text"]], df_bad_ValueNet
+        return df_bad_out_uniqued_cutted[["text"]], df_bad_ValueNet, dyads_dict
         
     def retrieve_fred_rdf(df, api_owner, download = True):
         #Retrieve Fred rdfs
@@ -744,8 +747,7 @@ class DatasetHandler:
 
                 df_ValueNet["label_predicted"] = haidt_predictions
                 df_ValueNet["label_triggers"] = triggers
-
-
+            
                 df_ValueNet["label"] = df_ValueNet["label"].str.lower()
                 df_ValueNet["label_predicted"] = df_ValueNet["label_predicted"].str.lower()
                 df_ValueNet["label_triggers"] = df_ValueNet["label_triggers"].str.lower()
@@ -829,10 +831,15 @@ class DatasetHandler:
         count = 0
 
         for label in labels_true:
-            if label in labels_predicted or dyads_dict[label] in labels_predicted:
+            if label in labels_predicted: #  or dyads_dict[label] in labels_predicted:
+
+                current_label = label
+                # if label not in labels_predicted and dyads_dict[label] in labels_predicted:
+                #     current_label = dyads_dict[label]
+
                 count += 1
-                count_dict[label]["count"] += 1
-                count_dict[label]["percentage"] = round(count_dict[label]["count"] / label_total_count, 3) * 100
+                count_dict[current_label]["count"] += 1
+                count_dict[current_label]["percentage"] = round(count_dict[current_label]["count"] / label_total_count, 3) * 100
         row["label_count_matched"] = count
 
         return row
@@ -914,7 +921,7 @@ class DatasetHandler:
         pass
 
     @staticmethod
-    def rdf_statistical_analysis(df_ValueNet, overwrite = True):
+    def rdf_statistical_analysis(df_ValueNet, dyads_dict, overwrite = True):
         print("[RDF STATISTICAL ANALYSIS]")
         df_name = "df_ValueNet_statistics"
 
@@ -966,11 +973,17 @@ class DatasetHandler:
         print("Social Chemistry haidt value count: ", df_ValueNet["label_count"].sum())
         print("ValueNet predictions", df_ValueNet["label_predicted_count"].sum())
 
-        count_dict = dict(zip(haidt_values,([{"count":0, "percentage": 0} for i in range(len(haidt_values))])))
+
+        total_hv = []
+        for hv in haidt_values:
+            total_hv.append(dyads_dict[hv])
+
+        total_hv = haidt_values + total_hv
+        count_dict = dict(zip(total_hv,([{"count":0, "percentage": 0} for i in range(len(total_hv))])))
         haidt_response_partition = {}
 
         for value in haidt_values:
-            haidt_response_partition[value] = df_ValueNet[df_ValueNet["label"].str.contains(value)]["label"].count()
+            haidt_response_partition[value+"-"+dyads_dict[value]] = df_ValueNet[df_ValueNet["label"].str.contains(value)]["label"].count()
 
         response_count = sum(list(haidt_response_partition.values()))
         response_raw_count =len(df_ValueNet)
@@ -1051,7 +1064,7 @@ class DatasetHandler:
             query = "?o_c0 "
             query += " ".join(["?o_c"+str(i+1) for i in range(intermediate_nodes)])
             query = prefixes + " SELECT "+ query + " ?v WHERE{ "
-            query += "?s ns1:"+role+" ?o. "
+            query += "?s <http://www.ontologydesignpatterns.org/ont/vn/abox/role/"+role+"> ?o. "
             query += "?o rdf:type ?o_c0. "
             query += " ".join(["?o_c"+str(i)+" rdfs:subClassOf ?o_c"+str(i+1)+". " for i in range(intermediate_nodes)])
             query += "?o_c"+str(intermediate_nodes)+" vcvf:triggers ?v"
@@ -1062,7 +1075,7 @@ class DatasetHandler:
             query = "?s_c0 "
             query += " ".join(["?s_c"+str(i+1) for i in range(intermediate_nodes)])
             query = prefixes + " SELECT "+ query + " ?v WHERE{ "
-            query += "?s ns1:"+role+" ?o. "
+            query += "?s <http://www.ontologydesignpatterns.org/ont/vn/abox/role/"+role+"> ?o. "
 
             query += "?s rdf:type ?s_c0. "
             query += " ".join(["?s_c"+str(i)+" rdfs:subClassOf ?s_c"+str(i+1)+". " for i in range(intermediate_nodes)])
@@ -1169,7 +1182,7 @@ class DatasetHandler:
 
             print("\t\tLoaded local turtleNet")
 
-        roles = primary_role  + secondary_role 
+        roles = primary_role#   + secondary_role 
         role_dict = {role:[] for role in roles}
         visited_paths = []
         df_dict = {"role":[], "role_start": [], "haidt":[], "path":[]}
@@ -1273,15 +1286,16 @@ class DatasetHandler:
 
 
     @staticmethod
-    def __is_verbnet(uri):
-        return True if "vn" == uri.split(":")[0] else False
+    def __is_verbnet(uri):    
+        return True if "https://w3id.org/framester/vn/vn31/data/" in uri else False
 
     def __is_wordnet(uri):
-        
-        return True if "synset" in uri.split(":")[1] else False
+        return True if "synset" in uri else False
 
     def __is_frame(uri):
         return True if "https://w3id.org/framester/data/framestercore/" in uri else False
+
+
 
     # (2)
     @staticmethod
@@ -1319,7 +1333,8 @@ class DatasetHandler:
                 # print(text)
                 graph = StorageHandler.load_rdf(text, extended=True)
                 res = graph.query(query)
-                subs = [graph.qname(el) for el in list(dict(res).keys())]
+                # subs = [graph.qname(el) for el in list(dict(res).keys())]
+                subs = list(dict(res).keys())
                 # print(f"{subs}")
 
                 for sub in subs:
@@ -1330,6 +1345,7 @@ class DatasetHandler:
                     elif DatasetHandler.__is_frame(sub):
                         triggers_dict["frame"] += 1
                     else:
+                        print(f"[UNKNOWN] {sub}")
                         triggers_dict["other"] += 1
             except:
                 print("\t\t[ERROR] Unable to run the query")
@@ -1466,7 +1482,7 @@ class DatasetHandler:
         global primary_role
         global secondary_role
 
-        roles = primary_role  + secondary_role 
+        roles = primary_role#   + secondary_role 
         role_dict = {role:[] for role in roles}
         # role_dict = {"ALL":[]}
 

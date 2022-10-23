@@ -1,0 +1,12 @@
+{
+    "loyalty": "betrayal",
+    "betrayal": "loyalty",
+    "care": "harm",
+    "harm": "care",
+    "fairness": "cheating",
+    "cheating": "fairness",
+    "authority": "subversion",
+    "subversion": "authority",
+    "sanctity": "degradation",
+    "degradation": "sanctity"
+}
